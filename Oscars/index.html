@@ -176,18 +176,14 @@ layout: default
   </script>
 
   <script type="text/javascript"charset="utf-8">
-  function tabulate(year,subt) {
-    d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsTracking.csv',function (data) {
-    if (year != null) {
-        var data = data.filter(element => element.ItemYear === year)
-    } else {
-        var data = data.filter(element => element.Service === "Prime")
-    }
+  function tabulate(subt) {
+    d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsFilmSummary.csv',function (data) {
+      var data = data.filter(element => element.Service === "Prime")
 
       $(".table-prime").empty()
       $("#subt").text(subt)
-      
-      var columns = ['ItemTitle','ItemYear','ItemRuntime','Watchlist','Rating']
+    
+      var columns = ['FilmName','Year','Runtime','Watchlist','Rating','Nominations','Wins']
       var table = d3.select(".table-prime")
                     .append('table')
                     .classed('table', true)
@@ -221,7 +217,7 @@ layout: default
             else {return "not-watched"}
 					})
         .html(function (d) { 
-        	if (d.column === "ItemTitle") {
+        	if (d.column === "FilmName") {
           	return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
           }
           else {if(d.value != "NA") {return d.value}}})
@@ -231,8 +227,7 @@ layout: default
       return table
   })}
     
-    d3.select(window).on("load", tabulate(null,'Streaming on Amazon Prime'))
-  })
+    d3.select(window).on("load", tabulate('Streaming on Amazon Prime'))
   </script>
   
   <div id="switch">
