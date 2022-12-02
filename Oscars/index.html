@@ -4,7 +4,7 @@ layout: default
 ---
 
 <style>
-  td.watched {background-color:#B2BBD6;}
+  td.watched {background-color:#94F2D0;}
   td.watched a {color:#2E3957;}
   td.watched a:hover {color:#7b6888;} </style>
 
@@ -104,7 +104,7 @@ layout: default
   svg.append("text").attr("x", 840).attr("y", 30).text("Nominees Not Seen").classed('label', true)
 
   function awardTable(ceremony) {
-    $(".table-prime").empty();
+    $("#switch").empty();
     var data = [];
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsTracking.csv', function(data){
     		var data = data.filter(element => element.AwardCeremony === ceremony)
@@ -121,7 +121,7 @@ layout: default
           
     	var columns = ['FilmName','PersonName','Rating','imdbRating','Watchlist']
     
-      var AwardCeremonies = d3.select('.table-prime').selectAll('div')
+      var AwardCeremonies = d3.select('#switch').selectAll('div')
         .data(d)
         .enter()
         .append('div')
