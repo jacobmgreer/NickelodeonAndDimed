@@ -3,6 +3,11 @@ title: "Academy Awards - Overall Scorecard"
 layout: default
 ---
 
+<style>
+  td.watched {background-color:#B2BBD6;}
+  td.watched a {color:#2E3957;}
+  td.watched a:hover {color:#7b6888;} </style>
+
 <div class="container-fluid" style="height:960px;">
   <svg width="960" height="960" class="center" id="movies"></svg>
   <div id="tooltip" class="center"><h3>Oscar Winners & Nominees:<br/>Percentage Seen<br/>by Award Ceremony</h3></div>
@@ -183,7 +188,7 @@ layout: default
       $(".table-prime").empty()
       $("#subt").text(subt)
     
-      var columns = ['FilmName','Year','Runtime','Watchlist','Rating','Nominations','Wins']
+      var columns = ['FilmName','Year','Runtime','Watchlist','Rated','Nominations','Wins']
       var table = d3.select(".table-prime")
                     .append('table')
                     .classed('table', true)
@@ -230,6 +235,7 @@ layout: default
     d3.select(window).on("load", tabulate('Streaming on Amazon Prime'))
   </script>
   
+  <br/><br/>
   <div id="switch">
     <h1 class="display-5">Oscar Nominated Films</h1>
     <h3 class="display-6" id="subt"></h3>
