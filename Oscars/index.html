@@ -73,6 +73,18 @@ layout: default
 </div>
 
 <div class="container-fluid">
+  <div class="movie-counts">
+    <div class="movies-prime"></div>
+    <div class="movies-prime-rentals"></div>
+    <div class="movies-total"></div>
+  </div>
+  <br/><br/>
+  <div id="switch">
+    <h1 class="display-5">Oscar Nominated Films</h1>
+    <h3 class="display-6" id="subt"></h3>
+    <div class="table-prime"></div>
+  </div>
+  
   <script type="text/javascript">
   
   var svg = d3.select("#legend")
@@ -212,7 +224,7 @@ layout: default
       var cells = rows.selectAll('td')
           .data(function(row) {
             return columns.map(function (column) {
-              return { column: column, value: row[column], link: row["IMDBid"], rating: row["Rating"] }
+              return { column: column, value: row[column], link: row["FilmID"], rating: row["Rating"] }
             })
           })
         .enter()
@@ -232,15 +244,25 @@ layout: default
       return table
   })}
     
+  d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsFilmSummary.csv',function (data) {
+    d3.select('.movies-total').html('Total: seen ' + 
+        data.filter(element => element.Seen === "Yes").length + ' out of ' + 
+        data.length + ' (' + 
+        Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(2)) 
+        + '%)'); // Total count
+    d3.select('.movies-prime').html('On Prime: seen ' + 
+        data.filter(element => element.Service === "Prime" && element.Seen === "Yes").length + ' out of ' + 
+        data.filter(element => element.Service === "Prime").length + ' (' + 
+        Number(((data.filter(element => element.Service === "Prime" && element.Seen === "Yes").length * 100) / data.filter(element => element.Service === "Prime").length).toFixed(2))
+        + '%)');// Prime Free count
+    d3.select('.movies-prime-rentals').html('On Prime Rentals: seen ' + 
+        data.filter(element => element.Service === "Prime Rentals" && element.Seen === "Yes").length + ' out of ' + 
+        data.filter(element => element.Service === "Prime Rentals").length + ' (' + 
+        Number(((data.filter(element => element.Service === "Prime Rentals" && element.Seen === "Yes").length * 100) / data.filter(element => element.Service === "Prime Rentals").length).toFixed(2))
+        + '%)');// Prime Rentals count
+    
     d3.select(window).on("load", tabulate('Streaming on Amazon Prime'))
   </script>
-  
-  <br/><br/>
-  <div id="switch">
-    <h1 class="display-5">Oscar Nominated Films</h1>
-    <h3 class="display-6" id="subt"></h3>
-    <div class="table-prime"></div>
-  </div>
   
   <br clear="all"/><br/>
 </div>
