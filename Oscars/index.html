@@ -252,7 +252,7 @@ layout: default
         data.length + ' (' + 
         Number(((data.filter(element => element.Rating != "NA").length * 100) / data.length).toFixed(2)) 
         + '%)'); // Total count
-    d3.select('.movies-total').html('Winners: seen ' + 
+    d3.select('.movies-winner').html('Winners: seen ' + 
         data.filter(element => element.Rating != "NA" && element.Wins > 0).length + ' out of ' + 
         data.filter(element => element.Wins > 0).length + ' (' + 
         Number(((data.filter(element => element.Rating != "NA" && element.Wins > 0).length * 100) / data.filter(element => element.Wins > 0).length).toFixed(2))
