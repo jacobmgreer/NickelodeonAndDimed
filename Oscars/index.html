@@ -260,8 +260,9 @@ layout: default
         data.filter(element => element.Service === "Prime Rentals").length + ' (' + 
         Number(((data.filter(element => element.Service === "Prime Rentals" && element.Seen === "Yes").length * 100) / data.filter(element => element.Service === "Prime Rentals").length).toFixed(2))
         + '%)');// Prime Rentals count
-    
-    d3.select(window).on("load", tabulate('Streaming on Amazon Prime'))
+        
+    d3.select(window).on("load", tabulate('Streaming on Amazon Prime'));
+  })
   </script>
   
   <br clear="all"/><br/>
