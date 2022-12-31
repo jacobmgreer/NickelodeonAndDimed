@@ -52,8 +52,21 @@ layout: default
 
     function doSomething2(d){
 
-    	var columns = ['AwardCeremony','Picture', 'Director','Writing','Actor, Lead','Actress, Lead','Actor, Supporting','Actress, Supporting']
-    	
+    	var columns = [
+    	  'AwardCeremony',
+    	  'Picture',
+    	  'Director',
+    	  'Writing',
+    	  'Actor, Lead',
+    	  'Actress, Lead',
+    	  'Actor, Supporting',
+    	  'Actress, Supporting',
+    	  'Documentary',
+    	  'International',
+    	  'Short, Animated',
+    	  'Short, Documentary',
+    	  'Short, Live Action']
+
       var rows = d3.select('.awards tbody').selectAll('tr')
           .data(d)
           .enter()
@@ -98,19 +111,19 @@ layout: default
                             .entries(data);
         doSomething(nested_data);
     })
-    
+
     function doSomething(d){
-          
+
     	var columns = ['FilmName','PersonName','Rating','imdbRating','Watchlist']
-    
+
       var AwardCeremonies = d3.select('.table-prime').selectAll('div')
         .data(d)
         .enter()
         .append('div')
         .html(function(d){return "<h1 class=\"display-5\" id=\"type-details\">" + d.key + "</h1>"})
-        
+
       var data1 = function(d) {return d.values}
-        
+
       var AwardCategories = AwardCeremonies.selectAll('div')
        	.data(data1)
         .enter()
@@ -120,7 +133,7 @@ layout: default
         .classed('table', true)
         .classed('table-striped', true)
         .style('table-layout',"fixed")
-        
+
       AwardCategories.append('thead')
        	.append('tr')
         .selectAll('th')
@@ -129,24 +142,24 @@ layout: default
         .append('th')
           .attr('scope', 'col')
           .text(function (d) { return d })
-         
+
       var tbody = AwardCategories.append('tbody')
-      
+
       var data2 = function(d) {return d.values}
-      
+
       var rows = tbody.selectAll('tr')
           .data(data2)
           .enter()
           .append('tr')
-          
+
       var nominee = rows.selectAll('td')
           .data(function (row) {
                 return columns.map(function (column) {
-                  return { 
-                    column: column, 
-                    value: row[column], 
-                    votes: row['imdbVotes'], 
-                    winner: row['AwardWinner'], 
+                  return {
+                    column: column,
+                    value: row[column],
+                    votes: row['imdbVotes'],
+                    winner: row['AwardWinner'],
                     FilmID: row["FilmID"],
                     PersonID: row["PersonID"]
                   }
@@ -170,7 +183,7 @@ layout: default
             }
             else {
             	if(d.value != "NA") {return d.value}}})
-            	
+
         document.getElementById("type-details").scrollIntoView();
      }
   }
@@ -230,6 +243,31 @@ layout: default
               <div class="rotated-header-content">Actress, Supporting</div>
             </div>
           </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Documentary</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">International</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Short, Animated</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Short, Documentary</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Short, Live Action</div>
+            </div>
+          </th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -239,7 +277,7 @@ layout: default
   <br/>
   <footer class="bg-light text-center text-lg-start">
     <div class="text-center p-3">
-      Prize Statue Icon from 
+      Prize Statue Icon from
       <a class="text-dark" href="https://www.svgrepo.com/svg/143836/oscar-prize-statue-silhouette">SVG repo</a> under a CC0 License
     </div>
   </footer>
