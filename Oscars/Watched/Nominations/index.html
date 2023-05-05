@@ -57,15 +57,14 @@ layout: default
     	  'Picture',
     	  'Director',
     	  'Writing',
-    	  'Actor, Lead',
-    	  'Actress, Lead',
-    	  'Actor, Supporting',
-    	  'Actress, Supporting',
+    	  'Performance',
+    	  'Visual Style',
+    	  'Effects',
+    	  'Music',
+    	  'Animated',
     	  'Documentary',
     	  'International',
-    	  'Short, Animated',
-    	  'Short, Documentary',
-    	  'Short, Live Action']
+    	  'Live Action']
 
       var rows = d3.select('.awards tbody').selectAll('tr')
           .data(d)
@@ -225,22 +224,27 @@ layout: default
           </th>
           <th scope="col">
             <div class="rotated-header-container">
-              <div class="rotated-header-content">Actor, Lead</div>
+              <div class="rotated-header-content">Performance</div>
             </div>
           </th>
           <th scope="col">
             <div class="rotated-header-container">
-              <div class="rotated-header-content">Actress, Lead</div>
+              <div class="rotated-header-content">Visual Style</div>
             </div>
           </th>
           <th scope="col">
             <div class="rotated-header-container">
-              <div class="rotated-header-content">Actor, Supporting</div>
+              <div class="rotated-header-content">Effects & Editing</div>
             </div>
           </th>
           <th scope="col">
             <div class="rotated-header-container">
-              <div class="rotated-header-content">Actress, Supporting</div>
+              <div class="rotated-header-content">Music</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Animated</div>
             </div>
           </th>
           <th scope="col">
@@ -251,16 +255,6 @@ layout: default
           <th scope="col">
             <div class="rotated-header-container">
               <div class="rotated-header-content">International</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Short, Animated</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Short, Documentary</div>
             </div>
           </th>
           <th scope="col">
