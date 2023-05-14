@@ -11,7 +11,6 @@ let importPath = 'https://gist.githubusercontent.com/jacobmgreer/bde4a6e5cc95528
 function mapInit(data) {
     //now that we can use the json data, declare projection and path
     projection = d3.geoPolyhedralCollignon()
-        .reflectY(true)
         .fitExtent([[0, 0], [width, height]], outline);
     path = d3.geoPath(projection);
     //create svg
