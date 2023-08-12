@@ -64,7 +64,8 @@ layout: default
     	  'Animated',
     	  'Documentary',
     	  'International',
-    	  'Short']
+    	  'Short',
+        'Films.N']
 
       var rows = d3.select('.awards tbody').selectAll('tr')
           .data(d)
@@ -261,6 +262,11 @@ layout: default
           <th scope="col">
             <div class="rotated-header-container">
               <div class="rotated-header-content">Shorts</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Not Seen</div>
             </div>
           </th>
         </tr>
