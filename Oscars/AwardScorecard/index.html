@@ -65,7 +65,8 @@ layout: default
     	  'Documentary',
     	  'International',
     	  'Short',
-        'Films.N']
+        'Films.N',
+        'Percentage']
 
       var rows = d3.select('.awards tbody').selectAll('tr')
           .data(d)
@@ -85,7 +86,7 @@ layout: default
           .enter()
           .append('td')
           .html(function(d){
-            if (d.column == 'AwardCeremony') {
+            if (d.column == 'AwardCeremony' | d.column == 'Films.N') {
             	return d.value}
             else {
               if(d.value != "NA") {
@@ -267,6 +268,11 @@ layout: default
           <th scope="col">
             <div class="rotated-header-container">
               <div class="rotated-header-content">Not Seen</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Total</div>
             </div>
           </th>
         </tr>
