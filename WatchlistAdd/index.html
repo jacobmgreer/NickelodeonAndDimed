@@ -1,0 +1,70 @@
+---
+title: Add to Watchlist
+layout: default
+---
+
+<script type="text/javascript" charset="utf-8">
+  var tabulate = function (data,columns) {
+      var recents = d3.select('#rows').selectAll('tr')
+        .data(data)
+        .enter()
+        .append('tr')
+          
+      var nominee = recents.selectAll('td')
+          .data(function (row) {
+                return columns.map(function (column) {
+                  return { 
+                    column: column, 
+                    value: row[column],
+                    votes: row["imdbVotes"],
+                    link: row["FilmID"]
+                  }
+                })
+              })
+          .enter()
+          .append('td')
+          .html(function(d){
+            if (d.column === "Item.Title") {
+              return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
+            }
+            else if (d.column === "imdbRating") {
+              return d.value + " (" + d.votes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ")"
+            }
+            else {
+              return d.value
+            }
+          })
+     }
+
+d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsFilmSummary.csv',function (data) {
+  var data = data
+              .filter(element => element.FilmName != "NA")
+              .filter(element => element.Rating === "NA")
+              .filter(element => element.Watchlist != "Y")
+  var columns = ['AwardCeremony','Type','FilmName','Year','imdbRating','RottenTomatoes']
+  tabulate(data,columns)
+})
+</script>
+  
+  <div class="container">
+    <br/>
+    <h1 class="display-5 text-center">Add to Watchlist</h1>
+    <br/>
+    <div class="mx-auto container" style="margin-top:25px;">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">AwardCeremony</th>
+            <th scope="col">Type</th>
+            <th scope="col">Content Title</th>
+            <th scope="col">Release Year</th>
+            <th scope="col">IMDb Rating (Votes)</th>
+            <th scope="col">RottenTomatoes</th>
+          </tr>
+        </thead>
+        <tbody id="rows">
+        </tbody>
+      </table>
+      <br/><br/>
+    </div>
+  </div>
