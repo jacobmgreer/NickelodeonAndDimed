@@ -24,10 +24,10 @@ layout: default
           .enter()
           .append('td')
           .html(function(d){
-            if (column === "Item.Title") {
+            if (d.column === "Item.Title") {
               return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
             }
-            else if (column === "imdbRating") {
+            else if (d.column === "imdbRating") {
               return d.value + "(" + d.votes + ")"
             }
             else {
