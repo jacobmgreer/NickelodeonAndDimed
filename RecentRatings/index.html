@@ -40,7 +40,7 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',f
   var data = data
               .filter(element => element.Title != "NA")
               .slice(0,26)
-  var columns = ['Rated.Date','Item.Title','Year','Rating','imdbRating']
+  var columns = ['Rated.Date','Type','Item.Title','Year','Rating','imdbRating']
   tabulate(data,columns)
 })
 </script>
@@ -54,6 +54,7 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',f
         <thead>
           <tr>
             <th scope="col">Date Rated</th>
+            <th scope="col">Type</th>
             <th scope="col">Film Title</th>
             <th scope="col">Film Year</th>
             <th scope="col">My Rating</th>
