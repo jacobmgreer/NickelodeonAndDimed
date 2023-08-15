@@ -24,7 +24,7 @@ layout: default
           .enter()
           .append('td')
           .html(function(d){
-            if (d.column === "Item.Title") {
+            if (d.column === "FilmName") {
               return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
             }
             else if (d.column === "imdbRating") {
@@ -41,7 +41,7 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsFi
               .filter(element => element.FilmName != "NA")
               .filter(element => element.Rating === "NA")
               .filter(element => element.Watchlist != "Y")
-  var columns = ['AwardCeremony','Type','FilmName','Year','imdbRating','RottenTomatoes']
+  var columns = ['AwardCeremony','Type','FilmName','Year','imdbRating','Runtime','Losses','Wins']
   tabulate(data,columns)
 })
 </script>
@@ -59,7 +59,9 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsFi
             <th scope="col">Content Title</th>
             <th scope="col">Release Year</th>
             <th scope="col">IMDb Rating (Votes)</th>
-            <th scope="col">RottenTomatoes</th>
+            <th scope="col">Runtime</th>
+            <th scope="col">Losses</th>
+            <th scope="col">Wins</th>
           </tr>
         </thead>
         <tbody id="rows">
