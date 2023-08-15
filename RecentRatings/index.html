@@ -26,7 +26,7 @@ layout: default
             if (d.column === "Item.Title") {
               return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
             }
-            else if (d.column === "imdbVotes") {
+            else if (d.column === "Num.Votes") {
               return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             }
             else {
@@ -39,7 +39,7 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',f
   var data = data
               .filter(element => element.Title != "NA")
               .slice(0,26)
-  var columns = ['Rated.Date','Type','Item.Title','Year','Rating','imdbRating','imdbVotes']
+  var columns = ['Rated.Date','Type','Item.Title','Year','Rating','imdbRating','Num.Votes']
   tabulate(data,columns)
 })
 </script>
