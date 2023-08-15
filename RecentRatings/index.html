@@ -20,22 +20,19 @@ layout: default
         return columns.map(function (column) {
           return { 
             column: column, 
-            value: row[column]}
+            value: row[column],
+            link: row["IMDBid"],
+            votes: row["Num.Votes"],
+            year: row["Year"]}
         })
       })
       .enter()
-      
-      .append('td')
-      .html(function (d) { return d["Rated.Date"] })
-
-      .append('td')
-      .html(function (d) { return d["Item.Title"] })
-     
-      .append('td')
-      .html(function (d) { return d["Rating"] })
-        
-      .append('td')
-      .html(function (d) { return d["imdbRating"] })
+      .html(function (d) { 
+        if(d.column === "Rated.Date") {return "<th scope=\"row\">" + d.value + "</th>"}
+        if (d.column === "ItemTitle") {return "<td><a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>" + " (" + d.year + ")</td>"}
+        else if (d.column === "Rating") {return "<td>My Rating: " + d.value + "</td>"}
+        else if (d.column === "Internet Movie Database") {return "<td>Internet Movie Database: " + d.value + " (" + d.votes + ")</td>"}
+      })
     
     return carddeck;
   }
