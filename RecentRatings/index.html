@@ -5,37 +5,26 @@ layout: default
 
 <script type="text/javascript" charset="utf-8">
   var tabulate = function (data,columns) {
-    var carddeck = d3.select('#rows')
-    
-    var cards = carddeck.selectAll('.row')
-      .data(data)
-      .enter()
-      
-      .append('tr')
-      .classed('row', true)
-      
-    var info = cards
-      .selectAll('tr')
-      .data(function(row) {
-        return columns.map(function (column) {
-          return { 
-            column: column, 
-            value: row[column],
-            link: row["IMDBid"],
-            votes: row["Num.Votes"],
-            year: row["Year"]}
-        })
-      })
-      .enter()
-      .html(function (d) { 
-        if(d.column === "Rated.Date") {return "<th scope=\"row\">" + d.value + "</th>"}
-        if (d.column === "ItemTitle") {return "<td><a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>" + " (" + d.year + ")</td>"}
-        else if (d.column === "Rating") {return "<td>My Rating: " + d.value + "</td>"}
-        else if (d.column === "Internet Movie Database") {return "<td>Internet Movie Database: " + d.value + " (" + d.votes + ")</td>"}
-      })
-    
-    return carddeck;
-  }
+      var recents = d3.select('#rows').selectAll('tr')
+        .data(data)
+        .enter()
+        
+      recents.append('tr')
+          
+      var nominee = recents.selectAll('td')
+          .data(function (row) {
+                return columns.map(function (column) {
+                  return { 
+                    column: column, 
+                    value: row[column]
+                  }
+                })
+              })
+          .enter()
+          .append('td')
+          .html(function(d){return d.value})
+          
+     }
 
 d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',function (data) {
   var data = data
