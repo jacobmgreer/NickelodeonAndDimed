@@ -5,57 +5,45 @@ layout: default
 
 <script type="text/javascript" charset="utf-8">
   var tabulate = function (data,columns) {
-    var carddeck = d3.select('#cards')
+    var carddeck = d3.select('#rows')
     
-    var cards = carddeck.selectAll('.card')
+    var cards = carddeck.selectAll('.row')
       .data(data)
       .enter()
       
-      .append('div')
-      .classed('container', true)
-      .classed('mx-auto', true)
-      .style('width','960px')
-      .style('margin-top','25px')
-      
-      .append('div')
+      .append('tr')
       .classed('row', true)
-      .classed('g0', true)
-    
-    var cardtext = cards
-      .append('div')
-      .classed('col-md-8', true)
-      
-      .append('div')
-      .classed('card-body', true)
       
     var info = cardtext
-      .selectAll('p')
+      .selectAll('tr')
       .data(function(row) {
         return columns.map(function (column) {
           return { 
             column: column, 
-            value: row[column], 
-            link: row["IMDBid"], 
-            votes: row["Num.Votes"], 
-            release: row["Released"]}
+            value: row[column]
         })
       })
       .enter()
       
-      .append('p')
-      .classed('card-text', true)
-      .html(function (d) { 
-        if (d.column === "Item.Title") {return "<h5 class=\"card-title\"><a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>" + " (" + d.release.substring(0,4) + ")</h5>"}
-        else if (d.column === "Rating") {return "My Rating: " + d.value}
-        else if (d.column === "imdbRating") {return "Internet Movie Database: " + d.value}
-        else {return d.value}})
-        
-     var footer = cardtext
-      .append('p')
-      .classed('card-text', true)
-      .append('small')
-      .classed('text-muted', true)
+     var item.rated = cardtext
+      .append('th')
       .html(function (d) { return d["Rated.Date"] })
+
+     var item.title = cardtext
+      .append('td')
+      .html(function (d) { return d["Item.Title"] })
+
+     var item.year = cardtext
+      .append('td')
+      .html(function (d) { return d["Item.Year"] })
+     
+     var item.rating = cardtext
+      .append('td')
+      .html(function (d) { return d["Rating"] })
+        
+     var item.imdbrating = cardtext
+      .append('td')
+      .html(function (d) { return d["imdbRating"] })
     
     return carddeck;
   }
@@ -64,8 +52,6 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',f
   var data = data
               .filter(element => element.Title != "NA")
               .slice(0,26)
-  var columns = ['Item.Title','Rating','imdbRating']
-  tabulate(data,columns)
 })
 </script>
   
@@ -73,6 +59,20 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',f
     <br/>
     <h1 class="display-5 text-center">Recently Rated Films</h1>
     <br/>
-    <div id="cards"></div>
-    <br/><br/>
+    <div class="mx-auto container" style="width: 760px; margin-top:25px;">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Date Rated</th>
+            <th scope="col">Title</th>
+            <th scope="col">Year</th>
+            <th scope="col">Rating</th>
+            <th scope="col">IMDB Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <br/><br/>
+    </div>
   </div>
