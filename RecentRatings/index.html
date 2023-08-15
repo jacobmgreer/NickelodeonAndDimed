@@ -8,10 +8,9 @@ layout: default
       var recents = d3.select('#rows').selectAll('tr')
         .data(data)
         .enter()
-        
-      recents.append('tr')
+        .append('tr')
           
-      var nominee = recents.selectAll('tr')
+      var nominee = recents.selectAll('td')
           .data(function (row) {
                 return columns.map(function (column) {
                   return { 
@@ -21,11 +20,8 @@ layout: default
                 })
               })
           .enter()
-          
-      nominee
-        .append('td')
-        .html(function(d){return d.value})
-          
+          .append('td')
+          .html(function(d){return d.value})
      }
 
 d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',function (data) {
