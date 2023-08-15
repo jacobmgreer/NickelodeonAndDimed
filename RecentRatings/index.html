@@ -14,7 +14,7 @@ layout: default
       .append('tr')
       .classed('row', true)
       
-    var info = cardtext
+    var info = cards
       .selectAll('tr')
       .data(function(row) {
         return columns.map(function (column) {
@@ -25,19 +25,19 @@ layout: default
       })
       .enter()
       
-     cardtext
+     info
       .append('td')
       .html(function (d) { return d["Rated.Date"] })
 
-     cardtext
+     info
       .append('td')
       .html(function (d) { return d["Item.Title"] })
      
-     cardtext
+     info
       .append('td')
       .html(function (d) { return d["Rating"] })
         
-     cardtext
+     info
       .append('td')
       .html(function (d) { return d["imdbRating"] })
     
