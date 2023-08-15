@@ -11,7 +11,7 @@ layout: default
         
       recents.append('tr')
           
-      var nominee = recents.selectAll('td')
+      var nominee = recents.selectAll('tr')
           .data(function (row) {
                 return columns.map(function (column) {
                   return { 
