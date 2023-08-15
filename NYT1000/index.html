@@ -112,7 +112,11 @@ layout: default
       var cells = rows.selectAll('td')
           .data(function(row) {
             return columns.map(function (column) {
-              return { column: column, value: row[column], link: row["IMDBid"], rating: row["Rating"] }
+              return { 
+                column: column, 
+                value: row[column], 
+                link: row["IMDBid"], 
+                rating: row["Rating"] }
             })
           })
         .enter()
@@ -124,6 +128,9 @@ layout: default
         .html(function (d) { 
         	if (d.column === "ItemTitle") {
           	return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
+          }
+          else if (d.column === "imdbVotes") {
+            return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
           }
           else {if(d.value != "NA") {return d.value}}})
         
