@@ -13,37 +13,13 @@ layout: default
       
       .append('tr')
       .classed('row', true)
-      
-    var info = cardtext
-      .selectAll('tr')
-      .data(function(row) {
-        return columns.map(function (column) {
-          return { 
-            column: column, 
-            value: row[column]}
-        })
-      })
       .enter()
       
-     var item.rated = cardtext
-      .append('th')
-      .html(function (d) { return d["Rated.Date"] })
-
-     var item.title = cardtext
-      .append('td')
-      .html(function (d) { return d["Item.Title"] })
-
-     var item.year = cardtext
-      .append('td')
-      .html(function (d) { return d["Item.Year"] })
-     
-     var item.rating = cardtext
-      .append('td')
-      .html(function (d) { return d["Rating"] })
-        
-     var item.imdbrating = cardtext
-      .append('td')
-      .html(function (d) { return d["imdbRating"] })
+      .append('th').html(function (d) { return d["Rated.Date"] })
+      .append('td').html(function (d) { return d["Item.Title"] })
+      .append('td').html(function (d) { return d["Item.Year"] })
+      .append('td').html(function (d) { return d["Rating"] })
+      .append('td').html(function (d) { return d["imdbRating"] })
     
     return carddeck;
   }
