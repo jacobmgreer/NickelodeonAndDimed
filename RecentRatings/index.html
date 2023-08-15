@@ -11,7 +11,7 @@ layout: default
         
       recents.append('tr')
           
-      var nominee = recents.selectAll('td')
+      var nominee = recents.selectAll('tr')
           .data(function (row) {
                 return columns.map(function (column) {
                   return { 
@@ -30,7 +30,7 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',f
   var data = data
               .filter(element => element.Title != "NA")
               .slice(0,26)
-  var columns = ['Rated.Date','Item.Title','Rating','imdbRating']
+  var columns = ['Rated.Date','Item.Title','Year','Rating','imdbRating']
   tabulate(data,columns)
 })
 </script>
@@ -44,10 +44,10 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',f
         <thead>
           <tr>
             <th scope="col">Date Rated</th>
-            <th scope="col">Title</th>
-            <th scope="col">Year</th>
-            <th scope="col">Rating</th>
-            <th scope="col">IMDB Rating</th>
+            <th scope="col">Film Title</th>
+            <th scope="col">Film Year</th>
+            <th scope="col">My Rating</th>
+            <th scope="col">IMDb Rating</th>
           </tr>
         </thead>
         <tbody id="rows">
