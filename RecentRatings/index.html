@@ -13,13 +13,33 @@ layout: default
       
       .append('tr')
       .classed('row', true)
+      
+    var info = cardtext
+      .selectAll('tr')
+      .data(function(row) {
+        return columns.map(function (column) {
+          return { 
+            column: column, 
+            value: row[column]}
+        })
+      })
       .enter()
       
-      .append('th').html(function (d) { return d["Rated.Date"] })
-      .append('td').html(function (d) { return d["Item.Title"] })
-      .append('td').html(function (d) { return d["Item.Year"] })
-      .append('td').html(function (d) { return d["Rating"] })
-      .append('td').html(function (d) { return d["imdbRating"] })
+     cardtext
+      .append('td')
+      .html(function (d) { return d["Rated.Date"] })
+
+     cardtext
+      .append('td')
+      .html(function (d) { return d["Item.Title"] })
+     
+     cardtext
+      .append('td')
+      .html(function (d) { return d["Rating"] })
+        
+     cardtext
+      .append('td')
+      .html(function (d) { return d["imdbRating"] })
     
     return carddeck;
   }
@@ -28,6 +48,8 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',f
   var data = data
               .filter(element => element.Title != "NA")
               .slice(0,26)
+  var columns = ['Rated.Date','Item.Title','Rating','imdbRating']
+  tabulate(data,columns)
 })
 </script>
   
