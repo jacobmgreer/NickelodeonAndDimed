@@ -15,13 +15,25 @@ layout: default
                 return columns.map(function (column) {
                   return { 
                     column: column, 
-                    value: row[column]
+                    value: row[column],
+                    votes: row["Num.Votes"],
+                    link: row["IMDBid"]
                   }
                 })
               })
           .enter()
           .append('td')
-          .html(function(d){return d.value})
+          .html(function(d){
+            if (column === "Item.Title") {
+              return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
+            }
+            else if (column === "imdbRating") {
+              return d.value + "(" + d.votes + ")"
+            }
+            else {
+              return d.value
+            }
+          })
      }
 
 d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',function (data) {
@@ -45,7 +57,7 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',f
             <th scope="col">Film Title</th>
             <th scope="col">Film Year</th>
             <th scope="col">My Rating</th>
-            <th scope="col">IMDb Rating</th>
+            <th scope="col">IMDb Rating (Votes)</th>
           </tr>
         </thead>
         <tbody id="rows">
