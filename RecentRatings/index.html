@@ -28,7 +28,7 @@ layout: default
               return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
             }
             else if (d.column === "imdbRating") {
-              return d.value + "(" + d.votes + ")"
+              return d.value + " (" + d.votes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ")"
             }
             else {
               return d.value
