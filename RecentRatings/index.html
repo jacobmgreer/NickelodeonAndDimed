@@ -45,7 +45,7 @@ layout: default
       .append('p')
       .classed('card-text', true)
       .html(function (d) { 
-        if (d.column === "Item.Title") {return "<h5 class=\"card-title\"><a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>" + " (" + d.release + ")</h5>"}
+        if (d.column === "Item.Title") {return "<h5 class=\"card-title\"><a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>" + " (" + d.release.substring(0,4) + ")</h5>"}
         else if (d.column === "Rating") {return "My Rating: " + d.value}
         else if (d.column === "imdbRating") {return "Internet Movie Database: " + d.value}
         else {return d.value}})
