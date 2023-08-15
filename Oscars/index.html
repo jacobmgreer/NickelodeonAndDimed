@@ -119,7 +119,7 @@ layout: default
     
     function doSomething(d){
           
-    	var columns = ['FilmName','PersonName','Rating','imdbRating','Watchlist']
+    	var columns = ['FilmName','PersonName','Rating','imdbRating','imdbVotes']
     
       var AwardCeremonies = d3.select('#switch').selectAll('div')
         .data(d)
@@ -202,7 +202,7 @@ layout: default
       $(".table-prime").empty()
       $("#subt").text(subt)
     
-      var columns = ['FilmName','Year','Runtime','Watchlist','imdbRating','Nominations','Wins']
+      var columns = ['FilmName','Year','Runtime','imdbRating','imdbVotes','Nominations','Wins']
       var table = d3.select(".table-prime")
                     .append('table')
                     .classed('table', true)
@@ -226,7 +226,11 @@ layout: default
       var cells = rows.selectAll('td')
           .data(function(row) {
             return columns.map(function (column) {
-              return { column: column, value: row[column], link: row["FilmID"], rating: row["Rating"] }
+              return { 
+                column: column, 
+                value: row[column], 
+                link: row["FilmID"], 
+                rating: row["Rating"] }
             })
           })
         .enter()
