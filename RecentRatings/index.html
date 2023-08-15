@@ -55,10 +55,9 @@ layout: default
     return carddeck;
   }
 
-d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/ratings.csv',function (data) {
+d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',function (data) {
   var data = data
               .filter(element => element.Title != "NA")
-              .filter(element => element.Type === "movie")
               .slice(0,26)
   var columns = ['Title','Your Rating','IMDb Rating']
   tabulate(data,columns)
