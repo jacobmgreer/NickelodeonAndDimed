@@ -80,10 +80,10 @@ var svg = d3.select("#legend")
       .append('th')
         .attr('scope', 'col')
         .classed("text-center", true)
-        .classed("name", function(d) {if(d === 'name') return true})
+        .classed("name", function(d) {if(d === 'SubmissionCountry') return true})
         .text(function (d) { 
           if (d.charAt(0) === 'C') return parseInt(d.substring(1)) + 1928;
-          else if (d === 'name');
+          else if (d === 'SubmissionCountry');
           else return d;
         })
     var rows = tbody.selectAll('tr')
@@ -108,7 +108,7 @@ var svg = d3.select("#legend")
       .classed("withdrawn", function(d) {if (d.value == 'WD') return true}) // withdrawn
       //.classed("bg-secondary", function(d) {if (d.value == 0) return true})
       .classed("bg-opacity-10", true)
-      .classed("text-center", function(d) {if (d.column != 'name') return true})
+      .classed("text-center", function(d) {if (d.column != 'SubmissionCountry') return true})
       .html(function (d) { 
       	if (d.column === "SubmissionCountry") {
         	if (d.value === NA) return d.value;
