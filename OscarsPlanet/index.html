@@ -32,6 +32,7 @@ layout: default
 .nom-dis {background-color:#034C8C;}
 .submission {background-color:#A3D9CF;}
 .unlisted {background-color:#70735D;}
+.shortlist {background-color:#97D9A8;}
 .withdrawn {background-color:#BFBFBF;}
 .label {font-size:15px;alignment-baseline:middle;}
 #spacer,#legend {margin-left:auto;margin-right:auto;width:1000px;height:150px;}
@@ -50,8 +51,11 @@ var svg = d3.select("#legend")
   svg.append("circle").attr("cx",300).attr("cy",30).attr("r", 20).style("fill", "#F29F05")
   svg.append("text").attr("x", 340).attr("y", 30).text("Nomination").classed('label', true)
   
-  svg.append("circle").attr("cx",550).attr("cy",30).attr("r", 20).style("fill", "#A3D9CF")
+  svg.append("circle").attr("cx",550).attr("cy",30).attr("r", 20).style("fill", "#97D9A8")
   svg.append("text").attr("x", 590).attr("y", 30).text("Submission").classed('label', true)
+
+  svg.append("circle").attr("cx",800).attr("cy",30).attr("r", 20).style("fill", "#A3D9CF")
+  svg.append("text").attr("x", 840).attr("y", 30).text("Shortlist").classed('label', true)
   
   svg.append("circle").attr("cx",50).attr("cy",100).attr("r", 20).style("fill", "#034C8C")
   svg.append("text").attr("x", 90).attr("y", 100).text("Nominated, Disqualified").classed('label', true)
@@ -104,6 +108,7 @@ var svg = d3.select("#legend")
       .classed("disqualified", function(d) {if (d.value == 'D') return true}) // disqualified
       .classed("nom-dis", function(d) {if (d.value == 'ND') return true}) // nominated then disqualified
       .classed("submission", function(d) {if (d.value == 'X') return true}) // submission
+      .classed("shortlist", function(d) {if (d.value == 'S') return true}) // short listed
       .classed("unlisted", function(d) {if (d.value == 'NL') return true}) // not on final list
       .classed("withdrawn", function(d) {if (d.value == 'WD') return true}) // withdrawn
       //.classed("bg-secondary", function(d) {if (d.value == 0) return true})
