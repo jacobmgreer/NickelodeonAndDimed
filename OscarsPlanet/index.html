@@ -111,7 +111,7 @@ var svg = d3.select("#legend")
       .classed("text-center", function(d) {if (d.column != 'SubmissionCountry') return true})
       .html(function (d) { 
       	if (d.column === "SubmissionCountry") {
-        	if (d.value === NA) return d.value;
+        	if (d.value === "Total") return d.value;
         	//else return "<a href=\"#" + d.link + "\">" + d.value + "</a>";
           else return d.value
         }
@@ -126,14 +126,14 @@ function oscars(decade) {
 d3.select('table').remove();
 d3.csv('https://jacobmgreer.github.io/Film-Tracker/OscarsPlanet/Country-Submissions-by-Year.csv',function (data) {
     var data = data.filter(element => element[decade] > 0)
-    if (decade === "1950s") {var columns = ['name','C29','C30','C31',decade]}
-    if (decade === "1960s") {var columns = ['name','C32','C33','C34','C35','C36','C37','C38','C39','C40','C41',decade]}
-    if (decade === "1970s") {var columns = ['name','C42','C43','C44','C45','C46','C47','C48','C49','C50','C51',decade]}
-    if (decade === "1980s") {var columns = ['name','C52','C53','C54','C55','C56','C57','C58','C59','C60','C61',decade]}
-    if (decade === "1990s") {var columns = ['name','C62','C62','C64','C65','C66','C67','C68','C69','C70','C71',decade]}
-    if (decade === "2000s") {var columns = ['name','C72','C73','C74','C75','C76','C77','C78','C79','C80','C81',decade]}
-    if (decade === "2010s") {var columns = ['name','C82','C83','C84','C85','C86','C87','C88','C89','C90','C91',decade]}
-    if (decade === "2020s") {var columns = ['name','C92','C93','C94','C95',decade]}
+    if (decade === "1950s") {var columns = ['SubmissionCountry','C29','C30','C31',decade]}
+    if (decade === "1960s") {var columns = ['SubmissionCountry','C32','C33','C34','C35','C36','C37','C38','C39','C40','C41',decade]}
+    if (decade === "1970s") {var columns = ['SubmissionCountry','C42','C43','C44','C45','C46','C47','C48','C49','C50','C51',decade]}
+    if (decade === "1980s") {var columns = ['SubmissionCountry','C52','C53','C54','C55','C56','C57','C58','C59','C60','C61',decade]}
+    if (decade === "1990s") {var columns = ['SubmissionCountry','C62','C62','C64','C65','C66','C67','C68','C69','C70','C71',decade]}
+    if (decade === "2000s") {var columns = ['SubmissionCountry','C72','C73','C74','C75','C76','C77','C78','C79','C80','C81',decade]}
+    if (decade === "2010s") {var columns = ['SubmissionCountry','C82','C83','C84','C85','C86','C87','C88','C89','C90','C91',decade]}
+    if (decade === "2020s") {var columns = ['SubmissionCountry','C92','C93','C94','C95',decade]}
     tabulate('.table',data,columns)
   })}
   
