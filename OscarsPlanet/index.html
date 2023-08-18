@@ -110,8 +110,8 @@ var svg = d3.select("#legend")
       .classed("bg-opacity-10", true)
       .classed("text-center", function(d) {if (d.column != 'name') return true})
       .html(function (d) { 
-      	if (d.column === "name") {
-        	if (d.value === "Totals") return d.value;
+      	if (d.column === "SubmissionCountry") {
+        	if (d.value === NA) return d.value;
         	//else return "<a href=\"#" + d.link + "\">" + d.value + "</a>";
           else return d.value
         }
