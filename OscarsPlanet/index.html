@@ -86,7 +86,7 @@ var svg = d3.select("#legend")
         .classed("text-center", true)
         .classed("name", function(d) {if(d === 'SubmissionCountry') return true})
         .text(function (d) { 
-          if (d.charAt(0) === 'C') return parseInt(d.substring(1)) + 1928;
+          if (d.charAt(0) === 'C') return parseInt(d.substring(1)) + 1927;
           else if (d === 'SubmissionCountry');
           else return d;
         })
