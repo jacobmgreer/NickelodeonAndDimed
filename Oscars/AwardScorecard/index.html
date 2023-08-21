@@ -88,6 +88,8 @@ layout: default
           .html(function(d){
             if (d.column == 'AwardCeremony') {return d.value}
             else if (d.column == 'Films.N' & d.value != 'NA') {return d.value}
+            else if (d.ceremony == "Not Seen" & d.value != 'NA') {return d.value}
+            else if (d.ceremony == "Seen" & d.value != 'NA') {return d.value}
             else {
               if(d.value != "NA") {
               	if(d.value == 0) {return "<span onclick=\"awardTable('" + d.ceremony + "','" + d.column + "')\" class=\"award award1\"></span>"}
