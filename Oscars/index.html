@@ -193,7 +193,7 @@ layout: default
   <script type="text/javascript"charset="utf-8">
   function tabulate(subt) {
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/Oscars-Summary-Films.csv',function (data) {
-      var data = data.filter(element => element.Service === "Prime").sort((a,b) => d3.ascending(a.["IMDb.Rating"], b["IMDb.Rating"]))
+      var data = data.filter(element => element.Service === "Prime").sort((a,b) => d3.ascending(a["IMDb.Rating"], b["IMDb.Rating"]))
 
       $(".table-prime").empty()
       $("#subt").text(subt)
