@@ -31,7 +31,7 @@ layout: default
 
   var tooltip = d3.select('#tooltip');
 
-  d3.csv("https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsSummary.csv", function(d, i, columns) {
+  d3.csv("https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/Oscars-Chart-Data.csv", function(d, i, columns) {
     for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
     d.total = t;
     return d;
@@ -164,7 +164,7 @@ layout: default
                     column: column, 
                     value: row[column], 
                     winner: row['AwardWinner'], 
-                    FilmID: row["FilmID"],
+                    FilmID: row["Const"],
                     PersonID: row["PersonID"]
                   }
                 })
@@ -176,7 +176,7 @@ layout: default
             else {return "nominee"}
 					})
           .html(function(d){
-            if (d.column == 'FilmName') {
+            if (d.column == 'Title') {
             	return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
             }
             else if (d.column == 'PersonName') {
@@ -193,12 +193,12 @@ layout: default
   <script type="text/javascript"charset="utf-8">
   function tabulate(subt) {
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsFilmSummary.csv',function (data) {
-      var data = data.filter(element => element.Service === "Prime").sort((a,b) => d3.ascending(a.imdbRating, b.imdbRating))
+      var data = data.filter(element => element.Service === "Prime").sort((a,b) => d3.ascending(a.IMDb.Rating, b.IMDb.Rating))
 
       $(".table-prime").empty()
       $("#subt").text(subt)
     
-      var columns = ['FilmName','Year','Runtime','imdbRating','imdbVotes','Nominations','Wins']
+      var columns = ['Title','Year','Runtime..mins.','IMDb.Rating','Num.Votes','Nominations','Wins']
       var table = d3.select(".table-prime")
                     .append('table')
                     .classed('table', true)
@@ -225,8 +225,8 @@ layout: default
               return { 
                 column: column, 
                 value: row[column], 
-                link: row["FilmID"], 
-                rating: row["Rating"] }
+                link: row["Const"], 
+                rating: row["Your.Rating"] }
             })
           })
         .enter()
@@ -236,7 +236,7 @@ layout: default
             else {return "not-watched"}
 					})
         .html(function (d) { 
-        	if (d.column === "FilmName") {
+        	if (d.column === "Title.") {
           	return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
           }
           else {if(d.value != "NA") {return d.value}}})
@@ -248,24 +248,24 @@ layout: default
     
   d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsFilmSummary.csv',function (data) {
     d3.select('.movies-total').html('Total: seen ' + 
-        data.filter(element => element.Rating != "NA").length + ' out of ' + 
+        data.filter(element => element.Your.Rating != "NA").length + ' out of ' + 
         data.length + ' (' + 
-        Number(((data.filter(element => element.Rating != "NA").length * 100) / data.length).toFixed(2)) 
+        Number(((data.filter(element => element.Your.Rating != "NA").length * 100) / data.length).toFixed(2)) 
         + '%)'); // Total count
     d3.select('.movies-winner').html('Winners: seen ' + 
-        data.filter(element => element.Rating != "NA" && element.Wins > 0).length + ' out of ' + 
+        data.filter(element => element.Your.Rating != "NA" && element.Wins > 0).length + ' out of ' + 
         data.filter(element => element.Wins > 0).length + ' (' + 
-        Number(((data.filter(element => element.Rating != "NA" && element.Wins > 0).length * 100) / data.filter(element => element.Wins > 0).length).toFixed(2))
+        Number(((data.filter(element => element.Your.Rating != "NA" && element.Wins > 0).length * 100) / data.filter(element => element.Wins > 0).length).toFixed(2))
         + '%)'); // Total count
     d3.select('.movies-prime').html('On Prime: seen ' + 
-        data.filter(element => element.Service === "Prime" && element.Rating != "NA").length + ' out of ' + 
+        data.filter(element => element.Service === "Prime" && element.Your.Rating != "NA").length + ' out of ' + 
         data.filter(element => element.Service === "Prime").length + ' (' + 
-        Number(((data.filter(element => element.Service === "Prime" && element.Rating != "NA").length * 100) / data.filter(element => element.Service === "Prime").length).toFixed(2))
+        Number(((data.filter(element => element.Service === "Prime" && element.Your.Rating != "NA").length * 100) / data.filter(element => element.Service === "Prime").length).toFixed(2))
         + '%)');// Prime Free count
     d3.select('.movies-prime-rentals').html('On Prime Rentals: seen ' + 
-        data.filter(element => element.Service === "Prime Rentals" && element.Rating != "NA").length + ' out of ' + 
+        data.filter(element => element.Service === "Prime Rentals" && element.Your.Rating != "NA").length + ' out of ' + 
         data.filter(element => element.Service === "Prime Rentals").length + ' (' + 
-        Number(((data.filter(element => element.Service === "Prime Rentals" && element.Rating != "NA").length * 100) / data.filter(element => element.Service === "Prime Rentals").length).toFixed(2))
+        Number(((data.filter(element => element.Service === "Prime Rentals" && element.Your.Rating != "NA").length * 100) / data.filter(element => element.Service === "Prime Rentals").length).toFixed(2))
         + '%)');// Prime Rentals count
         
     d3.select(window).on("load", tabulate('Streaming on Amazon Prime'));
