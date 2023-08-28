@@ -246,7 +246,7 @@ layout: default
       return table
   })}
     
-  d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsF-Summary-Films.csv',function (data) {
+  d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/Oscars-Summary-Films.csv',function (data) {
     d3.select('.movies-total').html('Total: seen ' + 
         data.filter(element => element.Your.Rating != "NA").length + ' out of ' + 
         data.length + ' (' + 
