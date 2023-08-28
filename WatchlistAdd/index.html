@@ -16,18 +16,18 @@ layout: default
                   return { 
                     column: column, 
                     value: row[column],
-                    votes: row["imdbVotes"],
-                    link: row["FilmID"]
+                    votes: row["Num.Votes"],
+                    link: row["Const"]
                   }
                 })
               })
           .enter()
           .append('td')
           .html(function(d){
-            if (d.column === "FilmName") {
+            if (d.column === "Title") {
               return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
             }
-            else if (d.column === "imdbRating") {
+            else if (d.column === "IMDb.Rating") {
               return d.value + " (" + d.votes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ")"
             }
             else {
@@ -36,12 +36,12 @@ layout: default
           })
      }
 
-d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsFilmSummary.csv',function (data) {
+d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/Oscars-Summary-Films.csv',function (data) {
   var data = data
-              .filter(element => element.FilmName != "NA")
-              .filter(element => element.Rating === "NA")
+              .filter(element => element.Title != "NA")
+              .filter(element => element.YourRating === "NA")
               .filter(element => element.Watchlist != "Y")
-  var columns = ['AwardCeremony','Type','FilmName','Year','imdbRating','Runtime','Losses','Wins']
+  var columns = ['AwardCeremony','Title.Type','Title','Year','IMDb.Rating','Runtime..mins.','Losses','Wins']
   tabulate(data,columns)
 })
 </script>
