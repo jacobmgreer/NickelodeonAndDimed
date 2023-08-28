@@ -53,16 +53,16 @@ layout: default
         .attr("d", d3.arc()
             .innerRadius(function(d) { return y(d[0]); })
             .outerRadius(function(d) { return y(d[1]); })
-            .startAngle(function(d) { return x(d.data.ItemYear); })
-            .endAngle(function(d) { return x(d.data.ItemYear) + x.bandwidth(); })
+            .startAngle(function(d) { return x(d.data.Year); })
+            .endAngle(function(d) { return x(d.data.Year) + x.bandwidth(); })
             .padAngle(0.01)
             .padRadius(innerRadius))
       .on('mouseover', function(d) {
         tooltip
           .style('display', 'block')
-          .html('<h1> ' + d.data.ItemYear + '</h1>');
+          .html('<h1> ' + d.data.Year + '</h1>');
       })
-      .on('click', function(d) {tabulate(d.data.ItemYear,'Films from ' + d.data.ItemYear)})
+      .on('click', function(d) {tabulate(d.data.Year,'Films from ' + d.data.Year)})
       .on('mouseout', function(d) {tooltip.html('<h3>The New York Times<br/>Essential 1,000 Films:<br/>Percentage Seen<br/>by Year Released</h3>');});
   });
   </script>
@@ -80,7 +80,7 @@ layout: default
   function tabulate(year,subt) {
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NYT1000/NYT1000Data.csv',function (data) {
     if (year != null) {
-        var data = data.filter(element => element.ItemYear === year)
+        var data = data.filter(element => element.Year === year)
     } else {
         var data = data.filter(element => element.Service === "Prime")
     }
@@ -88,7 +88,7 @@ layout: default
       $(".table-prime").empty()
       $("#subt").text(subt)
       
-      var columns = ['ItemTitle','ItemYear','ItemRuntime','Rating','imdbRating','imdbVotes','Rotten Tomatoes']
+      var columns = ['Title','Year','Runtime..mins.','Your.Rating','IMDb.Rating','Num.Votes','Rotten Tomatoes']
       var table = d3.select(".table-prime")
                     .append('table')
                     .classed('table', true)
@@ -115,8 +115,8 @@ layout: default
               return { 
                 column: column, 
                 value: row[column], 
-                link: row["IMDBid"], 
-                rating: row["Rating"] }
+                link: row["Const"], 
+                rating: row["Your.Rating"] }
             })
           })
         .enter()
@@ -126,10 +126,10 @@ layout: default
             else {return "not-watched"}
 					})
         .html(function (d) { 
-        	if (d.column === "ItemTitle") {
+        	if (d.column === "Title") {
           	return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
           }
-          else if (d.column === "imdbVotes") {
+          else if (d.column === "Num.Votes") {
             return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
           }
           else {if(d.value != "NA") {return d.value}}})
