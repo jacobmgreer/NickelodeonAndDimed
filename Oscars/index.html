@@ -192,7 +192,7 @@ layout: default
 
   <script type="text/javascript"charset="utf-8">
   function tabulate(subt) {
-    d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsFilmSummary.csv',function (data) {
+    d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/Oscars-Summary-Films.csv',function (data) {
       var data = data.filter(element => element.Service === "Prime").sort((a,b) => d3.ascending(a.IMDb.Rating, b.IMDb.Rating))
 
       $(".table-prime").empty()
@@ -246,7 +246,7 @@ layout: default
       return table
   })}
     
-  d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsFilmSummary.csv',function (data) {
+  d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsF-Summary-Films.csv',function (data) {
     d3.select('.movies-total').html('Total: seen ' + 
         data.filter(element => element.Your.Rating != "NA").length + ' out of ' + 
         data.length + ' (' + 
