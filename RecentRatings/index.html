@@ -16,7 +16,7 @@ layout: default
                   return { 
                     column: column, 
                     value: row[column],
-                    link: row["IMDBid"]
+                    link: row["Const"]
                   }
                 })
               })
@@ -39,7 +39,7 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',f
   var data = data
               .filter(element => element.Title != "NA")
               .slice(0,26)
-  var columns = ['Rated.Date','Type','Item.Title','Year','Rating','imdbRating','Num.Votes']
+  var columns = ['Date.Rated','Item.Type','Title','Year','Your.Rating','IMDb.Rating','Num.Votes']
   tabulate(data,columns)
 })
 </script>
