@@ -23,7 +23,7 @@ layout: default
           .enter()
           .append('td')
           .html(function(d){
-            if (d.column === "Item.Title") {
+            if (d.column === "Title") {
               return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
             }
             else if (d.column === "Num.Votes") {
@@ -39,7 +39,7 @@ d3.csv('https://jacobmgreer.github.io/Media-Consumption/ratings/formatted.csv',f
   var data = data
               .filter(element => element.Title != "NA")
               .slice(0,26)
-  var columns = ['Date.Rated','Item.Type','Title','Year','Your.Rating','IMDb.Rating','Num.Votes']
+  var columns = ['Date.Rated','Title.Type','Title','Year','Your.Rating','IMDb.Rating','Num.Votes']
   tabulate(data,columns)
 })
 </script>
