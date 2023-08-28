@@ -82,8 +82,8 @@ layout: default
   </div>
   <br/><br/>
   <div id="switch">
-    <h1 class="display-5">Oscar Nominated Films</h1>
-    <h3 class="display-6" id="subt"></h3>
+    <h1 class="display-5 text-center">Oscar Nominated Films</h1>
+    <h3 class="display-6 text-center" id="subt"></h3>
     <div class="table-prime"></div>
   </div>
   
@@ -125,7 +125,7 @@ layout: default
         .data(d)
         .enter()
         .append('div')
-        .html(function(d){return "<h1 class=\"display-5\" id=\"type-details\">" + d.key + "</h1>"})
+        .html(function(d){return "<h1 class=\"display-5 text-center\" id=\"type-details\">" + d.key + "</h1>"})
         
       var data1 = function(d) {return d.values}
         
