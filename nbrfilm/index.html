@@ -145,14 +145,15 @@ layout: default
                     value: row[column], 
                     winner: row['AwardWinner'], 
                     FilmID: row["FilmID"],
-                    PersonID: row["PersonID"]
+                    PersonID: row["PersonID"],
+                    Rating: row["Your.Rating"]
                   }
                 })
               })
           .enter()
           .append('td')
           .attr('class', function(d) {
-            if (d["Your.Rating"] != "NA") {return "watched"}
+            if (d.Rating != "NA") {return "watched"}
             else {return "not-watched"}
           })
           .html(function(d){
