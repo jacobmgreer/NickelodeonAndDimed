@@ -152,7 +152,7 @@ layout: default
           .enter()
           .append('td')
           .attr('class', function(d) {
-            if (d.rating != "NA") {return "watched"}
+            if (d.YourRating != "NA") {return "watched"}
             else {return "not-watched"}
           })
           .html(function(d){
