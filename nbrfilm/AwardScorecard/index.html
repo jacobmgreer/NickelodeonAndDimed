@@ -45,7 +45,7 @@ layout: default
 
 <div class="container-fluid">
   <script type="text/javascript">
-    d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/Oscars-Summary-Ceremonies.csv', function(data){
+    d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NBR/NBR-Summary-Ceremonies.csv', function(data){
         var nested_data = d3.nest().entries(data.sort(function (a,b) {return d3.descending(a.AwardCeremony, b.AwardCeremony);}));
         doSomething2(nested_data);
     })
@@ -54,17 +54,15 @@ layout: default
 
     	var columns = [
     	  'AwardCeremony',
-    	  'Picture',
-    	  'Director',
-    	  'Writing',
-    	  'Performance',
-    	  'Visual Style',
-    	  'Effects',
-    	  'Music',
-    	  'Animated',
-    	  'Documentary',
-    	  'International',
-    	  'Short',
+    	  'Best Films',
+        'Best Writing',
+        'Director',
+        'Other',
+        'Performance',
+        'Top Documentaries',
+        'Top Films',
+        'Top Independent',
+        'Top International',
         'Films.N',
         'Percentage']
 
@@ -163,7 +161,7 @@ layout: default
                     column: column,
                     value: row[column],
                     winner: row['AwardWinner'],
-                    FilmID: row["Const"],
+                    FilmID: row["FilmID"],
                     PersonID: row["PersonID"]
                   }
                 })
@@ -213,7 +211,12 @@ layout: default
           <th scope="col" width="120">Ceremony</th>
           <th scope="col">
             <div class="rotated-header-container">
-              <div class="rotated-header-content">Picture</div>
+              <div class="rotated-header-content">Best Films</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Writing</div>
             </div>
           </th>
           <th scope="col">
@@ -223,7 +226,7 @@ layout: default
           </th>
           <th scope="col">
             <div class="rotated-header-container">
-              <div class="rotated-header-content">Screenplay</div>
+              <div class="rotated-header-content">Other</div>
             </div>
           </th>
           <th scope="col">
@@ -233,37 +236,22 @@ layout: default
           </th>
           <th scope="col">
             <div class="rotated-header-container">
-              <div class="rotated-header-content">Visual Style</div>
+              <div class="rotated-header-content">Top Documentaries</div>
             </div>
           </th>
           <th scope="col">
             <div class="rotated-header-container">
-              <div class="rotated-header-content">Effects & Editing</div>
+              <div class="rotated-header-content">Top Films</div>
             </div>
           </th>
           <th scope="col">
             <div class="rotated-header-container">
-              <div class="rotated-header-content">Music</div>
+              <div class="rotated-header-content">Top Independent</div>
             </div>
           </th>
           <th scope="col">
             <div class="rotated-header-container">
-              <div class="rotated-header-content">Animated</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Documentary</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">International</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Shorts</div>
+              <div class="rotated-header-content">Top International</div>
             </div>
           </th>
           <th scope="col">
