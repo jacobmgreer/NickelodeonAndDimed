@@ -106,7 +106,7 @@ layout: default
     $(".table-prime").empty();
     var data = [];
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NBR/NBRData.csv', function(data){
-    		var data = data.filter(element => element.AwardCeremony === ceremony).filter(element => element.AwardType === awardtype)
+    		var data = data.filter(element => element.AwardCeremony === ceremony).filter(element => element.GeneralizedCategory === awardtype)
         var nested_data = d3.nest()
                             .key(function(d) { return d.AwardCeremony; })
                             .key(function(d) { return d.AwardCategory; })
