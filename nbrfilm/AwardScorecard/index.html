@@ -159,11 +159,15 @@ layout: default
               })
           .enter()
           .append('td')
+          .attr('class', function(d) {
+            if (d.winner == "Winner") {return "table-success"}
+            else {return "nominee"}
+          })
           .html(function(d){
-            if (d.column == 'Title') {
+            if (d.column == 'Title' & d.value != "NA") {
             	return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
             }
-            else if (d.column == 'PersonName') {
+            else if (d.column == 'PersonName' & d.value != "NA") {
             	return "<a href=\"https://www.imdb.com/name/" + d.PersonID + "\">" + d.value + "</a>"
             }
             else if (d.column === "Num.Votes") {
