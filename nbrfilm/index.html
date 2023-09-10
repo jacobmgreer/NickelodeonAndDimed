@@ -3,10 +3,13 @@ title: "National Board of Review - Film Awards"
 layout: default
 ---
 
+
 <style>
-  td.watched {background-color:#C7FFED;}
+  td.watched {background-color:#D8FFDB;}
   td.watched a {color:#023535;}
-  td.watched a:hover {color:#008F8C;} </style>
+  td.watched a:hover {color:#008F8C;} 
+  /* color guide https://color.adobe.com/Teal%20and%20Mint-color-theme-19170869 */
+</style>
 
 
 <div class="container-fluid" style="height:960px;">
@@ -32,7 +35,7 @@ layout: default
       .range([innerRadius, outerRadius]);
 
   var z = d3.scaleOrdinal()
-      .range(["#C7FFED", "#015958", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+      .range(["#D8FFDB", "#023535", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
   var tooltip = d3.select('#tooltip');
 
