@@ -4,6 +4,9 @@ layout: default
 ---
 
 <style>
+  td.watched {background-color:#B2BBD6;}
+  td.watched a {color:#2E3957;}
+  td.watched a:hover {color:#7b6888;}
   #awardCategories thead th {
     height: 250px;}
   #awardCategories thead th .rotated-header-container {
@@ -160,8 +163,8 @@ layout: default
           .enter()
           .append('td')
           .attr('class', function(d) {
-            if (d.winner == "Winner") {return "table-success"}
-            else {return "nominee"}
+            if (d.rating != "NA") {return "watched"}
+            else {return "not-watched"}
           })
           .html(function(d){
             if (d.column == 'Title' & d.value != "NA") {
