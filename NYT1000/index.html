@@ -86,7 +86,7 @@ layout: radial
           .attr("font-size", "45px")
           .text(d.data.Year)})
       .on('click', function(d) {
-        awardTable(d.data.Year)})
+        tabulate(d.data.Year,'Films from ' + d.data.Year)})
       .on('mouseout', function(d) {
         tooltip
           .attr("font-size", "20px")
