@@ -42,19 +42,18 @@ console.log = function(msg){
     myFunc(msg);
 }
 
-function myFunc(msg){
-
-    msg = msg.replace('WARNING: area ','').replace(' not represented on screen','');
-
-    function getintersect(msg) {
+function getintersect(msg) {
       return sets.filter(
           function(data){return sets.Warnings == msg}
       );
     }
 
-    var intersecty = getintersect(msg)
+function myFunc(msg){
+    msg = msg.replace('WARNING: area ','').replace(' not represented on screen','');
 
-    d3.select("#warnings").append("p").text(msg + intersecty[0].size)
+    var intersecty = getintersect(msg);
+
+    d3.select("#warnings").append("p").text(intersecty.size)
 }
 
 
