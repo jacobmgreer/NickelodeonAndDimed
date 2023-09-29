@@ -58,18 +58,11 @@ function myFunc(msg){
     d3.select("#warnings-count").text(count + " intersects out of " + Object.keys(sets).length + " not shown");
 
     if (intersecty[0].size > 50) {
-        d3.select("#warnings.list-group").append("li")
+        d3.select("#warnings.list-group")
+            .append("li")
             .attr("class", "list-group-item")
             .attr("data-sort", intersecty[0].size)
             .text("<span class=\"badge\">" + intersecty[0].size + "</span>" + msg);
-
-        var result = $('li').sort(function (b, a) {
-          var contentA =parseInt( $(a).data('sort'));
-          var contentB =parseInt( $(b).data('sort'));
-          return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
-       });
-
-       $('.list-group').html(result);
     }
 
 }
