@@ -11,6 +11,9 @@ layout: radial
         <p class="lead text-muted">
           "In this book are one thousand complete film reviews from The New York Times, beginning in 1927 with The Jazz Singer, generally considered the first talkie, and running to the end of 2002."
         </p>
+        <div class="progress">
+          <div class="progress-bar" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
       </div>
     </div>
 </section>
@@ -23,7 +26,8 @@ layout: radial
   <div class="movie-counts">
     <div class="movies-total"></div>
   </div>
-  <br/><br/>
+
+  <h3 class="replaceText" id="switch"></h3>
 
   <div class="table-prime"></div>
 </section>
@@ -99,7 +103,7 @@ layout: radial
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NYT1000/NYT1000Data.csv',function (data) {
 
       $(".table-prime").empty()
-      $("#subt").text(subt)
+      $("h3.replaceText").text(subt)
       
       var columns = ['Title','Year','Runtime..mins.','Your.Rating','IMDb.Rating','Num.Votes','Rotten Tomatoes']
       var table = d3.select(".table-prime")
@@ -153,11 +157,9 @@ layout: radial
   })}
 
   d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NYT1000/NYT1000Data.csv',function (data) {
-    d3.select('.movies-total').html('Total: seen ' + 
-        data.filter(element => element.Seen === "Yes").length + ' out of ' + 
-        data.length + ' (' + 
-        Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(2)) 
-        + '%)'); // Total count
+    d3.select('#progress')
+      .attr("width", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)) + "%")
+      .atrr("aria-valuenow", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)));
   })
 </script>
 
