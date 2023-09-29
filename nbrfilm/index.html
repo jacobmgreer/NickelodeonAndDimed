@@ -23,12 +23,14 @@ layout: radial
   var z = d3.scaleOrdinal()
       .range(["#D8FFDB", "#023535", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
-  var tooltip = g.append("text")
-      .classed("rlabel", true)
+  var tooltip = svg.append("text")
       .style('display', 'block')
       .attr("text-anchor", "middle")
+      .attr("font-family", "sans-serif")
+      .attr("dominant-baseline", "central")
+      .attr("font-size", "20px")
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
-      .text('NBR');
+      .text('National Board of Review');
 
   d3.csv("https://jacobmgreer.github.io/Media-Consumption/datasets/NBR/NBRSummary.csv", function(d, i, columns) {
     for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
@@ -56,9 +58,16 @@ layout: radial
             .endAngle(function(d) { return x(d.data.Year) + x.bandwidth(); })
             .padAngle(0.01)
             .padRadius(innerRadius))
-      .on('mouseover', function(d) {tooltip.text(d.data.Year)})
-      .on('click', function(d) {awardTable(d.data.Year)})
-      .on('mouseout', function(d) {tooltip.text('National Board of Review');});
+      .on('mouseover', function(d) {
+        tooltip
+          .attr("font-size", "45px")
+          .text(d.data.Year)})
+      .on('click', function(d) {
+        awardTable(d.data.Year)})
+      .on('mouseout', function(d) {
+        tooltip
+          .attr("font-size", "20px")
+          .text('National Board of Review');});
   });
 </script>
   
