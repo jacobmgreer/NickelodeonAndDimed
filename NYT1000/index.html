@@ -159,7 +159,7 @@ layout: radial
   d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NYT1000/NYT1000Data.csv',function (data) {
     d3.select('#progress')
       .attr("width", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)) + "%")
-      .atrr("aria-valuenow", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)));
+      .attr("aria-valuenow", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)));
   })
 </script>
 
