@@ -103,8 +103,6 @@ layout: radial
                             .key(function(d) { return d.AwardCeremony; })
                             .key(function(d) { return d.AwardCategory; })
                             .entries(data);
-                            //console.log(nested_data)
-                            //console.log(nested_data[[0]].values)
         doSomething(nested_data);
     })
     
@@ -182,66 +180,6 @@ layout: radial
       document.getElementById("type-details").scrollIntoView();
      }
   }
-  </script>
-
-  <script type="text/javascript"charset="utf-8">
-  function tabulate(subt) {
-    d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/Oscars-Summary-Films.csv',function (data) {
-      var data = data.filter(element => element.Service === "Prime").sort((a,b) => d3.ascending(a["IMDb.Rating"], b["IMDb.Rating"]))
-
-      $(".table-prime").empty()
-      $("#subt").text(subt)
-    
-      var columns = ['Title','Year','Runtime..mins.','IMDb.Rating','Num.Votes','Nominations','Wins']
-      var table = d3.select(".table-prime")
-                    .append('table')
-                    .classed('table', true)
-                    .classed('table-striped', true)
-      var thead = table.append('thead')
-      var tbody = table.append('tbody')
-  
-      thead.append('tr')
-        .selectAll('th')
-          .data(columns)
-          .enter()
-        .append('th')
-          .attr('scope', 'col')
-          .text(function (d) { return d })
-  
-      var rows = tbody.selectAll('tr')
-          .data(data)
-          .enter()
-        .append('tr')
-  
-      var cells = rows.selectAll('td')
-          .data(function(row) {
-            return columns.map(function (column) {
-              return { 
-                column: column, 
-                value: row[column], 
-                link: row["Const"], 
-                rating: row["Your.Rating"] }
-            })
-          })
-        .enter()
-        .append('td')
-        .attr('class', function(d) {
-    				if (d.rating != "NA") {return "watched"}
-            else {return "not-watched"}
-					})
-        .html(function (d) { 
-        	if (d.column === "Title") {
-          	return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
-          }
-          else if (d.column === "Num.Votes") {
-              return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-            }
-          else {if(d.value != "NA") {return d.value}}})
-        
-      if (year != null) {document.getElementById("switch").scrollIntoView()}
-      
-      return table
-  })}
     
   d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/Oscars-Summary-Films.csv',function (data) {
     d3.select('.movies-total').html('Total: seen ' + 
@@ -254,17 +192,5 @@ layout: radial
         data.filter(element => element.Wins > 0).length + ' (' + 
         Number(((data.filter(element => element["Your.Rating"] != "NA" && element.Wins > 0).length * 100) / data.filter(element => element.Wins > 0).length).toFixed(2))
         + '%)'); // Total count
-    d3.select('.movies-prime').html('On Prime: seen ' + 
-        data.filter(element => element.Service === "Prime" && element["Your.Rating"] != "NA").length + ' out of ' + 
-        data.filter(element => element.Service === "Prime").length + ' (' + 
-        Number(((data.filter(element => element.Service === "Prime" && element["Your.Rating"] != "NA").length * 100) / data.filter(element => element.Service === "Prime").length).toFixed(2))
-        + '%)');// Prime Free count
-    d3.select('.movies-prime-rentals').html('On Prime Rentals: seen ' + 
-        data.filter(element => element.Service === "Prime Rentals" && element["Your.Rating"] != "NA").length + ' out of ' + 
-        data.filter(element => element.Service === "Prime Rentals").length + ' (' + 
-        Number(((data.filter(element => element.Service === "Prime Rentals" && element["Your.Rating"] != "NA").length * 100) / data.filter(element => element.Service === "Prime Rentals").length).toFixed(2))
-        + '%)');// Prime Rentals count
-        
-    d3.select(window).on("load", tabulate('Streaming on Amazon Prime'));
   })
 </script>
