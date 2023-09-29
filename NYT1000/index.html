@@ -22,14 +22,9 @@ layout: radial
   <svg width="960" height="960" class="center radial"></svg>
 </section>
 
-<section class="container">
-  <div class="movie-counts">
-    <div class="movies-total"></div>
-  </div>
-
-  <h3 class="replaceText" id="switch"></h3>
-
-  <div class="table-prime"></div>
+<section class="container"  id="switch">
+  <h3 class="replaceText"></h3>
+  <div class="filmlist"></div>
 </section>
 
 <script>
@@ -96,17 +91,16 @@ layout: radial
           .attr("font-size", "20px")
           .text("NYT's 1000 Essential Films");});
   });
-</script>
-  
-<script type="text/javascript"charset="utf-8">
+
   function tabulate(year,subt) {
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NYT1000/NYT1000Data.csv',function (data) {
+      var data = data.filter(element => element.Year === year
 
-      $(".table-prime").empty()
+      $("#filmlist").empty()
       $("h3.replaceText").text(subt)
       
       var columns = ['Title','Year','Runtime..mins.','Your.Rating','IMDb.Rating','Num.Votes','Rotten Tomatoes']
-      var table = d3.select(".table-prime")
+      var table = d3.select("#filmlist")
                     .append('table')
                     .classed('table', true)
                     .classed('table-striped', true)
