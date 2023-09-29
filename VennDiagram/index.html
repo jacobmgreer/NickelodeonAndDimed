@@ -12,8 +12,10 @@ body {
 </head>
 
 <body>
-    <div id="warnings"></div>
     <div id="venn"></div>
+    <div id="warnings">
+        <h1 id="warnings-count"></h1>
+    </div>
 </body>
 
 <style>
@@ -37,6 +39,7 @@ body {
 
 <script>
 var console = window.console;
+var count = 0;
 console.log = function(msg){
   if(msg.includes('not represented on screen'))
     myFunc(msg);
@@ -51,6 +54,8 @@ function getintersect(msg) {
 function myFunc(msg){
     msg = msg.replace('WARNING: area ','').replace(' not represented on screen','');
     var intersecty = getintersect(msg);
+    count++;
+    d3.select("#warnings-count").text(count);
 
     if (intersecty[0].size > 50) {
         d3.select("#warnings").append("p").text(msg + " " + intersecty[0].size);
