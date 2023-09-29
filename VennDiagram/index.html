@@ -59,15 +59,9 @@ function myFunc(msg){
     if (intersecty[0].size > 50) {
         d3.select("#warnings.list-group").append("li")
             .attr("class", "list-group-item")
-            .attr("data-sort", intersecty[0].size)
-            .text("<span class=\"badge\">" + intersecty[0].size + "</span>" + msg);
+            .text("<span class=\"badge\">" + intersecty[0].size + "</span>" + msg)
+            .order();
     }
-
-    var result = $('#warnings.list-group li').sort(function (a, b) {
-      var contentA =parseInt( $(a).data('sort'));
-      var contentB =parseInt( $(b).data('sort'));
-      return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
-   });
 
 }
 
