@@ -181,7 +181,12 @@ layout: radial
       document.getElementById("switch").scrollIntoView();
      }
   }
-  </script>
+  d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NBR/NBRData.csv',function (data) {
+    d3.select('#progress')
+      .style("width", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)) + "%")
+      .attr("aria-valuenow", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)));
+  })
+</script>
 
 
   

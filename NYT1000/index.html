@@ -94,7 +94,7 @@ layout: radial
 
   function tabulate(year,subt) {
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NYT1000/NYT1000Data.csv',function (data) {
-      var data = data.filter(element => element.Year === year
+      var data = data.filter(element => element.Year === year);
 
       $("#filmlist").empty()
       $("h3.replaceText").text(subt)
