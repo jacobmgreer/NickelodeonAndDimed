@@ -26,7 +26,7 @@ layout: radial
   var z = d3.scaleOrdinal()
       .range(["#D8FFDB", "#023535", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
-  var tooltip = d3.svg.append("text")
+  var tooltip = g.append("text")
       .classed("rlabel", true)
       .style('display', 'block')
       .attr("text-anchor", "middle")
