@@ -13,11 +13,6 @@ table {
 .label {
   font-size: 15px;
   alignment-baseline: middle;}
-#spacer,#legend,#venn {
-  margin-left: auto;
-  margin-right: auto;
-  width: 1000px;
-  height: 60px;}
 
 
 /* Film List Shading */ 
@@ -30,7 +25,7 @@ td.watched a:hover {
 
 
 /* Venn Diagrams */
-  .venntooltip {
+.venntooltip {
   position: absolute;
   text-align: center;
   background: #333;
@@ -39,6 +34,10 @@ td.watched a:hover {
   border: 0px;
   border-radius: 8px;
   opacity: 0;}
-#venn text, #venn tspan {user-select: none;z-index:-5000}
-#m-intersects button {margin:3px;}
-#m-intersects button .badge {margin-left:3px;}
+#venn text, #venn tspan {
+  user-select: none;
+  z-index:-5000}
+#m-intersects button {
+  margin:3px;}
+#m-intersects button .badge {
+  margin-left:3px;}
