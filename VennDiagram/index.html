@@ -37,8 +37,8 @@ body {
 <script>
 
 var chart = venn.VennDiagram()
-                 .width(500)
-                 .height(500);
+                 .width(960)
+                 .height(960);
 
 var div = d3.select("#venn")
 div.datum(sets).call(chart);
@@ -58,7 +58,7 @@ div.selectAll("g")
 
         // Display a tooltip with the current size
         tooltip.transition().duration(400).style("opacity", .9);
-        tooltip.text(d.size + " users");
+        tooltip.text(d.size + " films");
 
         // highlight the current path
         var selection = d3.select(this).transition("tooltip").duration(400);
