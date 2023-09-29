@@ -55,7 +55,7 @@ function myFunc(msg){
     msg = msg.replace('WARNING: area ','').replace(' not represented on screen','');
     var intersecty = getintersect(msg);
     count++;
-    d3.select("#warnings-count").text(count);
+    d3.select("#warnings-count").text(count + " out of " + Object.keys(sets).length);
 
     if (intersecty[0].size > 50) {
         d3.select("#warnings").append("p").text(msg + " " + intersecty[0].size);
