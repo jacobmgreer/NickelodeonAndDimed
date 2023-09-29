@@ -2,7 +2,7 @@ var sets =
     [
     {
         "sets": ['NYT'],
-        "label": "New York Times' 1000 Essential Films",
+        "label": "NYT 1000 Essential Films",
         "size": 1000
     },
     {
@@ -12,17 +12,17 @@ var sets =
     },
     {
         "sets": ['NYFCC'],
-        "label": "New York Film Critic Circle Awards",
+        "label": "New York Film Critic Circle",
         "size": 1185
     },
     {
         "sets": ['NSFC'],
-        "label": "National Society of Film Critics Awards",
+        "label": "National Society of Film Critics",
         "size": 970
     },
     {
         "sets": ['LAFCA'],
-        "label": "Los Angeles Film Critic Association Awards",
+        "label": "Los Angeles Film Critic Association",
         "size": 723
     },
     {
@@ -32,22 +32,22 @@ var sets =
     },
     {
         "sets": ['NBR'],
-        "label": "National Board of Review Awards",
+        "label": "National Board of Review",
         "size": 2114
     },
     {
         "sets": ['AMPAS'],
-        "label": "Academy of Motion Picture Awards",
+        "label": "Academy Awards",
         "size": 5074
     },
     {
         "sets": ['AFI2'],
-        "label": "American Film Institute Top 100 2007",
+        "label": "AFI Top 100 2007",
         "size": 100
     },
     {
         "sets": ['AFI1'],
-        "label": "American Film Institute Top 100 1998",
+        "label": "AFI Top 100 1998",
         "size": 100
     },
     {
