@@ -43,6 +43,8 @@ var chart = venn.VennDiagram()
 var div = d3.select("#venn")
 div.datum(sets).call(chart);
 
+d3.selectAll("text").style("fill", "#444");
+
 var tooltip = d3.select("body").append("div")
     .attr("class", "venntooltip");
 
