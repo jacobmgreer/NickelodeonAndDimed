@@ -7,11 +7,9 @@ layout: default
 .venntooltip {
   position: absolute;
   text-align: center;
-  width: 128px;
-  height: 16px;
   background: #333;
   color: #ddd;
-  padding: 2px;
+  padding: 5px;
   border: 0px;
   border-radius: 8px;
   opacity: 0;
@@ -26,7 +24,7 @@ layout: default
 <div id="venn" style="height:960px;"></div>
 
 <div id="warnings" class="container-fluid">
-    <p class="lead">This Venn Diagram combines different film lists/awards to demonstrate intersections between the selections. The javascript uses area proportional layouts that attempt to visualize these intersections, but not every intersection is possible to visualize. Intersections with more than 50 films that are not part of this visualization are listed below.</p>
+    <p class="lead">This Venn Diagram combines different film lists/awards to demonstrate intersections between the selections. The javascript calculates area proportional layouts visualize significant intersections, but not every intersection is possible to visualize. Intersections with more than 50 films that are not part of this visualization are listed below.</p>
     <h1 id="warnings-count" class="display-4"></h1>
     <div id="m-intersects"></div>
 </div>
@@ -49,7 +47,7 @@ function myFunc(msg){
     msg = msg.replace('WARNING: area ','').replace(' not represented on screen','');
     var intersecty = getintersect(msg);
     count++;
-    d3.select("#warnings-count").text(count + " intersects out of " + Object.keys(sets).length + " not shown");
+    d3.select("#warnings-count").text(count + " intersects out of " + Object.keys(sets).length + " are not shown");
 
     if (intersecty[0].size > 50) {
         d3.select("#warnings #m-intersects")
