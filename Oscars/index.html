@@ -27,7 +27,7 @@ layout: radial
 </section>
 
 
-  <script>
+<script>
   var svg = d3.select("svg.radial"),
       width = +svg.attr("width"),
       height = +svg.attr("height"),
@@ -53,8 +53,6 @@ layout: radial
       .attr("font-size", "20px")
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
       .text('Academy Awards');
-
-  var tooltip = d3.select('#tooltip');
 
   d3.csv("https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/Oscars-Chart-Data.csv", function(d, i, columns) {
     for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
@@ -85,7 +83,7 @@ layout: radial
       .on('mouseover', function(d) {
         tooltip
           .attr("font-size", "45px")
-          .text(d.data.Year)})
+          .text(d.data.AwardCeremony)})
       .on('click', function(d) {
         awardTable(d.data.AwardCeremony)})
       .on('mouseout', function(d) {
