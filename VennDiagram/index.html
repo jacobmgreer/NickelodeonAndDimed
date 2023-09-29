@@ -43,17 +43,18 @@ console.log = function(msg){
 }
 
 function getintersect(msg) {
-      return sets.filter(
-          function(data){return data.Warnings == msg}
-      );
-    }
+  return sets.filter(
+      function(data){return data.Warnings == msg}
+  );
+}
 
 function myFunc(msg){
     msg = msg.replace('WARNING: area ','').replace(' not represented on screen','');
-
     var intersecty = getintersect(msg);
 
-    d3.select("#warnings").append("p").text(msg + " " + intersecty[0].size)
+    if (intersecty[0].size > 50) {
+        d3.select("#warnings").append("p").text(msg + " " + intersecty[0].size);
+    }
 }
 
 
