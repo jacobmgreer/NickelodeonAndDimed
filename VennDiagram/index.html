@@ -14,7 +14,7 @@ body {
 <body>
     <div id="venn"></div>
     <div id="warnings">
-        <h1 id="warnings-count"></h1>
+        <h3 id="warnings-count"></h3>
     </div>
 </body>
 
@@ -55,7 +55,7 @@ function myFunc(msg){
     msg = msg.replace('WARNING: area ','').replace(' not represented on screen','');
     var intersecty = getintersect(msg);
     count++;
-    d3.select("#warnings-count").text(count + " out of " + Object.keys(sets).length);
+    d3.select("#warnings-count").text(count + " intersects out of " + Object.keys(sets).length + " not shown");
 
     if (intersecty[0].size > 50) {
         d3.select("#warnings").append("p").text(msg + " " + intersecty[0].size);
