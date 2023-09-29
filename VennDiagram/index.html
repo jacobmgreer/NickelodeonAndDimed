@@ -42,8 +42,9 @@ console.log = function(msg){
     myFunc(msg);
 }
 
-console.log('Simple message');
 function myFunc(msg){
+
+ msg = msg.replace('WARNING: area ','').replace(' not represented on screen','');
  d3.select("#warnings").append("p").text(msg)
 }
 
