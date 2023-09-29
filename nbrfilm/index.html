@@ -3,10 +3,7 @@ title: "National Board of Review - Film Awards"
 layout: radial
 ---
 
-
-
 <svg width="960" height="960" class="center"></svg>
-
 
 <script>
   var svg = d3.select("svg"),
@@ -31,6 +28,7 @@ layout: radial
       .style('display', 'block')
       .attr("text-anchor", "middle")
       .attr("x", width/2)
+      .attr("y", height/2)
       .text('NBR');
 
   d3.csv("https://jacobmgreer.github.io/Media-Consumption/datasets/NBR/NBRSummary.csv", function(d, i, columns) {
