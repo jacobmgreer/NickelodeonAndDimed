@@ -58,7 +58,7 @@ function myFunc(msg){
     d3.select("#warnings-count").text(count + " intersects out of " + Object.keys(sets).length + " not shown");
 
     if (intersecty[0].size > 50) {
-        d3.select("#warnings.list-group")
+        d3.select("#warnings ul.list-group")
             .append("li")
             .attr("class", "list-group-item")
             .attr("data-sort", intersecty[0].size)
