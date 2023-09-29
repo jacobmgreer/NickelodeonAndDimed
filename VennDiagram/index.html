@@ -57,7 +57,7 @@ function myFunc(msg){
             .attr("data-sort", intersecty[0].size)
             .html("<span class=\"badge\">" + intersecty[0].size + "</span>" + msg);
 
-        var result = $('li').sort(function (b, a) {
+        var result = $('#warnings ul.list-group li').sort(function (b, a) {
           var contentA =parseInt( $(a).data('sort'));
           var contentB =parseInt( $(b).data('sort'));
           return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
