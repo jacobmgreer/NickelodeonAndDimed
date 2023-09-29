@@ -5,6 +5,7 @@
     <title>Intersections in Film Awards/Selections</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -59,8 +60,16 @@ function myFunc(msg){
     if (intersecty[0].size > 50) {
         d3.select("#warnings.list-group").append("li")
             .attr("class", "list-group-item")
-            .text("<span class=\"badge\">" + intersecty[0].size + "</span>" + msg)
-            .order();
+            .attr("data-sort", intersecty[0].size)
+            .text("<span class=\"badge\">" + intersecty[0].size + "</span>" + msg);
+
+        var result = $('li').sort(function (b, a) {
+          var contentA =parseInt( $(a).data('sort'));
+          var contentB =parseInt( $(b).data('sort'));
+          return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
+       });
+
+       $('.list-group').html(result);
     }
 
 }
