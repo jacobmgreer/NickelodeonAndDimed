@@ -1,34 +1,35 @@
 table {
-  margin-top:25px}
+  margin-top: 25px}
+
 .center {
-  position: absolute;
-  top: 700px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: sans-serif;}
-#tooltip.center {
-  top: 705px;}
-.center h3, .center h1 {
-  text-align: center; 
-  font-size:18px;}
-.center h1 {
-  font-size:50px;}
+  margin-left: auto; 
+  margin-right: auto; 
+  display: block;
+  width: 960px;
+  height: 960px;}
   
 .name {
-  width:200px;}
+  width: 200px;}
 .label {
-  font-size:15px;
-  alignment-baseline:middle;}
+  font-size: 15px;
+  alignment-baseline: middle;}
 #spacer,#legend,#venn {
-  margin-left:auto;
-  margin-right:auto;
-  width:1000px;
-  height:60px;}
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  height: 60px;}
 
-  td.watched {background-color:#99B4BF;}
-  td.watched a {color:#2E3957;}
-  td.watched a:hover {color:#7b6888;}
 
+/* Film List Shading */ 
+td.watched {
+  ackground-color: #99B4BF;}
+td.watched a {
+  color: #2E3957;}
+td.watched a:hover {
+  color: #7b6888;}
+
+
+/* Venn Diagrams */
   .venntooltip {
   position: absolute;
   text-align: center;
