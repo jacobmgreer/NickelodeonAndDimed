@@ -44,7 +44,7 @@ console.log = function(msg){
 
 function getintersect(msg) {
       return sets.filter(
-          function(data){return sets.Warnings == msg}
+          function(data){return data.Warnings == msg}
       );
     }
 
@@ -53,7 +53,7 @@ function myFunc(msg){
 
     var intersecty = getintersect(msg);
 
-    d3.select("#warnings").append("p").text(intersecty.size)
+    d3.select("#warnings").append("p").text(msg + " " + intersecty[0].size)
 }
 
 
