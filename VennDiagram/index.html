@@ -25,9 +25,7 @@ layout: default
 
 <div id="warnings" class="container-fluid">
     <h3 id="warnings-count"></h3>
-    <ul class="list-group">
-        
-    </ul>
+    <div class="m-intersects"></div>
 </div>
 
 <script>
@@ -51,11 +49,16 @@ function myFunc(msg){
     d3.select("#warnings-count").text(count + " intersects out of " + Object.keys(sets).length + " not shown");
 
     if (intersecty[0].size > 50) {
-        d3.select("#warnings ul.list-group")
-            .append("li")
-            .attr("class", "list-group-item")
+        d3.select("#warnings #m-intersects")
+            .append("button")
+            .classed("btn", true)
+            .classed("btn-light", true)
             .attr("data-sort", intersecty[0].size)
-            .html("<span class=\"badge\">" + intersecty[0].size + "</span>" + msg);
+            .text(msg)
+            .append("span")
+            .classed("badge", true)
+            .classed("badge-light", true)
+            .text(intersecty[0].size + " films");
 
         var result = $('#warnings ul.list-group li').sort(function (b, a) {
           var contentA =parseInt( $(a).data('sort'));
