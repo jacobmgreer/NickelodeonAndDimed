@@ -16,6 +16,7 @@ layout: default
   border-radius: 8px;
   opacity: 0;
 }
+#m-intersects button {margin:3px;}
 </style>
 
 <script src="venn.js"></script>
@@ -57,7 +58,6 @@ function myFunc(msg){
             .text(msg)
             .append("span")
             .classed("badge", true)
-            .classed("badge-light", true)
             .text(intersecty[0].size + " films");
 
         var result = $('#warnings #m-intersects button').sort(function (b, a) {
