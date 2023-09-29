@@ -6,10 +6,10 @@ layout: radial
 <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-8 col-md-8 mx-auto">
-        <h1 class="fw-light">The New York Times</h1>
-        <h3 class="fw-light">Essential 1,000 Films to See</h3>
+        <h1 class="fw-light">Academy of Motion Pictures Arts and Sciences</h1>
+        <h3 class="fw-light">Academy Awards</h3>
         <p class="lead text-muted">
-          "In this book are one thousand complete film reviews from The New York Times, beginning in 1927 with The Jazz Singer, generally considered the first talkie, and running to the end of 2002."
+          "Given annually by the Academy of Motion Picture Arts and Sciences, the awards are an international recognition of excellence in cinematic achievements, as assessed by the Academy's voting membership."
         </p>
       </div>
     </div>
@@ -20,16 +20,6 @@ layout: radial
 </section>
 
 <section class="container">
-  <svg id="legend"></svg>
-</section>
-
-<section class="container">
-  <div class="movie-counts">
-    <div class="movies-prime"></div>
-    <div class="movies-prime-rentals"></div>
-    <div class="movies-winner"></div>
-    <div class="movies-total"></div>
-  </div>
   <div id="switch">
     <h3 class="display-6 text-center" id="subt"></h3>
     <div class="table-prime"></div>
@@ -97,7 +87,7 @@ layout: radial
           .attr("font-size", "45px")
           .text(d.data.Year)})
       .on('click', function(d) {
-        awardTable(d.data.Year)})
+        awardTable(d.data.AwardCeremony)})
       .on('mouseout', function(d) {
         tooltip
           .attr("font-size", "20px")
@@ -106,21 +96,6 @@ layout: radial
 </script>
 
 <script type="text/javascript">
-  
-  var svg = d3.select("#legend")
-  
-  svg.append("circle").attr("cx",50).attr("cy",30).attr("r", 20).style("fill", "#94F2D0")
-  svg.append("text").attr("x", 90).attr("y", 30).text("Winners Seen").classed('label', true)
-  
-  svg.append("circle").attr("cx",300).attr("cy",30).attr("r", 20).style("fill", "#69BFA0")
-  svg.append("text").attr("x", 340).attr("y", 30).text("Winners Not Seen").classed('label', true)
-  
-  svg.append("circle").attr("cx",550).attr("cy",30).attr("r", 20).style("fill", "#C1D9D2")
-  svg.append("text").attr("x", 590).attr("y", 30).text("Nominees Seen").classed('label', true)
-  
-  svg.append("circle").attr("cx",800).attr("cy",30).attr("r", 20).style("fill", "#9AA692")
-  svg.append("text").attr("x", 840).attr("y", 30).text("Nominees Not Seen").classed('label', true)
-
   function awardTable(ceremony) {
     $("#switch").empty();
     var data = [];
