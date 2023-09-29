@@ -3,11 +3,42 @@ title: "The Academy Awards - Overall Scorecard"
 layout: radial
 ---
 
-<div class="container-fluid" style="height:960px;">
-  <svg width="960" height="960" class="center" id="movies"></svg>
-  <div id="tooltip" class="center"><h3>Winners & Nominees:<br/>Percentage Seen<br/>by Award Ceremony</h3></div>
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-8 col-md-8 mx-auto">
+        <h1 class="fw-light">The New York Times</h1>
+        <h3 class="fw-light">Essential 1,000 Films to See</h3>
+        <p class="lead text-muted">
+          "In this book are one thousand complete film reviews from The New York Times, beginning in 1927 with The Jazz Singer, generally considered the first talkie, and running to the end of 2002."
+        </p>
+      </div>
+    </div>
+</section>
+
+<section class="container">
+  <svg width="960" height="960" class="center radial"></svg>
+</section>
+
+<section class="container">
+  <svg id="legend"></svg>
+</section>
+
+<section class="container">
+  <div class="movie-counts">
+    <div class="movies-prime"></div>
+    <div class="movies-prime-rentals"></div>
+    <div class="movies-winner"></div>
+    <div class="movies-total"></div>
+  </div>
+  <div id="switch">
+    <h3 class="display-6 text-center" id="subt"></h3>
+    <div class="table-prime"></div>
+  </div>
+</section>
+
+
   <script>
-  var svg = d3.select("#movies"),
+  var svg = d3.select("svg.radial"),
       width = +svg.attr("width"),
       height = +svg.attr("height"),
       innerRadius = 130,
@@ -23,6 +54,15 @@ layout: radial
 
   var z = d3.scaleOrdinal()
       .range(["#94F2D0", "#69BFA0", "#C1D9D2", "#9AA692", "#a05d56", "#d0743c", "#ff8c00"]);
+
+  var tooltip = svg.append("text")
+      .style('display', 'block')
+      .attr("text-anchor", "middle")
+      .attr("font-family", "sans-serif")
+      .attr("dominant-baseline", "central")
+      .attr("font-size", "20px")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+      .text('Academy Awards');
 
   var tooltip = d3.select('#tooltip');
 
@@ -54,35 +94,18 @@ layout: radial
             .padRadius(innerRadius))
       .on('mouseover', function(d) {
         tooltip
-          .style('display', 'block')
-          .html('<h1>' + d.data.AwardCeremony + '</h1>');
-      })
-      .on('click', function(d) {awardTable(d.data.AwardCeremony)})
-      .on('mouseout', function(d) {tooltip.html('<h3>Winners & Nominees:<br/>Percentage Seen<br/>by Award Ceremony</h3>');})
+          .attr("font-size", "45px")
+          .text(d.data.Year)})
+      .on('click', function(d) {
+        awardTable(d.data.Year)})
+      .on('mouseout', function(d) {
+        tooltip
+          .attr("font-size", "20px")
+          .text('Academy Awards');});
   });
-  </script>
-</div>
+</script>
 
-<div id="spacer">
-  <svg id="legend"></svg>
-</div>
-
-<div class="container-fluid">
-  <br/><br/>
-  <div class="movie-counts">
-    <div class="movies-prime"></div>
-    <div class="movies-prime-rentals"></div>
-    <div class="movies-winner"></div>
-    <div class="movies-total"></div>
-  </div>
-  <br/><br/>
-  <h1 class="display-5 text-center">The Academy Awards</h1>
-  <div id="switch">
-    <h3 class="display-6 text-center" id="subt"></h3>
-    <div class="table-prime"></div>
-  </div>
-  
-  <script type="text/javascript">
+<script type="text/javascript">
   
   var svg = d3.select("#legend")
   
@@ -271,7 +294,4 @@ layout: radial
         
     d3.select(window).on("load", tabulate('Streaming on Amazon Prime'));
   })
-  </script>
-  
-  <br clear="all"/><br/>
-</div>
+</script>
