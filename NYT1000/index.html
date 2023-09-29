@@ -3,10 +3,34 @@ title: "NYT's Essential 1,000 Films to See"
 layout: radial
 ---
 
-<div class="container-fluid" style="height:960px;">
-  <svg width="960" height="960" class="center"></svg>
-  <div id="tooltip" class="center"><h3>The New York Times<br/>Essential 1,000 Films:<br/>Percentage Seen<br/>by Year Released</h3></div>
-  <script>
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-8 col-md-8 mx-auto">
+        <h1 class="fw-light">The New York Times</h1>
+        <h3 class="fw-light">Essential 1,000 Films to See</h3>
+        <p class="lead text-muted">
+          "In this book are one thousand complete film reviews from The New York Times, beginning in 1927 with The Jazz Singer, generally considered the first talkie, and running to the end of 2002."
+        </p>
+      </div>
+    </div>
+</section>
+
+<section class="container">
+  <svg width="960" height="960" class="center radial"></svg>
+</section>
+
+<section class="container">
+  <div class="movie-counts">
+    <div class="movies-prime"></div>
+    <div class="movies-prime-rentals"></div>
+    <div class="movies-total"></div>
+  </div>
+  <br/><br/>
+
+  <div class="table-prime"></div>
+</section>
+
+<script>
   var svg = d3.select("svg"),
       width = +svg.attr("width"),
       height = +svg.attr("height"),
@@ -24,7 +48,14 @@ layout: radial
   var z = d3.scaleOrdinal()
       .range(["#B2BBD6", "#2E3957", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
-  var tooltip = d3.select('#tooltip');
+  var tooltip = svg.append("text")
+      .style('display', 'block')
+      .attr("text-anchor", "middle")
+      .attr("font-family", "sans-serif")
+      .attr("dominant-baseline", "central")
+      .attr("font-size", "20px")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+      .text("NYT's 1000 Essential Films");
 
   d3.csv("https://jacobmgreer.github.io/Media-Consumption/datasets/NYT1000/NYT1000Summary.csv", function(d, i, columns) {
     for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
@@ -54,24 +85,18 @@ layout: radial
             .padRadius(innerRadius))
       .on('mouseover', function(d) {
         tooltip
-          .style('display', 'block')
-          .html('<h1> ' + d.data.Year + '</h1>');
-      })
-      .on('click', function(d) {tabulate(d.data.Year,'Films from ' + d.data.Year)})
-      .on('mouseout', function(d) {tooltip.html('<h3>The New York Times<br/>Essential 1,000 Films:<br/>Percentage Seen<br/>by Year Released</h3>');});
+          .attr("font-size", "45px")
+          .text(d.data.Year)})
+      .on('click', function(d) {
+        awardTable(d.data.Year)})
+      .on('mouseout', function(d) {
+        tooltip
+          .attr("font-size", "20px")
+          .text("NYT's 1000 Essential Films");});
   });
-  </script>
-</div>
-
-<div class="container-fluid">
-  <div class="movie-counts">
-    <div class="movies-prime"></div>
-    <div class="movies-prime-rentals"></div>
-    <div class="movies-total"></div>
-  </div>
-  <br/><br/>
+</script>
   
-  <script type="text/javascript"charset="utf-8">
+<script type="text/javascript"charset="utf-8">
   function tabulate(year,subt) {
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NYT1000/NYT1000Data.csv',function (data) {
     if (year != null) {
@@ -153,12 +178,5 @@ layout: radial
     
     d3.select(window).on("load", tabulate(null,'Streaming on Amazon Prime'))
   })
-  </script>
-  <div id="switch">
-    <h1 class="display-5 text-center">NYT's Essential 1,000 films</h1>
-    <h3 class="display-6 text-center" id="subt"></h3>
-    <div class="table-prime"></div>
-  </div>
-  
-  <br clear="all"/><br/>
-</div>
+</script>
+
