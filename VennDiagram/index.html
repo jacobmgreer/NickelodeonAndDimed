@@ -17,6 +17,7 @@ layout: default
   opacity: 0;
 }
 #m-intersects button {margin:3px;}
+#m-intersects button .badge {margin-left:3px;}
 </style>
 
 <script src="venn.js"></script>
@@ -25,7 +26,8 @@ layout: default
 <div id="venn" style="height:960px;"></div>
 
 <div id="warnings" class="container-fluid">
-    <h3 id="warnings-count"></h3>
+    <p class="lead">This Venn Diagram combines different film lists/awards to demonstrate intersections between the selections. The javascript uses area proportional layouts that attempt to visualize these intersections, but not every intersection is possible to visualize. Intersections with more than 50 films that are not part of this visualization are listed below.</p>
+    <h1 id="warnings-count" class="display-4"></h1>
     <div id="m-intersects"></div>
 </div>
 
