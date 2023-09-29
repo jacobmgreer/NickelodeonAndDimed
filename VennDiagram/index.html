@@ -58,6 +58,8 @@ function myFunc(msg){
             .text(msg)
             .append("span")
             .classed("badge", true)
+            .classed("rounded-pill", true)
+            .classed("bg-primary", true)
             .text(intersecty[0].size + " films");
 
         var result = $('#warnings #m-intersects button').sort(function (b, a) {
