@@ -6,19 +6,7 @@ layout: radial
 
 
 <svg width="960" height="960" class="center"></svg>
-<div id="tooltip" class="center">
-  <h3>National Board of Review<br/>Film Awards:<br/>Percentage Seen<br/>by Award Ceremony</h3>
-</div>
 
-<div class="container">
-  <br/><br/>
-  <div id="switch">
-    <h1 class="display-5 text-center">National Board of Review</h1>
-    <h3 class="display-6 text-center" id="subt">Annual Film Awards</h3>
-    <br/><br/>
-    <div class="table-prime"></div>
-  </div>
-</div>
 
 <script>
   var svg = d3.select("svg"),
@@ -38,7 +26,7 @@ layout: radial
   var z = d3.scaleOrdinal()
       .range(["#D8FFDB", "#023535", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
-  var tooltip = d3.append("text")
+  var tooltip = d3.svg.append("text")
       .classed("rlabel", true)
       .style('display', 'block')
       .attr("text-anchor", "middle")
