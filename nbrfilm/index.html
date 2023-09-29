@@ -27,8 +27,7 @@ layout: radial
       .classed("rlabel", true)
       .style('display', 'block')
       .attr("text-anchor", "middle")
-      .attr("x", width/2)
-      .attr("y", height/2)
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
       .text('NBR');
 
   d3.csv("https://jacobmgreer.github.io/Media-Consumption/datasets/NBR/NBRSummary.csv", function(d, i, columns) {
