@@ -12,6 +12,7 @@ body {
 </head>
 
 <body>
+    <div id="warnings"></div>
     <div id="venn"></div>
 </body>
 
@@ -35,6 +36,17 @@ body {
 <script src="Venn.json"></script>
 
 <script>
+var console = window.console;
+console.log = function(msg){
+  if(msg.includes('not represented on screen'))
+    myFunc(msg);
+}
+
+console.log('Simple message');
+function myFunc(msg){
+ d3.select("#warnings").append("p").text(msg)
+}
+
 
 var chart = venn.VennDiagram()
                  .width(960)
