@@ -19,15 +19,9 @@ layout: radial
   <svg width="960" height="960" class="center radial"></svg>
 </section>
 
-<section class="container">
-  <div id="switch">
-    <h1 class="display-5 text-center">National Board of Review</h1>
-    <h3 class="display-6 text-center" id="subt">Annual Film Awards</h3>
-
-    <br/><br/>
-    
-    <div class="table-prime"></div>
-  </div>
+<section class="container" id="switch">
+  <h3 class="replaceText"></h3>
+  <div id="filmlist"></div>
 </section>
 
 <script>
@@ -94,12 +88,11 @@ layout: radial
           .attr("font-size", "20px")
           .text('National Board of Review');});
   });
-</script>
-  
-<script type="text/javascript">
   
   function awardTable(ceremony) {
-    $("#switch").empty();
+    $("#filmlist").empty();
+    $("h3.replaceText").text(ceremony)
+
     var data = [];
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NBR/NBRData.csv', function(data){
         var data = data.filter(element => element.AwardCeremony === ceremony)
@@ -107,8 +100,6 @@ layout: radial
                             .key(function(d) { return d.AwardCeremony; })
                             .key(function(d) { return d.AwardCategory; })
                             .entries(data);
-                            //console.log(nested_data)
-                            //console.log(nested_data[[0]].values)
         doSomething(nested_data);
     })
     
@@ -116,7 +107,7 @@ layout: radial
           
       var columns = ['Title','PersonName','Your.Rating','IMDb.Rating','Num.Votes']
     
-      var AwardCeremonies = d3.select('#switch').selectAll('div')
+      var AwardCeremonies = d3.select('#filmlist').selectAll('div')
         .data(d)
         .enter()
         .append('div')
@@ -184,7 +175,7 @@ layout: radial
             else {
               if(d.value != "NA") {return d.value}}})
               
-      document.getElementById("type-details").scrollIntoView();
+      document.getElementById("switch").scrollIntoView();
      }
   }
   </script>
