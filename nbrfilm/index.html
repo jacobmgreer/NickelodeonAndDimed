@@ -30,7 +30,8 @@ layout: radial
       .classed("rlabel", true)
       .style('display', 'block')
       .attr("text-anchor", "middle")
-      .attr("x", width/2);
+      .attr("x", width/2)
+      .text('NBR');
 
   d3.csv("https://jacobmgreer.github.io/Media-Consumption/datasets/NBR/NBRSummary.csv", function(d, i, columns) {
     for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
@@ -58,9 +59,9 @@ layout: radial
             .endAngle(function(d) { return x(d.data.Year) + x.bandwidth(); })
             .padAngle(0.01)
             .padRadius(innerRadius))
-      .on('mouseover', function(d) {tooltip.html('<h1> ' + d.data.Year + '</h1>')})
+      .on('mouseover', function(d) {tooltip.text(d.data.Year)})
       .on('click', function(d) {awardTable(d.data.Year)})
-      .on('mouseout', function(d) {tooltip.html('<h3>National Board of Review<br/>Film Awards:<br/>Percentage Seen<br/>by Award Ceremony</h3>');});
+      .on('mouseout', function(d) {tooltip.text('National Board of Review');});
   });
 </script>
   
