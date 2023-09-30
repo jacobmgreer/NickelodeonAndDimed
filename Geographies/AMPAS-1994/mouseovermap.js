@@ -1,8 +1,8 @@
 //original script lovingly created by https://justvalerian.com/mouseovermap.html
 
 //initialize variables
-let width = 800,
-    height = 600;
+let width = 1000,
+    height = 800;
 let outline = ({type: "Sphere"});
 let graticule = d3.geoGraticule10();
 let projection, path, countries;
