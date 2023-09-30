@@ -1376,7 +1376,7 @@
 
             var enterPath = enter.append("path"),
                 enterText = enter.append("text")
-                .attr("class", "label")
+                .attr("class", "VDlabel")
                 .text(function (d) { return label(d); } )
                 .attr("text-anchor", "middle")
                 .attr("dy", ".35em")
