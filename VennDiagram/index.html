@@ -3,11 +3,28 @@ title: "Intersections in Film Awards/Selections"
 layout: venn
 ---
 
-<div id="venn" style="height:960px;"></div>
+<script src="https://jacobmgreer.github.io/Film-Tracker/VennDiagram/venn.js"></script>
+<script src="https://jacobmgreer.github.io/Film-Tracker/VennDiagram/Venn.json"></script>
 
-<div id="warnings" class="container-fluid">
-    <p class="lead">This Venn Diagram combines different film lists/awards to demonstrate intersections between the selections. The javascript calculates area proportional layouts visualize significant intersections, but not every intersection is possible to visualize. Intersections with more than 50 films that are not part of this visualization are listed below.</p>
-    <h1 id="warnings-count" class="display-4"></h1>
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-8 col-md-8 mx-auto">
+        <h1 class="fw-light">Comparing Film Lists</h1>
+        <h3 class="fw-light">Details...</h3>
+        <p class="lead text-muted">
+          This Venn Diagram combines different film lists/awards to demonstrate intersections between the selections. The javascript calculates area proportional layouts visualize significant intersections, but not every intersection is possible to visualize.
+        </p>
+      </div>
+    </div>
+</section>
+
+<section class="container">
+  <svg width="960" height="960" class="center" id="venn"></svg>
+</section>
+
+<section class="container" id="warnings">
+    <p class="lead">Intersections with more than 50 films that are not part of this visualization are listed below.</p>
+    <h1 id="warnings-count" class="display-5"></h1>
     <div id="m-intersects"></div>
 </div>
 
@@ -63,7 +80,7 @@ var div = d3.select("#venn")
 div.datum(sets).call(chart);
 
 d3.selectAll("text").style("fill", "#444");
-d3.select("#venn svg")
+d3.select("#venn")
     .classed("center", true)
 
 var tooltip = d3.select("body").append("div")
