@@ -8,12 +8,6 @@ table {
   width: 960px;
   height: 960px;}
 
-.name {
-  width: 200px;}
-.label {
-  font-size: 15px;
-  alignment-baseline: middle;}
-
 
 /* Film List Shading */ 
 td.watched {
@@ -25,7 +19,7 @@ td.watched a:hover {
 
 
 /* Venn Diagrams */
-.venntooltip {
+div.venntooltip {
   position: absolute;
   text-align: center;
   background: #333;
@@ -34,7 +28,6 @@ td.watched a:hover {
   border: 0px;
   border-radius: 8px;
   opacity: 0;}
-
 #m-intersects button {
   margin:3px;}
 #m-intersects button .badge {

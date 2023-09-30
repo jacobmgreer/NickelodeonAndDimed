@@ -26,8 +26,8 @@ layout: default
     </div>
 </section>
 
-<section class="container">
-  <div id="venn"></div>
+<section class="container" id="venn">
+    
 </section>
 
 <section class="container" id="warnings">
@@ -44,11 +44,10 @@ var chart = venn.VennDiagram()
 var div = d3.select("#venn")
 div.datum(sets).call(chart);
 
-d3.selectAll("text").style("fill", "#444");
-d3.select("#venn")
-    .classed("center", true)
+d3.selectAll("text")
+    .style("fill", "#444");
 
-var tooltip = d3.select("body").append("div")
+var tooltip = d3.select("#venn").append("div")
     .classed("venntooltip", true)
 
 div.selectAll("path")
@@ -58,14 +57,11 @@ div.selectAll("path")
 
 div.selectAll("g")
     .on("mouseover", function(d, i) {
-        // sort all the areas relative to the current item
         venn.sortAreas(div, d);
 
-        // Display a tooltip with the current size
         tooltip.transition().duration(400).style("opacity", .9);
         tooltip.text(d.size + " films");
 
-        // highlight the current path
         var selection = d3.select(this).transition("tooltip").duration(400);
         selection.select("path")
             .style("fill-opacity", d.sets.length == 1 ? .4 : .1)
