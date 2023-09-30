@@ -8,6 +8,12 @@ table {
   width: 960px;
   height: 960px;}
 
+#filmlist a {
+  color: #0D0D0D;
+  text-decoration: none;}
+footer a {
+  color: #737373;
+  text-decoration: none;}
 
 /* Film List Shading */ 
 td.watched {
