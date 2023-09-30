@@ -6,30 +6,40 @@ let width = 800,
 let outline = ({type: "Sphere"});
 let graticule = d3.geoGraticule10();
 let projection, path, countries;
-let importPath = 'https://gist.githubusercontent.com/jacobmgreer/bde4a6e5cc95528c9757df8592bddd3a/raw/2b64a711410dbab6f86dbe364795a58fdc34dfa2/test.geojson';
+let importPath = 'https://jacobmgreer.github.io/Film-Tracker/Geographies/geojson/world_1994.geojson';
 
 function mapInit(data) {
-    //now that we can use the json data, declare projection and path
     projection = d3.geoPolyhedralCollignon()
         .fitExtent([[0, 0], [width, height]], outline);
     path = d3.geoPath(projection);
-    //create svg
-    let svg = d3.select('div[id=d3map]').append('svg').attr('width', width).attr('height', height);
+    let svg = d3.select('div[id=d3map]')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+
     //tooltip parameters and mouseover behaviour
     let tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
         .attr("style", "opacity: 0; position: absolute; background-color: #0A0A0A; color: #FFFBFC; border: none; padding: 5px;");
     let mouseover = function(event, d) {
-        d3.select(this).style('fill', '#0FF2B2');
-        tooltip.style("opacity", 1).text(d.properties['NAME']);
+        d3.select(this)
+            .style('fill', '#0FF2B2');
+        tooltip
+            .style("opacity", 1)
+            .text(d.properties['NAME']);
     }
     let mousemove = function(event) {
-        tooltip.style("left", (event.pageX + 20) + 'px').style("top", (event.pageY - 20) + 'px');
+        tooltip
+            .style("left", (event.pageX + 20) + 'px')
+            style("top", (event.pageY - 20) + 'px');
     }
     let mouseout = function() {
-        d3.select(this).style('fill', '#8C8C8C');
-        tooltip.style("opacity", 0);
+        d3.select(this)
+            .style('fill', '#8C8C8C');
+        tooltip
+            .style("opacity", 0);
     }
+
     //definitions for reusable parts
     const defs = svg.append("defs");
     defs.append("path")
@@ -40,17 +50,19 @@ function mapInit(data) {
         .append("use")
         .attr("href", "#outline");
     const g = svg.append("g")
-    //clips svg to extent of the map
         .attr("clip-path", `url("#clip")`);
+
     //colors background of map (ocean)
     g.append("use")
         .attr("href", "#outline")
         .attr("fill", "#F2F2F2");
+
     //draws graticule (lines)
     g.append("path")
         .attr("d", path(graticule))
         .attr("stroke", "#BFBFBF")
         .attr("fill", "none");
+
     //draws clickable countries
     g.selectAll('path')
         .data(data.features)
@@ -65,6 +77,7 @@ function mapInit(data) {
         })
         .attr("stroke-width", "0.5")
         .style('stroke', '#403E3F')
+    
     //tooltip mouseOver handling
         .on('mouseover', mouseover)
         .on('mousemove', mousemove)
@@ -75,7 +88,7 @@ function mapInit(data) {
         .attr("stroke-width", "3")
         .attr("stroke", "#0D0D0D")
         .attr("fill", "none");
-    //return all of this as a svg node
+
     return svg.node();
 }
 
