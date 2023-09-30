@@ -36,50 +36,7 @@ layout: default
     <div id="m-intersects"></div>
 </div>
 
-<script>
-var console = window.console;
-var count = 0;
-console.log = function(msg){
-  if(msg.includes('not represented on screen'))
-    myFunc(msg);
-}
-
-function getintersect(msg) {
-  return sets.filter(
-      function(data){return data.Warnings == msg}
-  );
-}
-
-function myFunc(msg){
-    msg = msg.replace('WARNING: area ','').replace(' not represented on screen','');
-    var intersecty = getintersect(msg);
-    count++;
-    d3.select("#warnings-count").text(count + " intersects out of " + Object.keys(sets).length + " are not shown");
-
-    if (intersecty[0].size > 50) {
-        d3.select("#warnings #m-intersects")
-            .append("button")
-            .classed("btn", true)
-            .classed("btn-light", true)
-            .attr("data-sort", intersecty[0].size)
-            .text(msg)
-            .append("span")
-            .classed("badge", true)
-            .classed("rounded-pill", true)
-            .classed("bg-primary", true)
-            .text(intersecty[0].size + " films");
-
-        var result = $('#warnings #m-intersects button').sort(function (b, a) {
-          var contentA =parseInt( $(a).data('sort'));
-          var contentB =parseInt( $(b).data('sort'));
-          return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
-       });
-
-       $('#warnings #m-intersects').html(result);
-    }
-
-}
-
+<script type="text/javascript">
 var chart = venn.VennDiagram()
                  .width(960)
                  .height(960);
