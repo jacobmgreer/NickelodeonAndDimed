@@ -43,46 +43,31 @@ td.watched a:hover {
   margin-left:3px;}
 
 
-
 /* Award Tables */
 section#awards thead.throtate th {
-  height: 250px;
-  text-align: center;
-  vertical-align:center;}
+  height: 250px;}
 section#awards thead.throtate th .rotated-header-container {
   transform: rotate(-180deg);
-  text-orientation: mixed;
-  padding: 8vh;
-  white-space: nowrap;
   writing-mode: tb-rl;}
 section#awards thead.throtate th .rotated-header-content {
   left:0;
   line-height:20px;}
-section#awards.oscar .award {
+section#awards .award {
   width: 45px;
   height: 45px;
   background-size: cover;
-  display:inline-block;
+  display:inline-block;}
+section#awards.oscar .award {
   background-image: url(https://jacobmgreer.github.io/Film-Tracker/Oscars/oscar.svg);}
 section#awards.nbr .award {
-    width: 45px;
-    height: 45px;
-    background-size: cover;
-    display:inline-block;
-    background-image: url(https://jacobmgreer.github.io/Film-Tracker/nbrfilm/ticket-perforated.svg);}
-section#awards .award1 {
-  /* 0% */
+  background-image: url(https://jacobmgreer.github.io/Film-Tracker/nbrfilm/ticket-perforated.svg);}
+section#awards .award1 {/* 0% */
   filter: invert(47%) sepia(53%) saturate(313%) hue-rotate(160deg) brightness(89%) contrast(89%);}
-section#awards .award2 {
-  /* 1-30% */
+section#awards .award2 {/* 1-30% */
   filter: invert(66%) sepia(59%) saturate(6085%) hue-rotate(351deg) brightness(99%) contrast(92%);}
-section#awards .award3 {
-  /* 31-60% */
+section#awards .award3 {/* 31-60% */
   filter: invert(64%) sepia(82%) saturate(1033%) hue-rotate(342deg) brightness(98%) contrast(93%);}
-section#awards .award4 {
-  /* 61-100% */
+section#awards .award4 {/* 61-100% */
   filter: invert(90%) sepia(45%) saturate(809%) hue-rotate(348deg) brightness(97%) contrast(96%);}
-section#awards .award5 {
-  /* 100% */
-  filter: invert(79%) sepia(12%) saturate(1239%) hue-rotate(77deg) brightness(86%) contrast(85%);
-  }
+section#awards .award5 {/* 100% */
+  filter: invert(79%) sepia(12%) saturate(1239%) hue-rotate(77deg) brightness(86%) contrast(85%);}
