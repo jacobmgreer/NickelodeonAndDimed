@@ -10,14 +10,14 @@ layout: venn
         <h3 class="fw-light">Comparing Mainstream Awards and Selections</h3>
         <p class="lead text-muted">
           A Venn Diagram which compares different film lists/awards to demonstrate intersections between the selections. 
-          Javascript calculates layouts that demonstrate significant intersections, but not every intersection is possible to show.
+          Javascript calculates layouts that demonstrate significant intersections.
         </p>
         <p class="lead text-muted">
           Lists used for this diagram: Academy Award nominees, International Submissions to the Academy Awards,  
-          the AFI Top 100 in 1998 and 2008, Roger Ebert's "Great Movie" selections, and the New York Times' Essential 1,000 Films to See.
+          the AFI Top 100 in both 1998 and 2007, Roger Ebert's "Great Movie" selections, and the New York Times' Essential 1,000 Films to See.
         </p>
         <p class="lead text-muted">
-          And awards from the "big four" film critic associations: Los Angeles Film Critic Association, National Board of Review, National Society of Film Critics, and New York Film Critic Circle.
+          Awards from the "big four" film critic associations: Los Angeles Film Critic Association, National Board of Review, National Society of Film Critics, and New York Film Critic Circle.
         </p>
       </div>
     </div>
@@ -57,6 +57,7 @@ function myFunc(msg){
     if (intersecty[0].size > 50) {
         d3.select("#warnings #m-intersects")
             .append("button")
+            .property("disabled", true)
             .classed("btn", true)
             .classed("btn-light", true)
             .attr("data-sort", intersecty[0].size)
@@ -79,7 +80,7 @@ function myFunc(msg){
 
 
 
-    
+
 var chart = venn.VennDiagram()
                  .width(960)
                  .height(960);
