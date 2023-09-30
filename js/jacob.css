@@ -8,9 +8,6 @@ table {
   width: 960px;
   height: 960px;}
 
-footer {
-  padding-top:150px;}
-
 .name {
   width: 200px;}
 .label {
@@ -45,11 +42,18 @@ td.watched a:hover {
 #m-intersects button .badge {
   margin-left:3px;}
 
+
+
 /* Award Tables */
 section#awards thead.throtate th {
-  height: 250px;}
+  height: 250px;
+  text-align: center;
+  vertical-align:center;}
 section#awards thead.throtate th .rotated-header-container {
   transform: rotate(-180deg);
+  text-orientation: mixed;
+  padding: 8vh;
+  white-space: nowrap;
   writing-mode: tb-rl;}
 section#awards thead.throtate th .rotated-header-content {
   left:0;
