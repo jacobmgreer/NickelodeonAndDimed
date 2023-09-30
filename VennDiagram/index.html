@@ -56,7 +56,7 @@ div.selectAll("path")
     .style("stroke-width", 3)
 
 div.selectAll("g")
-    .on("mouseover", function(d, i) {
+    .on("mouseover", function(d) {
         venn.sortAreas(div, d);
 
         tooltip.transition().duration(400).style("opacity", .9);
@@ -73,7 +73,7 @@ div.selectAll("g")
                .style("top", (d3.event.pageY - 28) + "px");
     })
 
-    .on("mouseout", function(d, i) {
+    .on("mouseout", function(d) {
         tooltip.transition().duration(400).style("opacity", 0);
         var selection = d3.select(this).transition("tooltip").duration(400);
         selection.select("path")
