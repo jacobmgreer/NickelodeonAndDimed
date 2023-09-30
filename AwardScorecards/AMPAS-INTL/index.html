@@ -7,7 +7,7 @@ layout: default
     <div class="row py-lg-5">
       <div class="col-lg-8 col-md-8 mx-auto">
         <h1 class="fw-light">International Submissions</h1>
-        <h3 class="fw-light">to The Academy Awards</h3>
+        <h3 class="fw-light">to the Academy Awards</h3>
         <p class="lead text-muted">
           "An international film is defined as a feature-length motion picture (over 40 minutes) produced outside the United States of America and its territories with a predominantly (more than 50%) non-English dialogue track. Animated and documentary feature films are permitted."
         </p>
@@ -17,15 +17,15 @@ layout: default
 
 <section class="py-5 text-center container">
   <ul class="nav justify-content-center">
-  	<li class="nav-item"><a class="nav-link disabled">Jump to:</a></li>
-  	<li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1950s');">1950s</a></li>
-  	<li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1960s');">1960s</a></li>
-  	<li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1970s');">1970s</a></li>
-  	<li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1980s');">1980s</a></li>
-  	<li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1990s');">1990s</a></li>
-  	<li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('2000s');">2000s</a></li>
-  	<li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('2010s');">2010s</a></li>
-  	<li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('2020s');">2020s</a></li>
+    <li class="nav-item"><a class="nav-link disabled">Jump to:</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1950s');">1950s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1960s');">1960s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1970s');">1970s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1980s');">1980s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1990s');">1990s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('2000s');">2000s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('2010s');">2010s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('2020s');">2020s</a></li>
   </ul>
   <br/><br/>
   <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
@@ -138,7 +138,7 @@ layout: default
     
 function oscars(decade) {
 d3.select('table').remove();
-d3.csv('https://jacobmgreer.github.io/Film-Tracker/Butterfly/Country-Submissions-by-Year.csv',function (data) {
+d3.csv('https://jacobmgreer.github.io/Film-Tracker/AwardScorecards/AMPAS-INTL/Country-Submissions-by-Year.csv',function (data) {
     var data = data.filter(element => element[decade] > 0)
     if (decade === "1950s") {var columns = ['SubmissionCountry','C29','C30','C31','C32',decade]}
     if (decade === "1960s") {var columns = ['SubmissionCountry','C33','C34','C35','C36','C37','C38','C39','C40','C41','C42',decade]}
