@@ -32,63 +32,41 @@ layout: default
     <span class="award award5"></span> seen all nominees
   </button>
 
-  <table class="table table-striped awards" style="table-layout:fixed" id="switch">
+  <table class="table table-striped awards">
       <thead class="throtate">
         <tr>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Ceremony</div>
-            </div>
+          <th scope="col" style="width:130px;">
+            <span>Ceremony</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Top Films</div>
-            </div>
+            <span>Top Films</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">International</div>
-            </div>
+            <span>International</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Documentary</div>
-            </div>
+            <span>Documentary</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Secondary List<br/>Independent / Exceptional</div>
-            </div>
+            <span>Secondary List<br/>Independent / Exceptional</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Performance</div>
-            </div>
+            <span>Performance</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Writing</div>
-            </div>
+            <span>Writing</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Director</div>
-            </div>
+            <span>Director</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Other</div>
-            </div>
+            <span>Other</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Not Seen</div>
-            </div>
+            <span>Not Seen</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Total</div>
-            </div>
+            <span>Total</span>
           </th>
         </tr>
       </thead>
@@ -238,7 +216,7 @@ layout: default
             else {
             	if(d.value != "NA") {return d.value}}})
 
-        document.getElementById("switch").scrollIntoView();
+        document.getElementById("filmlist").scrollIntoView();
      }
   }
 </script>

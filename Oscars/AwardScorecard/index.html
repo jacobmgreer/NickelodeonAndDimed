@@ -32,78 +32,50 @@ layout: default
     <span class="award award5"></span> seen all nominees
   </button>
 
-  <table class="table table-striped awards" style="table-layout:fixed" id="switch">
+  <table class="table table-striped awards" style="table-layout:fixed">
       <thead class="throtate">
         <tr>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Ceremony</div>
-            </div>
+          <th scope="col" style="width:130px;">
+            <span>Ceremony</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Picture</div>
-            </div>
+            <span>Picture</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Director</div>
-            </div>
+            <span>Director</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Screenplay</div>
-            </div>
+            <span>Screenplay</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Performance</div>
-            </div>
+            <span>Performance</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Visual Style</div>
-            </div>
+            <span>Visual Style</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Effects & Editing</div>
-            </div>
+            <span>Effects & Editing</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Music</div>
-            </div>
+            <span>Music</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Animated</div>
-            </div>
+            <span>Animated</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Documentary</div>
-            </div>
+            <span>Documentary</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">International</div>
-            </div>
+            <span>International</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Shorts</div>
-            </div>
+            <span>Shorts</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Not Seen</div>
-            </div>
+            <span>Not Seen</span>
           </th>
           <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Total</div>
-            </div>
+            <span>Total</span>
           </th>
         </tr>
       </thead>
@@ -265,7 +237,7 @@ layout: default
             else {
             	if(d.value != "NA") {return d.value}}})
 
-        document.getElementById("switch").scrollIntoView();
+        document.getElementById("filmlist").scrollIntoView();
      }
   }
 </script>

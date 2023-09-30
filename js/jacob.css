@@ -44,14 +44,17 @@ td.watched a:hover {
 
 
 /* Award Tables */
+section#awards table {
+  table-layout: fixed;}
 section#awards thead.throtate th {
-  height: 250px;}
-section#awards thead.throtate th .rotated-header-container {
-  transform: rotate(-180deg);
-  writing-mode: tb-rl;}
-section#awards thead.throtate th .rotated-header-content {
-  left:0;
-  line-height:20px;}
+  vertical-align: bottom;
+  text-align: center;}
+section#awards thead.throtate th span {
+  -ms-writing-mode: tb-rl;
+  -webkit-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;}
 section#awards .award {
   width: 45px;
   height: 45px;
