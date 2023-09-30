@@ -35,7 +35,11 @@ layout: default
   <table class="table table-striped awards" style="table-layout:fixed" id="switch">
       <thead class="throtate">
         <tr>
-          <th scope="col" width="120">Ceremony</th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Ceremony</div>
+            </div>
+          </th>
           <th scope="col">
             <div class="rotated-header-container">
               <div class="rotated-header-content">Top Films</div>
@@ -88,6 +92,7 @@ layout: default
           </th>
         </tr>
       </thead>
+      <tbody></tbody>
     </table>
   </div>
   <div id="filmlist"></div>
@@ -114,7 +119,7 @@ layout: default
         'Films.N',
         'Percentage']
 
-      var rows = d3.select('.awards tbody').selectAll('tr')
+      var rows = d3.select('table.awards tbody').selectAll('tr')
           .data(d)
           .enter()
           .append('tr')
