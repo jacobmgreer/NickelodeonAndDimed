@@ -60,9 +60,9 @@ section#awards button {
 section#awards button .award {
   margin-bottom:5px;}
 section#awards.oscar .award {
-  background-image: url(https://jacobmgreer.github.io/Film-Tracker/Oscars/oscar.svg);}
+  background-image: url(https://jacobmgreer.github.io/Film-Tracker/AwardScorecard/AMPAS/oscar.svg);}
 section#awards.nbr .award {
-  background-image: url(https://jacobmgreer.github.io/Film-Tracker/nbrfilm/ticket-perforated.svg);}
+  background-image: url(https://jacobmgreer.github.io/Film-Tracker/AwardScorecard/NBR/ticket-perforated.svg);}
 section#awards .award1 {/* 0% */
   filter: invert(47%) sepia(53%) saturate(313%) hue-rotate(160deg) brightness(89%) contrast(89%);}
 section#awards .award2 {/* 1-30% */

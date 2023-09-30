@@ -23,7 +23,6 @@ layout: radial
 </section>
 
 <section class="container" id="switch">
-  <h3 class="replaceText"></h3>
   <div id="filmlist"></div>
 </section>
 
@@ -94,7 +93,6 @@ layout: radial
   
   function awardTable(ceremony) {
     $("#filmlist").empty();
-    $("h3.replaceText").text(ceremony);
 
     var data = [];
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NBR/NBRData.csv', function(data){
