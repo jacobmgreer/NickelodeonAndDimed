@@ -9,17 +9,19 @@ layout: venn
         <h1 class="fw-light">Intersections in Film Selections</h1>
         <h3 class="fw-light">Comparing Mainstream Awards and Selections</h3>
         <p class="lead text-muted">
-          A venn diagram which compares different film lists/awards to demonstrate intersections between the selections. 
+          A venn diagram comparing different film lists/awards to demonstrate intersections & similarities between film selections. 
         </p>
         <h3 class="fw-light">Film Lists Used</h3>
         <p class="small text-muted">Academy Award nominees</p>
         <p class="small text-muted">International Submissions to the Academy Awards</p>
-        <p class="small text-muted">AFI Top 100 in both 1998 and 2007</p>
+        <p class="small text-muted">American Film Institute Top 100: 1998 and 2007</p>
         <p class="small text-muted">Roger Ebert's "Great Movie" selections</p>
         <p class="small text-muted">New York Times' Essential 1,000 Films to See</p>  
-        <p class="small text-muted">
-          Awards from the "big four" critic associations: Los Angeles Film Critic Association, National Board of Review, National Society of Film Critics, and New York Film Critic Circle.
-        </p>
+        <h3 class="fw-light">Awards from the "big four" critic associations:</h3> 
+        <p class="small text-muted">Los Angeles Film Critic Association</p>
+        <p class="small text-muted">National Board of Review</p>
+        <p class="small text-muted">National Society of Film Critics</p>
+        <p class="small text-muted">New York Film Critic Circle</p>
       </div>
     </div>
 </section>
@@ -30,7 +32,7 @@ layout: venn
 
 <section class="container" id="warnings">
     <p class="lead" id="warnings-count"></p>
-    <p class="lead text-muted">Intersections with more than 50 films that are not part of this visualization are listed below.</p>
+    <p class="lead text-muted">Intersections of more than 50 films that were not visualized are listed below.</p>
     <div id="m-intersects"></div>
 </div>
 
@@ -53,7 +55,7 @@ function myFunc(msg){
     msg = msg.replace('WARNING: area ','').replace(' not represented on screen','');
     var intersecty = getintersect(msg);
     count++;
-    d3.select("#warnings-count").text(count + " intersects out of " + Object.keys(sets).length + " are not shown");
+    d3.select("#warnings-count").text(count + " of " + Object.keys(sets).length + " possible intersections are not visualized");
 
     if (intersecty[0].size > 50) {
         d3.select("#warnings #m-intersects")
