@@ -18,6 +18,33 @@ td.watched a:hover {
   color: #7b6888;}
 
 
+/* International List */
+#ilist .medium {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px}
+#ilist .name {
+  width: 200px;}
+#ilist .disqualified {
+  background-color: #0D0D0D;}
+#ilist .winner {
+  background-color: #F2B705;}
+#ilist .nominee {
+  background-color: #F29F05;}
+#ilist .nom-dis {
+  background-color: #034C8C;}
+#ilist .submission {
+  background-color: #A3D9CF;}
+#ilist .unlisted {
+  background-color: #70735D;}
+#ilist .shortlist {
+  background-color: #97D9A8;}
+#ilist .withdrawn {
+  background-color: #BFBFBF;}
+#ilist .label {
+  font-size: 15px;
+  alignment-baseline: middle;}
+
 /* Venn Diagrams */
 #venn div.venntooltip {
   position: absolute;
