@@ -52,7 +52,7 @@ layout: radial
       .range([innerRadius, outerRadius]);
 
   var z = d3.scaleOrdinal()
-      .range(["#77D9BD", "#8C7E72", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+      .range(["#3973BF", "#023059", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
   var tooltip = svg.append("text")
       .style('display', 'block')
@@ -142,7 +142,7 @@ layout: radial
         .enter()
         .append('td')
         .style('background-color', function(d) {
-    				if (d.rating != "NA") {return "#3973BF"}
+    				if (d.rating != "NA") {return "#77D9BD"}
             else {}
 					})
         .html(function (d) { 
