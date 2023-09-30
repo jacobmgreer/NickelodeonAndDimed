@@ -3,41 +3,101 @@ title: "National Board of Review - Scorecard by Award Type"
 layout: default
 ---
 
-<style>
-  #awardCategories thead th {
-    height: 250px;}
-  #awardCategories thead th .rotated-header-container {
-    transform: rotate(-180deg);
-    writing-mode: tb-rl;}
-  #awardCategories thead th .rotated-header-content {
-    left:0;
-    line-height:20px;}
-  .award {
-    width: 45px;
-    height: 45px;
-    background-size: cover;
-    display:inline-block;
-    background-image: url(https://jacobmgreer.github.io/Film-Tracker/nbrfilm/ticket-perforated.svg);}
-  .award1 {
-    /* 0% */
-    filter: invert(47%) sepia(53%) saturate(313%) hue-rotate(160deg) brightness(89%) contrast(89%);}
-  .award2 {
-    /* 1-30% */
-    filter: invert(66%) sepia(59%) saturate(6085%) hue-rotate(351deg) brightness(99%) contrast(92%);}
-  .award3 {
-    /* 31-60% */
-    filter: invert(64%) sepia(82%) saturate(1033%) hue-rotate(342deg) brightness(98%) contrast(93%);}
-  .award4 {
-    /* 61-100% */
-    filter: invert(90%) sepia(45%) saturate(809%) hue-rotate(348deg) brightness(97%) contrast(96%);}
-  .award5 {
-    /* 100% */
-    filter: invert(79%) sepia(12%) saturate(1239%) hue-rotate(77deg) brightness(86%) contrast(85%);
-  }
-</style>
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-8 col-md-8 mx-auto">
+        <h1 class="fw-light">National Board of Review</h1>
+        <h3 class="fw-light">Annual Awards</h3>
+        <p class="lead text-muted">
+          "Since first citing year-end cinematic achievements in 1929, NBR has recognized a vast selection of outstanding studio, independent, foreign-language, animated and documentary films."
+        </p>
+        <div class="progress">
+          <div class="progress-bar" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    </div>
+</section>
 
-<div class="container-fluid">
-  <script type="text/javascript">
+<section class="py-5 text-center container nbr" id="awards">
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <span class="award award1"></span> seen no nominees
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <span class="award award2"></span> seen 1-29%
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <span class="award award3"></span> seen 30-59%
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <span class="award award4"></span> seen 60-99%
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <span class="award award5"></span> seen all nominees
+  </button>
+
+  <table class="table table-striped awards" style="table-layout:fixed" id="switch">
+      <thead class="throtate">
+        <tr>
+          <th scope="col" width="120">Ceremony</th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Top Films</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">International</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Documentary</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Secondary List<br/>Independent / Exceptional</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Performance</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Writing</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Director</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Other</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Not Seen</div>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="rotated-header-container">
+              <div class="rotated-header-content">Total</div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="filmlist"></div>
+</section>
+
+<script type="text/javascript">
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NBR/NBR-Summary-Ceremonies.csv', function(data){
         var nested_data = d3.nest().entries(data.sort(function (a,b) {return d3.descending(a.AwardCeremony, b.AwardCeremony);}));
         doSomething2(nested_data);
@@ -95,7 +155,7 @@ layout: default
 
      }
   function awardTable(ceremony, awardtype) {
-    $(".table-prime").empty();
+    $("#filmlist").empty();
     var data = [];
     d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/NBR/NBRData.csv', function(data){
     		var data = data.filter(element => element.AwardCeremony === ceremony).filter(element => element.GeneralizedCategory === awardtype)
@@ -110,7 +170,7 @@ layout: default
 
     	var columns = ['Title','PersonName','Your.Rating','IMDb.Rating','Num.Votes']
 
-      var AwardCeremonies = d3.select('.table-prime').selectAll('div')
+      var AwardCeremonies = d3.select('#filmlist').selectAll('div')
         .data(d)
         .enter()
         .append('div')
@@ -177,85 +237,7 @@ layout: default
             else {
             	if(d.value != "NA") {return d.value}}})
 
-        document.getElementById("type-details").scrollIntoView();
+        document.getElementById("switch").scrollIntoView();
      }
   }
-  </script>
-
-  <br/><br/>
-  <h1 class="display-5 text-center">National Board of Review</h1>
-  <h3 class="display-6 text-center" id="subt">Annual Film Awards</h3>
-  <br/><br/>
-  <div id="awardCategories">
-    <table class="table" style="table-layout:fixed">
-      <tr>
-        <td><span class="award award1"></span><br clear="all"/>seen no nominees</td>
-        <td><span class="award award2"></span><br clear="all"/>seen 1-29%</td>
-        <td><span class="award award3"></span><br clear="all"/>seen 30-59%</td>
-        <td><span class="award award4"></span><br clear="all"/>seen 60-99%</td>
-        <td><span class="award award5"></span><br clear="all"/>seen all nominees</td>
-      </tr>
-    </table>
-    <br clear="both"/>
-    <table class="table table-striped awards" style="table-layout:fixed">
-      <thead>
-        <tr>
-          <th scope="col" width="120">Ceremony</th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Top Films</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">International</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Documentary</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Secondary List<br/>Independent / Exceptional</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Performance</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Writing</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Director</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Other</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Not Seen</div>
-            </div>
-          </th>
-          <th scope="col">
-            <div class="rotated-header-container">
-              <div class="rotated-header-content">Total</div>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-  <div class="table-prime"></div>
-  <br/>
-</div>
+</script>
