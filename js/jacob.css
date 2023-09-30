@@ -60,10 +60,10 @@ section#awards .award {
   height: 45px;
   background-size: cover;
   display:inline-block;}
-sections#awards button .award {
-  width: 30px;
-  height: 30px;
-}
+section#awards button {
+  text-align: center;}
+section#awards button .award {
+  margin-bottom:5px;}
 section#awards.oscar .award {
   background-image: url(https://jacobmgreer.github.io/Film-Tracker/Oscars/oscar.svg);}
 section#awards.nbr .award {
