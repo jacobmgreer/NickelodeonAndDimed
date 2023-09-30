@@ -3,6 +3,15 @@ title: "NYT's Essential 1,000 Films to See"
 layout: radial
 ---
 
+<!--
+/* Color Theme Swatches in Hex */
+.ORE-1-hex { color: #3973BF; }
+.ORE-2-hex { color: #023059; }
+.ORE-3-hex { color: #77D9BD; }
+.ORE-4-hex { color: #8C7E72; }
+.ORE-5-hex { color: #0D0D0D; }
+-->
+
 <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-8 col-md-8 mx-auto">
@@ -12,7 +21,7 @@ layout: radial
           "In this book are one thousand complete film reviews from The New York Times, beginning in 1927 with The Jazz Singer, generally considered the first talkie, and running to the end of 2002."
         </p>
         <div class="progress">
-          <div class="progress-bar" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar progress-bar-striped" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
     </div>
@@ -43,7 +52,7 @@ layout: radial
       .range([innerRadius, outerRadius]);
 
   var z = d3.scaleOrdinal()
-      .range(["#B2BBD6", "#2E3957", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+      .range(["#77D9BD", "#8C7E72", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
   var tooltip = svg.append("text")
       .style('display', 'block')
@@ -132,9 +141,9 @@ layout: radial
           })
         .enter()
         .append('td')
-        .attr('class', function(d) {
-    				if (d.rating != "NA") {return "watched"}
-            else {return "not-watched"}
+        .style('background-color', function(d) {
+    				if (d.rating != "NA") {return "#3973BF"}
+            else {}
 					})
         .html(function (d) { 
         	if (d.column === "Title") {
