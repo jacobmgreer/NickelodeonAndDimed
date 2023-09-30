@@ -46,12 +46,12 @@ td.watched a:hover {
   margin-left:3px;}
 
 /* Oscar Table */
-section.oscar #awardCategories thead th {
+section.oscar thead th {
   height: 250px;}
-section.oscar #awardCategories thead th .rotated-header-container {
+section.oscar thead th .rotated-header-container {
   transform: rotate(-180deg);
   writing-mode: tb-rl;}
-section.oscar #awardCategories thead th .rotated-header-content {
+section.oscar thead th .rotated-header-content {
   left:0;
   line-height:20px;}
 section.oscar .award {
