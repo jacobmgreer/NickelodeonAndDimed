@@ -103,10 +103,10 @@ div.selectAll("g")
     .on("mouseover", function(d) {
         venn.sortAreas(div, d);
 
-        tooltip.transition().duration(50).style("opacity", .9);
+        tooltip.transition().duration(500).style("opacity", .9);
         tooltip.text(d.size + " films");
 
-        var selection = d3.select(this).transition("tooltip").duration(50);
+        var selection = d3.select(this).transition("tooltip").duration(500);
         selection.select("path")
             .style("fill-opacity", d.sets.length == 1 ? .4 : .1)
             .style("stroke-opacity", 1);
@@ -118,8 +118,8 @@ div.selectAll("g")
     })
 
     .on("mouseout", function(d) {
-        tooltip.transition().duration(50).style("opacity", 0);
-        var selection = d3.select(this).transition("tooltip").duration(400);
+        tooltip.transition().duration(700).style("opacity", 0);
+        var selection = d3.select(this).transition("tooltip").duration(500);
         selection.select("path")
             .style("fill-opacity", d.sets.length == 1 ? .25 : .0)
             .style("stroke-opacity", 0);
