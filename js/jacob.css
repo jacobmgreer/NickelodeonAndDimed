@@ -11,7 +11,7 @@ table {
 
 /* Film List Shading */ 
 td.watched {
-  ackground-color: #99B4BF;}
+  background-color: #99B4BF;}
 td.watched a {
   color: #2E3957;}
 td.watched a:hover {
@@ -28,6 +28,10 @@ td.watched a:hover {
   border: 0px;
   border-radius: 8px;
   opacity: 0;}
+#venn #VDlabel {
+  z-index: -5000;
+  font-size: 15px;
+  alignment-baseline: middle;}
 #m-intersects button {
   margin:3px;}
 #m-intersects button .badge {
