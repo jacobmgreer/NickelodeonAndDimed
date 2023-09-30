@@ -135,6 +135,8 @@ layout: default
               })
           .enter()
           .append('td')
+          .classed('text-center', true)
+          .classed('align-middle', true)
           .html(function(d){
             if (d.column == 'AwardCeremony') {return d.value}
             else if (d.column == 'Films.N' & d.value != 'NA') {return d.value}
