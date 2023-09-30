@@ -3,6 +3,15 @@ title: "National Board of Review - Film Awards"
 layout: radial
 ---
 
+<!---
+/* Color Theme Swatches in Hex
+.Iconic-Foods-of-New-York-City-collection-1-hex { color: #73BF94; }
+.Iconic-Foods-of-New-York-City-collection-2-hex { color: #F2E41B; }
+.Iconic-Foods-of-New-York-City-collection-3-hex { color: #F2BB16; }
+.Iconic-Foods-of-New-York-City-collection-4-hex { color: #F25050; }
+.Iconic-Foods-of-New-York-City-collection-5-hex { color: #F2F2F2; }
+--->
+
 <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-8 col-md-8 mx-auto">
@@ -12,7 +21,7 @@ layout: radial
           "Since first citing year-end cinematic achievements in 1929, NBR has recognized a vast selection of outstanding studio, independent, foreign-language, animated and documentary films."
         </p>
         <div class="progress">
-          <div class="progress-bar progress-bar-striped bg-info" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar progress-bar-striped bg-warning" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
     </div>
@@ -159,9 +168,9 @@ layout: radial
               })
           .enter()
           .append('td')
-          .attr('class', function(d) {
-            if (d.Rating != "NA") {return "watched"}
-            else {return "not-watched"}
+          .style('background-color', function(d) {
+            if (d.Rating != "NA") {return "#73BF94"}
+            else {}
           })
           .html(function(d){
             if (d.column == 'Title' & d.value != "NA") {
