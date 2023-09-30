@@ -20,7 +20,7 @@ function mapInit(data) {
     //tooltip parameters and mouseover behaviour
     let tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
-        .attr("style", "opacity: 0; position: absolute; background-color: #0A0A0A; color: #FFFBFC; border: none; padding: 5px;");
+
     let mouseover = function(event, d) {
         d3.select(this)
             .style('fill', '#0FF2B2');
