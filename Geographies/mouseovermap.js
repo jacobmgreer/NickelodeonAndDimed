@@ -67,7 +67,6 @@ function mapInit(data) {
         .enter()
         .append('path')
         .attr('d', path)
-        //.style('fill', '#8C8C8C')
         .style("fill", function(d) {
             if(d.properties['Total'] >= 70) { 
                 return "#FFDF00"; } 
