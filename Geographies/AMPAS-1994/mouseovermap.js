@@ -1,8 +1,8 @@
 //original script lovingly created by https://justvalerian.com/mouseovermap.html
 
 //initialize variables
-let width = 800,
-    height = 500;
+let width = 900,
+    height = 600;
 let outline = ({type: "Sphere"});
 let graticule = d3.geoGraticule10();
 let projection, path, countries;
@@ -14,7 +14,6 @@ function mapInit(data) {
     path = d3.geoPath(projection);
     let svg = d3.select('div[id=d3map]')
                 .append('svg')
-                .style("background-color", "#000")
                 .attr('width', width)
                 .attr('height', height);
 
