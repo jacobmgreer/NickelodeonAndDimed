@@ -6,7 +6,7 @@ let width = 1000,
 let outline = ({type: "Sphere"});
 let graticule = d3.geoGraticule10();
 let projection, path, countries;
-let importPath = 'https://jacobmgreer.github.io/Film-Tracker/Geographies/geojson/world_1994.geojson';
+let importPath = 'https://jacobmgreer.github.io/Film-Tracker/Geographies/AMPAS-1994/W1960.geojson';
 
 function mapInit(data) {
     projection = d3.geoPolyhedralCollignon()
@@ -72,7 +72,27 @@ function mapInit(data) {
         //.style('fill', '#8C8C8C')
         .style("fill", function(d) {
             return ([
-                'Afghanistan','Albania','Algeria','Argentina','Armenia','Australia','Austria','Azerbaijan','Bangladesh','Belarus','Belgium','Bhutan','Bolivia','Bosnia and Herzegovina','Brazil','Bulgaria','Burkina Faso','Cambodia','Cameroon','Canada','Chad','Chile','China','Colombia','Democratic Republic of the Congo','Costa Rica','Cote d\'Ivoire','Croatia','Cuba','Czech Republic','Denmark','Dominican Republic','Ecuador','Egypt','Estonia','Ethiopia','Fiji','Finland','France','Georgia','Germany','Ghana','Greece','Greenland','Guatemala','Haiti','Honduras','Hong Kong','Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland','Israel','Italy','Japan','Jordan','Kazakhstan','Kenya','South Korea','Kosovo','Kosovo','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho','Lithuania','Luxembourg','Macedonia','Malawi','Malaysia','Malta','Mauritania','Mexico','Moldova','Mongolia','Montenegro','Morocco','Mozambique','Nepal','Netherlands','New Zealand','Nicaragua','Niger','Nigeria','Norway','Pakistan','Panama','Paraguay','Peru','Philippines','Poland','Portugal','Puerto Rico','Romania','Russia','Saudi Arabia','Senegal','Serbia','Singapore','Slovakia','Slovenia','Somalia','South Africa','Spain','Sri Lanka','Sudan','Suriname','Sweden','Switzerland','Syria','Taiwan','Tajikistan','Tanzania','Thailand','Tunisia','Turkey','Ukraine','United Kingdom','Uruguay','Uzbekistan','Venezuela','Vietnam','Palestine','Yemen'
+                'Afghanistan','Albania','Algeria','Argentina','Armenia',
+                'Australia','Austria','Azerbaijan','Bangladesh','Belarus',
+                'Belgium','Bhutan','Bolivia','Bosnia and Herzegovina','Brazil',
+                'Bulgaria','Burkina Faso','Cambodia','Cameroon','Canada','Chad',
+                'Chile','China','Colombia','Democratic Republic of the Congo',
+                'Costa Rica','Cote d\'Ivoire','Croatia','Cuba','Czech Republic',
+                'Denmark','Dominican Republic','Ecuador','Egypt','Estonia',
+                'Ethiopia','Fiji','Finland','France','Georgia','Germany','Ghana',
+                'Greece','Greenland','Guatemala','Haiti','Honduras','Hong Kong',
+                'Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland',
+                'Israel','Italy','Japan','Jordan','Kazakhstan','Kenya','South Korea',
+                'Kosovo','Kosovo','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon',
+                'Lesotho','Lithuania','Luxembourg','Macedonia','Malawi','Malaysia','Malta',
+                'Mauritania','Mexico','Moldova','Mongolia','Montenegro','Morocco','Mozambique',
+                'Nepal','Netherlands','New Zealand','Nicaragua','Niger','Nigeria','Norway',
+                'Pakistan','Panama','Paraguay','Peru','Philippines','Poland','Portugal',
+                'Puerto Rico','Romania','Russia','Saudi Arabia','Senegal','Serbia','Singapore',
+                'Slovakia','Slovenia','Somalia','South Africa','Spain','Sri Lanka','Sudan',
+                'Suriname','Sweden','Switzerland','Syria','Taiwan','Tajikistan','Tanzania',
+                'Thailand','Tunisia','Turkey','Ukraine','United Kingdom','Uruguay','Uzbekistan',
+                'Venezuela','Vietnam','Palestine','Yemen'
                 ].indexOf(d.properties['NAME']) > -1) ? '#F2E41D' : '#8C8C8C';
         })
         .attr("stroke-width", "0.5")
