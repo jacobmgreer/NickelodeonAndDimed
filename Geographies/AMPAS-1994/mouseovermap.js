@@ -1,8 +1,8 @@
 //original script lovingly created by https://justvalerian.com/mouseovermap.html
 
 //initialize variables
-let width = 1000,
-    height = 800;
+let width = 800,
+    height = 500;
 let outline = ({type: "Sphere"});
 let graticule = d3.geoGraticule10();
 let projection, path, countries;
@@ -14,6 +14,7 @@ function mapInit(data) {
     path = d3.geoPath(projection);
     let svg = d3.select('div[id=d3map]')
                 .append('svg')
+                .style("background-color", "#000")
                 .attr('width', width)
                 .attr('height', height);
 
@@ -22,8 +23,7 @@ function mapInit(data) {
         .attr("class", "tooltip")
 
     let mouseover = function(event, d) {
-        d3.select(this)
-            .style('fill', '#0FF2B2');
+        // d3.select(this).style('fill', '#0FF2B2');
         tooltip
             .style("opacity", 1)
             .text(d.properties['NAME']);
@@ -34,8 +34,7 @@ function mapInit(data) {
             .style("top", (event.pageY - 20) + 'px');
     }
     let mouseout = function() {
-        d3.select(this)
-            .style('fill', '#8C8C8C');
+        // d3.select(this).style('fill', '#8C8C8C');
         tooltip
             .style("opacity", 0);
     }
@@ -71,29 +70,7 @@ function mapInit(data) {
         .attr('d', path)
         //.style('fill', '#8C8C8C')
         .style("fill", function(d) {
-            return ([
-                'Afghanistan','Albania','Algeria','Argentina','Armenia',
-                'Australia','Austria','Azerbaijan','Bangladesh','Belarus',
-                'Belgium','Bhutan','Bolivia','Bosnia and Herzegovina','Brazil',
-                'Bulgaria','Burkina Faso','Cambodia','Cameroon','Canada','Chad',
-                'Chile','China','Colombia','Democratic Republic of the Congo',
-                'Costa Rica','Cote d\'Ivoire','Croatia','Cuba','Czech Republic',
-                'Denmark','Dominican Republic','Ecuador','Egypt','Estonia',
-                'Ethiopia','Fiji','Finland','France','Georgia','Germany','Ghana',
-                'Greece','Greenland','Guatemala','Haiti','Honduras','Hong Kong',
-                'Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland',
-                'Israel','Italy','Japan','Jordan','Kazakhstan','Kenya','South Korea',
-                'Kosovo','Kosovo','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon',
-                'Lesotho','Lithuania','Luxembourg','Macedonia','Malawi','Malaysia','Malta',
-                'Mauritania','Mexico','Moldova','Mongolia','Montenegro','Morocco','Mozambique',
-                'Nepal','Netherlands','New Zealand','Nicaragua','Niger','Nigeria','Norway',
-                'Pakistan','Panama','Paraguay','Peru','Philippines','Poland','Portugal',
-                'Puerto Rico','Romania','Russia','Saudi Arabia','Senegal','Serbia','Singapore',
-                'Slovakia','Slovenia','Somalia','South Africa','Spain','Sri Lanka','Sudan',
-                'Suriname','Sweden','Switzerland','Syria','Taiwan','Tajikistan','Tanzania',
-                'Thailand','Tunisia','Turkey','Ukraine','United Kingdom','Uruguay','Uzbekistan',
-                'Venezuela','Vietnam','Palestine','Yemen'
-                ].indexOf(d.properties['NAME']) > -1) ? '#F2E41D' : '#8C8C8C';
+            return (d.properties['32_QID'] === null) ? '#8C8C8C' : '#F2E41D';
         })
         .attr("stroke-width", "0.5")
         .style('stroke', '#403E3F')
