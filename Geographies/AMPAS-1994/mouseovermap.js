@@ -25,7 +25,7 @@ function mapInit(data) {
         // d3.select(this).style('fill', '#0FF2B2');
         tooltip
             .style("opacity", 1)
-            .text(d.properties['NAME']);
+            .text(d.properties['NAME_EN']);
     }
     let mousemove = function(event) {
         tooltip
@@ -69,7 +69,7 @@ function mapInit(data) {
         .attr('d', path)
         //.style('fill', '#8C8C8C')
         .style("fill", function(d) {
-            return (d.properties['32_QID'] === null) ? '#8C8C8C' : '#F2E41D';
+            return (d.properties['Total'] === null) ? '#8C8C8C' : '#F2E41D';
         })
         .attr("stroke-width", "0.5")
         .style('stroke', '#403E3F')
