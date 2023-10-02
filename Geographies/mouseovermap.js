@@ -67,6 +67,8 @@ function mapInit(data) {
         .enter()
         .append('path')
         .attr('d', path)
+        .attr("stroke-width", "0.2")
+        .style('stroke', '#403E3F')
         .style("fill", function(d) {
             if(parseInt(d.properties['Total']) >= 60) { 
                 return "#D95323"; } 
@@ -80,8 +82,6 @@ function mapInit(data) {
                 return "#417CF2"; } 
             else { return "#F2F2F2"; }
         })
-        .attr("stroke-width", "0.5")
-        .style('stroke', '#403E3F')
     
     //tooltip mouseOver handling
         .on('mouseover', mouseover)
@@ -90,7 +90,7 @@ function mapInit(data) {
     //draws outline around map
     svg.append("use")
         .attr("href", "#outline")
-        .attr("stroke-width", "1")
+        .attr("stroke-width", "3")
         .attr("stroke", "#0D0D0D")
         .attr("fill", "none");
 
