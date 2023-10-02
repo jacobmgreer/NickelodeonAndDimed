@@ -85,9 +85,7 @@ function formatbuttons(file, id) {
           .property("disabled", true)
           .classed("btn", true)
           .classed("btn-light", true)
-          .text(function (d) {
-            if(Object.values(d) != "NA") {
-              return Object.values(d)}})
+          .text(function (d) {return Object.values(d)})
   });
 }
 formatbuttons("https://jacobmgreer.github.io/Film-Tracker/Geographies/nosubmissions.csv","nosubs")
