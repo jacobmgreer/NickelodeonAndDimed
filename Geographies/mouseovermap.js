@@ -90,7 +90,7 @@ function mapInit(data) {
     //draws outline around map
     svg.append("use")
         .attr("href", "#outline")
-        .attr("stroke-width", "3")
+        .attr("stroke-width", "1")
         .attr("stroke", "#0D0D0D")
         .attr("fill", "none");
 
