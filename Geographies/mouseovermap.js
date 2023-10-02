@@ -25,7 +25,7 @@ function mapInit(data) {
         // d3.select(this).style('fill', '#0FF2B2');
         tooltip
             .style("opacity", 1)
-            .text(d.properties['NAME_EN']);
+            .text(d.properties['NAME_LONG']);
     }
     let mousemove = function(event) {
         tooltip
@@ -69,16 +69,16 @@ function mapInit(data) {
         .attr('d', path)
         .style("fill", function(d) {
             if(parseInt(d.properties['Total']) >= 60) { 
-                return "#FFDF00"; } 
+                return "#D95323"; } 
             else if (parseInt(d.properties['Total']) >= 45) { 
-                return "#DCE609"; } 
+                return "#F2CC0C"; } 
             else if (parseInt(d.properties['Total']) >= 30) { 
-                return "#73FC03"; } 
+                return "#8BBF1B"; } 
             else if (parseInt(d.properties['Total']) >= 15) { 
-                return "#09E613"; } 
+                return "#3DADF2"; } 
             else if (parseInt(d.properties['Total']) >= 1) { 
-                return "#00FF74"; } 
-            else { return "#D9D9D9"; }
+                return "#417CF2"; } 
+            else { return "#F2F2F2"; }
         })
         .attr("stroke-width", "0.5")
         .style('stroke', '#403E3F')
