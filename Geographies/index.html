@@ -13,15 +13,15 @@ layout: default
 -->
 
 <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-8 col-md-8 mx-auto">
-        <h1 class="fw-light">International Submissions</h1>
-        <h3 class="fw-light">to the Academy Awards</h3>
-        <p class="lead text-muted">
-          "An international film is defined as a feature-length motion picture (over 40 minutes) produced outside the United States of America and its territories with a predominantly (more than 50%) non-English dialogue track. Animated and documentary feature films are permitted."
-        </p>
-      </div>
+  <div class="row py-lg-5">
+    <div class="col-lg-8 col-md-8 mx-auto">
+      <h1 class="fw-light">International Submissions</h1>
+      <h3 class="fw-light">to the Academy Awards</h3>
+      <p class="lead text-muted">
+        "An international film is defined as a feature-length motion picture (over 40 minutes) produced outside the United States of America and its territories with a predominantly (more than 50%) non-English dialogue track. Animated and documentary feature films are permitted."
+      </p>
     </div>
+  </div>
 </section>
 
 <section class="py-5 text-center container">
@@ -54,6 +54,56 @@ layout: default
 
 
 <div id="d3map" style="margin-left:auto;margin-right:auto;width:900px;"></div>
+
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-8 col-md-8 mx-auto">
+      <p class="lead">Former Countries that Submitted</p>
+      <div id="former"></div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-8 col-md-8 mx-auto">
+      <p class="lead">Sovereign Countries that Haven't Submitted</p>
+      <div id="nosubs"></div>
+    </div>
+  </div>
+</section>
+
+<script type="application/javascript">
+d3.text("former.csv", function (datasetText) {
+    var rows = d3.csv.parseRows(datasetText);
+    var tbl = d3.select("#former")
+        .append("table");
+    tbl.append("thead").append("tr")
+        .selectAll("th")
+        .data(rows[0])
+        .enter().append("th")
+        .text(function(d) {
+            return d;
+        });
+    tbl.append("tbody")
+        .selectAll("tr").data(rows.slice(1))
+        .enter().append("tr")
+
+        .selectAll("td")
+        .data(function(d){return d;})
+        .enter().append("td")
+        .text(function(d){return d;})
+});
+d3.text("nosubmissions.csv", function (datasetText) {
+    var rows = d3.csv.parseRows(datasetText);
+    var tbl = d3.select("#nosubs")
+        .append("table");
+    tbl.data(rows.slice(1))
+        .enter()
+        .append("button")
+        .text(function(d){return d;})
+});
+</script>
 
 <script type="application/javascript" src="https://jacobmgreer.github.io/Film-Tracker/js/mapping/d3-geo-projection.v3.min.js"></script>
 <script type="application/javascript" src="https://jacobmgreer.github.io/Film-Tracker/js/mapping/d3.v6.min.js"></script>
