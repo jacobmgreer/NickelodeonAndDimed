@@ -68,15 +68,15 @@ function mapInit(data) {
         .append('path')
         .attr('d', path)
         .style("fill", function(d) {
-            if(d.properties['Total'] >= 70) { 
+            if(parseInt(d.properties['Total']) >= 60) { 
                 return "#FFDF00"; } 
-            else if(70 > d.properties['Total'] >= 50) { 
+            else if (parseInt(d.properties['Total']) >= 45) { 
                 return "#DCE609"; } 
-            else if(50 > d.properties['Total'] >= 30) { 
+            else if (parseInt(d.properties['Total']) >= 30) { 
                 return "#73FC03"; } 
-            else if(30 > d.properties['Total'] >= 10) { 
+            else if (parseInt(d.properties['Total']) >= 15) { 
                 return "#09E613"; } 
-            else if(10 > d.properties['Total'] >= 1) { 
+            else if (parseInt(d.properties['Total']) >= 1) { 
                 return "#00FF74"; } 
             else { return "#D9D9D9"; }
         })
