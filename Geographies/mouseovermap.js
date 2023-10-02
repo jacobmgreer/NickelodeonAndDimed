@@ -25,7 +25,7 @@ function mapInit(data) {
         // d3.select(this).style('fill', '#0FF2B2');
         tooltip
             .style("opacity", 1)
-            .text(d.properties['NAME_LONG']);
+            .text(d.properties['NAME_LONG'] + ": " + d.properties['Total'] + " submissions");
     }
     let mousemove = function(event) {
         tooltip
