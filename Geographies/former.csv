@@ -1,10 +1,10 @@
 "SubmissionCountry","Total","1950s","1960s","1970s","1980s","1990s","2000s","2010s","2020s"
-"Czechoslovakia","23",0,6,6,9,2,0,0,0
-"East Germany","5",0,0,3,2,0,0,0,0
-"FR Yugoslavia","7",0,0,0,0,5,2,0,0
-"Macedonia","15",0,0,0,0,3,5,7,0
-"Serbia and Montenegro","3",0,0,0,0,0,3,0,0
-"Soviet Union","24",0,4,9,10,2,0,0,0
-"United Arab Republic","3",2,1,0,0,0,0,0,0
-"West Germany","30",4,8,10,10,0,0,0,0
-"Yugoslavia","29",2,8,8,10,2,0,0,0
+"Czechoslovakia","23",NA,6,6,9,2,NA,NA,NA
+"East Germany","5",NA,NA,3,2,NA,NA,NA,NA
+"FR Yugoslavia","7",NA,NA,NA,NA,5,2,NA,NA
+"Macedonia","15",NA,NA,NA,NA,3,5,7,NA
+"Serbia and Montenegro","3",NA,NA,NA,NA,NA,3,NA,NA
+"Soviet Union","24",NA,4,9,10,2,NA,NA,NA
+"United Arab Republic","3",2,1,NA,NA,NA,NA,NA,NA
+"West Germany","30",4,8,10,10,NA,NA,NA,NA
+"Yugoslavia","29",2,8,8,10,2,NA,NA,NA
