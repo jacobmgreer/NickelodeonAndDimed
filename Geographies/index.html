@@ -64,6 +64,10 @@ layout: default
   </div>
 </section>
 
+<script type="application/javascript">
+  formattable('https://jacobmgreer.github.io/Film-Tracker/Geographies/former.csv','former');
+</script>
+
 <section class="py-5 text-center container">
   <div class="row py-lg-5">
     <div class="col-lg-8 col-md-8 mx-auto">
@@ -72,38 +76,6 @@ layout: default
     </div>
   </div>
 </section>
-
-<script type="application/javascript">
-d3.text("former.csv", function (datasetText) {
-    var rows = d3.csv.parseRows(datasetText);
-    var tbl = d3.select("#former")
-        .append("table");
-    tbl.append("thead").append("tr")
-        .selectAll("th")
-        .data(rows[0])
-        .enter().append("th")
-        .text(function(d) {
-            return d;
-        });
-    tbl.append("tbody")
-        .selectAll("tr").data(rows.slice(1))
-        .enter().append("tr")
-
-        .selectAll("td")
-        .data(function(d){return d;})
-        .enter().append("td")
-        .text(function(d){return d;})
-});
-d3.text("nosubmissions.csv", function (datasetText) {
-    var rows = d3.csv.parseRows(datasetText);
-    var tbl = d3.select("#nosubs")
-        .append("table");
-    tbl.data(rows.slice(1))
-        .enter()
-        .append("button")
-        .text(function(d){return d;})
-});
-</script>
 
 <script type="application/javascript" src="https://jacobmgreer.github.io/Film-Tracker/js/mapping/d3-geo-projection.v3.min.js"></script>
 <script type="application/javascript" src="https://jacobmgreer.github.io/Film-Tracker/js/mapping/d3.v6.min.js"></script>
