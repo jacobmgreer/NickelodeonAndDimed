@@ -154,6 +154,7 @@ layout: radial
         .append('table')
         .classed('table', true)
         .classed('table-striped', true)
+        .style('table-layout',"fixed")
         
       AwardCategories.append('thead')
        	.append('tr')
@@ -162,7 +163,13 @@ layout: radial
           .enter()
         .append('th')
           .attr('scope', 'col')
-          .text(d => d)
+          .text(
+            function(d) {
+              if (d === "Your.Rating") {return "Me"}
+              else if (d === "IMDb.Rating") {return "IMDb"}
+              else if (d === "Num.Votes") {return "Votes"}
+              else {return d}
+            })
          
       var tbody = AwardCategories.append('tbody')
       
@@ -188,6 +195,8 @@ layout: radial
           .enter()
           .append('td')
           .classed('table-success', d => d.winner === "Winner" ? true : false)
+          .style('width', d => 
+            d.column === 'PersonName' || d.column === 'FilmName' ? "auto" ? "75px")
           .html(function(d){
             if (d.column === 'FilmName') {
             	return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
