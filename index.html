@@ -64,7 +64,7 @@ d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/ratings/formatted.csv',fun
               .filter(element => element.Title != "NA")
               .filter(element => element["Title.Type"] === "movie")
               .slice(0,26)
-  var columns = ['Date.Rated','Title.Type','Title','Year','Your.Rating','IMDb.Rating','Num.Votes']
+  var columns = ['Date.Rated', 'Title', 'Year', 'Your.Rating', 'IMDb.Rating', 'Num.Votes']
   tabulate(data,columns)
 })
 </script>
@@ -78,10 +78,9 @@ d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/ratings/formatted.csv',fun
         <thead>
           <tr>
             <th scope="col">Date Rated</th>
-            <th scope="col">Type</th>
             <th scope="col">Content Title</th>
             <th scope="col">Release Year</th>
-            <th scope="col">My Rating</th>
+            <th scope="col">Jacob's Rating</th>
             <th scope="col">IMDb Rating</th>
             <th scope="col">IMDb Votes</th>
           </tr>
