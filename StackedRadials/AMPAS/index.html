@@ -78,11 +78,13 @@ layout: radial
       .text('Academy Awards');
 
   d3.csv("https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/Oscars-Chart-Data.csv", function(d, i, columns) {
-    for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
-    d.total = t;
-    return d;
-  }, function(error, data) {
-    if (error) throw error;
+      for (i = 1, t = 0; i < columns.length; ++i) 
+        t += d[columns[i]] = +d[columns[i]];
+        d.total = t;
+        return d;
+    }, 
+    function(error, data) {
+      if (error) throw error;
 
     x.domain(data.map(d => d.AwardCeremony));
     y.domain([0, d3.max(data, d => d.total)]);
