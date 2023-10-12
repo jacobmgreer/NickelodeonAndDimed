@@ -95,7 +95,7 @@ layout: default
 
 
 <script type="text/javascript">
-    d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/Oscars-Summary-Ceremonies.csv', function(data){
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/Oscars-Summary-Ceremonies.csv', function(data){
         var nested_data = d3.nest().entries(data.sort(function (a,b) {return d3.descending(a.AwardCeremony, b.AwardCeremony);}));
         doSomething2(nested_data);
     })
@@ -159,7 +159,7 @@ layout: default
   function awardTable(ceremony, awardtype) {
     $("#filmlist").empty();
     var data = [];
-    d3.csv('https://jacobmgreer.github.io/Media-Consumption/datasets/Oscars/OscarsTracking.csv', function(data){
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/OscarsTracking.csv', function(data){
     		var data = data.filter(element => element.AwardCeremony === ceremony).filter(element => element.AwardType === awardtype)
         var nested_data = d3.nest()
                             .key(function(d) { return d.AwardCeremony; })
