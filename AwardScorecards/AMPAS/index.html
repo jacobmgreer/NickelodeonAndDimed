@@ -223,20 +223,22 @@ layout: default
           .enter()
           .append('td')
           .attr('class', function(d) {
-    				if (d.winner == "Winner") {return "table-success"}
-            else {return "nominee"}
+    				if (d.winner === "Winner") {
+              return "table-success"}
+            else {
+              return "nominee"}
 					})
           .attr('class', function(d) {
-            if(d.column == "PersonName") {
+            if(d.column === "PersonName") {
               return "text-start"}
             else {
               return "text-center"}
           })
           .html(function(d){
-            if (d.column == 'FilmName') {
+            if (d.column === 'FilmName') {
             	return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
             }
-            else if (d.column == 'PersonName') {
+            else if (d.column === 'PersonName') {
             	return "<a href=\"https://www.imdb.com/name/" + d.PersonID + "\">" + d.value + "</a>"
             }
             else if (d.column === "Num.Votes") {

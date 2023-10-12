@@ -84,47 +84,50 @@ layout: radial
   }, function(error, data) {
     if (error) throw error;
 
-    x.domain(data.map(function(d) { return d.AwardCeremony; }));
-    y.domain([0, d3.max(data, function(d) { return d.total; })]);
+    x.domain(data.map(d => d.AwardCeremony));
+    y.domain([0, d3.max(data, d => d.total)]);
     z.domain(data.columns.slice(1));
 
     g.append("g")
       .selectAll("g")
       .data(d3.stack().keys(data.columns.slice(1))(data))
       .enter().append("g")
-        .attr("fill", function(d) { return z(d.key); })
+        .attr("fill", d => z(d.key))
       .selectAll("path")
-      .data(function(d) { return d; })
+      .data(d => d)
       .enter().append("path")
         .attr("d", d3.arc()
-            .innerRadius(function(d) { return y(d[0]); })
-            .outerRadius(function(d) { return y(d[1]); })
-            .startAngle(function(d) { return x(d.data.AwardCeremony); })
-            .endAngle(function(d) { return x(d.data.AwardCeremony) + x.bandwidth(); })
+            .innerRadius(d => y(d[0]))
+            .outerRadius(d => y(d[1]))
+            .startAngle(d => x(d.data.AwardCeremony))
+            .endAngle(d => x(d.data.AwardCeremony) + x.bandwidth())
             .padAngle(0.01)
             .padRadius(innerRadius))
-      .on('mouseover', function(d) {
+      .on('mouseover', d =>
         tooltip
           .attr("font-size", "45px")
-          .text(d.data.AwardCeremony)})
-      .on('click', function(d) {
-        awardTable(d.data.AwardCeremony)})
-      .on('mouseout', function(d) {
+          .text(d.data.AwardCeremony))
+      .on('click', d =>
+        awardTable(d.data.AwardCeremony))
+      .on('mouseout', d =>
         tooltip
           .attr("font-size", "20px")
-          .text('Academy Awards');});
+          .text('Academy Awards'));
   });
 </script>
 
 <script type="text/javascript">
   function awardTable(ceremony) {
+    
     $("#filmlist").empty();
+
     var data = [];
+    
     d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/OscarsTracking.csv', function(data){
     		var data = data.filter(element => element.AwardCeremony === ceremony)
         var nested_data = d3.nest()
-                            .key(function(d) { return d.AwardCeremony; })
-                            .key(function(d) { return d.AwardCategory; })
+                            .key(d => d.AwardCeremony)
+                            .key(d => d.AwardCategory)
                             .entries(data);
         doSomething(nested_data);
     })
@@ -137,9 +140,9 @@ layout: radial
         .data(d)
         .enter()
         .append('div')
-        .html(function(d){return "<h1 class=\"display-5 text-center\" id=\"type-details\">" + d.key + "</h1>"})
+        .html(d => "<h1 class=\"display-5 text-center\" id=\"type-details\">" + d.key + "</h1>")
         
-      var data1 = function(d) {return d.values}
+      var data1 = d => d.values
         
       var AwardCategories = AwardCeremonies.selectAll('div')
        	.data(data1)
@@ -158,11 +161,11 @@ layout: radial
           .enter()
         .append('th')
           .attr('scope', 'col')
-          .text(function (d) { return d })
+          .text(d => d)
          
       var tbody = AwardCategories.append('tbody')
       
-      var data2 = function(d) {return d.values}
+      var data2 = d => d.values
       
       var rows = tbody.selectAll('tr')
           .data(data2)
@@ -183,18 +186,7 @@ layout: radial
               })
           .enter()
           .append('td')
-          .attr('class', function(d) {
-    				if (d.winner === "Winner") {
-              return "table-success"}
-            else {
-              return "nominee"}
-					})
-          .attr('class', function(d) {
-            if(d.column == "PersonName") {
-              return "text-start"}
-            else {
-              return "text-center"}
-          })
+          .classed('table-success', d => d.winner === "Winner" ? true : false)
           .html(function(d){
             if (d.column === 'FilmName') {
             	return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
