@@ -230,6 +230,7 @@ layout: default
           .append('td')
           .classed('table-success', d => d.winner === "Winner" ? true : false)
           .classed('text-start', d => d.column === "FilmName" ? true : false)
+          .classed('text-start', d => d.column === "PersonName" ? true : false)
           .html(function(d){
             if (d.column === 'FilmName') {
             	return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"

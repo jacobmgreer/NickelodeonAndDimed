@@ -150,7 +150,7 @@ layout: radial
        	.data(data1)
         .enter()
         .append('div')
-        .html(function(d){return '<h3>' + d.key + '</h3>'})
+        .html(d => '<h3>' + d.key + '</h3>')
         .append('table')
         .classed('table', true)
         .classed('table-striped', true)
