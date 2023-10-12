@@ -96,7 +96,9 @@ layout: default
 
 <script type="text/javascript">
     d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/Oscars-Summary-Ceremonies.csv', function(data){
-        var nested_data = d3.nest().entries(data.sort(function (a,b) {return d3.descending(a.AwardCeremony, b.AwardCeremony);}));
+        var nested_data = d3.nest()
+            .entries(data.sort(function (a,b) {
+              return d3.descending(a.AwardCeremony, b.AwardCeremony);}));
         doSomething2(nested_data);
     })
 
@@ -157,13 +159,17 @@ layout: default
 
      }
   function awardTable(ceremony, awardtype) {
+    
     $("#filmlist").empty();
+    
     var data = [];
+
     d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/OscarsTracking.csv', function(data){
-    		var data = data.filter(element => element.AwardCeremony === ceremony).filter(element => element.AwardType === awardtype)
+    		var data = data.filter(element => element.AwardCeremony === ceremony)
+                       .filter(element => element.AwardType === awardtype)
         var nested_data = d3.nest()
-                            .key(function(d) { return d.AwardCeremony; })
-                            .key(function(d) { return d.AwardCategory; })
+                            .key(d => d.AwardCeremony)
+                            .key(d => d.AwardCategory)
                             .entries(data);
         doSomething(nested_data);
     })
@@ -176,15 +182,15 @@ layout: default
         .data(d)
         .enter()
         .append('div')
-        .html(function(d){return "<h1 class=\"display-5 text-center\" id=\"type-details\">" + d.key + "</h1>"})
+        .html(d => "<h1 class=\"display-5 text-center\" id=\"type-details\">" + d.key + "</h1>")
 
-      var data1 = function(d) {return d.values}
+      var data1 = d => d.values
 
       var AwardCategories = AwardCeremonies.selectAll('div')
        	.data(data1)
         .enter()
         .append('div')
-        .html(function(d){return '<h3>' + d.key + '</h3>'})
+        .html(d => '<h3>' + d.key + '</h3>')
         .append('table')
         .classed('table', true)
         .classed('table-striped', true)
@@ -197,11 +203,11 @@ layout: default
           .enter()
         .append('th')
           .attr('scope', 'col')
-          .text(function (d) { return d })
+          .text(d => d)
 
       var tbody = AwardCategories.append('tbody')
 
-      var data2 = function(d) {return d.values}
+      var data2 = d => d.values
 
       var rows = tbody.selectAll('tr')
           .data(data2)
@@ -222,18 +228,7 @@ layout: default
               })
           .enter()
           .append('td')
-          .attr('class', function(d) {
-    				if (d.winner === "Winner") {
-              return "table-success"}
-            else {
-              return "nominee"}
-					})
-          .attr('class', function(d) {
-            if(d.column === "PersonName") {
-              return "text-start"}
-            else {
-              return "text-center"}
-          })
+          .classed('table-success', d => d.winner === "Winner" ? true : false)
           .html(function(d){
             if (d.column === 'FilmName') {
             	return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
