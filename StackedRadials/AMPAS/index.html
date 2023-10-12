@@ -181,14 +181,14 @@ layout: radial
           .enter()
           .append('td')
           .attr('class', function(d) {
-    				if (d["AwardWinner"] == "Winner") {return "table-success"}
+    				if (d["AwardWinner"] === "Winner") {return "table-success"}
             else {return "nominee"}
 					})
           .html(function(d){
-            if (d.column == 'FilmName') {
+            if (d.column === 'FilmName') {
             	return "<a href=\"https://www.imdb.com/title/" + d["FilmID"] + "\">" + d.value + "</a>"
             }
-            else if (d.column == 'PersonName') {
+            else if (d.column === 'PersonName') {
             	return "<a href=\"https://www.imdb.com/name/" + d["PersonID"] + "\">" + d.value + "</a>"
             }
             else if (d.column === "Num.Votes") {
