@@ -155,17 +155,18 @@ layout: radial
           .append('tr')
           
       var nominee = rows.selectAll('td')
-          .data(row => 
-                  columns.map(
-                    column =>
+          .data(function (row) {
+                return columns.map(function (column) {
+                  return { 
                       column: column, 
                       value: row[column], 
                       winner: row['AwardWinner'], 
                       FilmID: row["FilmID"],
                       PersonID: row["PersonID"],
                       Rating: row["Your.Rating"]
-                  )
-                )
+                  }
+                })
+              })
           .enter()
           .append('td')
           .style('background-color', d => d.Rating != "NA" ? "#73BF94" : null) 
