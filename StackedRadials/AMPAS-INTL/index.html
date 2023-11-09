@@ -3,6 +3,17 @@ title: "The Academy Awards - International Submissions by Ceremony"
 layout: radial
 ---
 
+
+/** 
+/* Color Theme Swatches in Hex */
+.Laxer-Website-1-hex { color: #F288CD; }
+.Laxer-Website-2-hex { color: #A6638F; }
+.Laxer-Website-3-hex { color: #888B8C; }
+.Laxer-Website-4-hex { color: #F2F2F2; }
+.Laxer-Website-5-hex { color: #262626; }
+
+**/
+
 <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-8 col-md-8 mx-auto">
@@ -40,7 +51,7 @@ layout: radial
       .range([innerRadius, outerRadius]);
 
   var z = d3.scaleOrdinal()
-      .range(["#3973BF", "#023059", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+      .range(["#F288CD", "#A6638F", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
   var tooltip = svg.append("text")
       .style('display', 'block')
