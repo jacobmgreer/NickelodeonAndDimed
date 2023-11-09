@@ -144,6 +144,8 @@ layout: radial
           .enter()
         .append('th')
           .attr('scope', 'col')
+          .style('width', d => 
+            d === 'SubmissionCountry' || d === 'SubmissionTitle' ? "auto" : "140px")
           .text(
             function(d) {
               if (d === "Your.Rating") {return "Me"}
