@@ -95,7 +95,7 @@ layout: radial
 
     var data = [];
     
-    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/AMPAS-International/data.csv', function(data){
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/AMPAS-International/Data.csv', function(data){
         var data = data.filter(element => element.Ceremony === ceremony)
         var nested_data = d3.nest()
                             .key(d => d.Ceremony)
