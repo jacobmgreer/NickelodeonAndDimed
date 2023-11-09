@@ -1,6 +1,6 @@
 ---
 title: "The Academy Awards - International Submissions by Ceremony"
-layout: default
+layout: radial
 ---
 
 <section class="py-5 text-center container">
@@ -96,8 +96,8 @@ layout: default
       $("#filmlist").empty()
       $("h3.replaceText").text(subt)
       
-      var columns = ['SubmissionTitle','Year','SubmissionCountry','Languages','Directors',
-                     'Runtime','Your.Rating','IMDb.Rating','Num.Votes']
+      var columns = ['SubmissionTitle', 'Year', 'SubmissionCountry', 'Languages', 'Directors',
+                     'Runtime', 'Your.Rating', 'IMDb.Rating', 'Num.Votes']
       var table = d3.select("#filmlist")
                     .append('table')
                     .classed('table', true)
