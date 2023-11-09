@@ -82,71 +82,101 @@ layout: radial
           .attr("font-size", "45px")
           .text(d.data.Ceremony)})
       .on('click', function(d) {
-        tabulate(d.data.Ceremony,'Submissions for Ceremony ' + d.data.Ceremony)})
+        awardTable(d.data.Ceremony)})
       .on('mouseout', function(d) {
         tooltip
           .attr("font-size", "20px")
           .text("International Submissions");});
   });
 
-  function tabulate(Ceremony, subt) {
-    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/AMPAS-International/Data.csv',function (data) {
-      var data = data.filter(element => element.Ceremony === Ceremony);
+  function awardTable(ceremony) {
+    
+    $("#filmlist").empty();
 
-      $("#filmlist").empty()
-      $("h3.replaceText").text(subt)
-      
-      var columns = ['SubmissionTitle', 'SubmissionCountry', 'Languages',
-                     'Your.Rating', 'IMDb.Rating', 'Num.Votes']
-      var table = d3.select("#filmlist")
-                    .append('table')
-                    .classed('table', true)
-                    .classed('table-striped', true)
-      var thead = table.append('thead')
-      var tbody = table.append('tbody')
-  
-      thead.append('tr')
+    var data = [];
+    
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/AMPAS-International/data.csv', function(data){
+        var data = data.filter(element => element.Ceremony === ceremony)
+        var nested_data = d3.nest()
+                            .key(d => d.Ceremony)
+                            .key(d => d.Resu)
+                            .entries(data);
+        doSomething(nested_data);
+    })
+    
+    function doSomething(d){
+          
+      var columns = ['SubmissionCountry','SubmissionTitle','Languages',
+                     'Your.Rating','IMDb.Rating','Num.Votes']
+    
+      var AwardCeremonies = d3.select('#filmlist').selectAll('div')
+        .data(d)
+        .enter()
+        .append('div')
+        .html(d => "<h1 class=\"display-5 text-center\" id=\"type-details\">" + d.key + "</h1>")
+        
+      var data1 = d => d.values
+        
+      var AwardCategories = AwardCeremonies.selectAll('div')
+        .data(data1)
+        .enter()
+        .append('div')
+        .html(d => '<h3>' + d.key + '</h3>')
+        .append('table')
+        .classed('table', true)
+        .classed('table-striped', true)
+        .style('table-layout',"fixed")
+        
+      AwardCategories.append('thead')
+        .append('tr')
         .selectAll('th')
           .data(columns)
           .enter()
         .append('th')
           .attr('scope', 'col')
-          .text(function (d) { return d })
-  
-      var rows = tbody.selectAll('tr')
-          .data(data)
-          .enter()
-        .append('tr')
-  
-      var cells = rows.selectAll('td')
-          .data(function(row) {
-            return columns.map(function (column) {
-              return { 
-                column: column, 
-                value: row[column], 
-                link: row["Const"], 
-                rating: row["Your.Rating"] }
+          .text(
+            function(d) {
+              if (d === "Your.Rating") {return "Me"}
+              else if (d === "IMDb.Rating") {return "IMDb"}
+              else if (d === "Num.Votes") {return "Votes"}
+              else {return d}
             })
-          })
-        .enter()
-        .append('td')
-        .style('background-color', function(d) {
-            if (d.rating != "NA") {return "#77D9BD"}
-            else {}
-          })
-        .html(function (d) { 
-          if (d.column === "Title") {
-            return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
-          }
-          else if (d.column === "Num.Votes") {
-            return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-          }
-          else {if(d.value != "NA") {return d.value}}})
-        
-      if (year != null) {document.getElementById("switch").scrollIntoView()}
+         
+      var tbody = AwardCategories.append('tbody')
       
-      return table
-  })}
+      var data2 = d => d.values
+      
+      var rows = tbody.selectAll('tr')
+          .data(data2)
+          .enter()
+          .append('tr')
+          
+      var nominee = rows.selectAll('td')
+          .data(function (row) {
+                return columns.map(function (column) {
+                  return { 
+                    column: column, 
+                    value: row[column],
+                    FilmID: row["Const"]
+                  }
+                })
+              })
+          .enter()
+          .append('td')
+          .classed('table-success', d => d.winner === "Winner" ? true : false)
+          .html(function(d){
+            if (d.column === 'SubmissionTitle') {
+              return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
+            }
+            else if (d.column === "Num.Votes") {
+              return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            else {
+              if(d.value != "NA") {return d.value}}})
+              
+      document.getElementById("filmlist").scrollIntoView();
+     }
+  }
 
   d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/AMPAS-International/Data.csv',function (data) {
     d3.select('#progress')
