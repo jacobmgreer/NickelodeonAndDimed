@@ -96,8 +96,8 @@ layout: radial
       $("#filmlist").empty()
       $("h3.replaceText").text(subt)
       
-      var columns = ['SubmissionTitle', 'Year', 'SubmissionCountry', 'Languages', 'Directors',
-                     'Runtime', 'Your.Rating', 'IMDb.Rating', 'Num.Votes']
+      var columns = ['SubmissionTitle', 'SubmissionCountry', 'Languages',
+                     'Your.Rating', 'IMDb.Rating', 'Num.Votes']
       var table = d3.select("#filmlist")
                     .append('table')
                     .classed('table', true)
