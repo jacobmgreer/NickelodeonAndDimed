@@ -99,15 +99,14 @@ layout: radial
         var data = data.filter(element => element.Ceremony === ceremony)
         var nested_data = d3.nest()
                             .key(d => d.Ceremony)
-                            .key(d => d.Resu)
+                            .key(d => d.Result)
                             .entries(data);
         doSomething(nested_data);
     })
     
     function doSomething(d){
           
-      var columns = ['SubmissionCountry','SubmissionTitle','Languages',
-                     'Your.Rating','IMDb.Rating','Num.Votes']
+      var columns = ['SubmissionCountry','SubmissionTitle','Your.Rating','IMDb.Rating','Num.Votes']
     
       var AwardCeremonies = d3.select('#filmlist').selectAll('div')
         .data(d)
