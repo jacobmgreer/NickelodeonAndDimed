@@ -34,6 +34,11 @@ div.tooltip {
   border: none; 
   padding: 5px;}
 
+td.SubmissionCountry {
+  width:90px;}
+td.SubmissionTitle {
+  width:140px;}
+
 /* International List */
 #ilist .medium {
   margin-left: auto;

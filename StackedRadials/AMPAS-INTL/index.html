@@ -145,12 +145,8 @@ layout: radial
           .enter()
         .append('th')
           .attr('scope', 'col')
-          .style('width', 
-            function(d) {
-              if (d === "SubmissionCountry") {return "90px"}
-              else if (d === "SubmissionTitle") {return "140px"}
-              else {return "auto"}
-            })
+          .classed('SubmissionCountry', d => d === "SubmissionCountry" ? true : false)
+          .classed('SubmissionTitle', d => d === "SubmissionTitle" ? true : false)
           .text(
             function(d) {
               if (d === "Your.Rating") {return "Me"}
@@ -180,7 +176,6 @@ layout: radial
               })
           .enter()
           .append('td')
-          .classed('table-success', d => d.winner === "Winner" ? true : false)
           .html(function(d){
             if (d.column === 'SubmissionTitle') {
               return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
