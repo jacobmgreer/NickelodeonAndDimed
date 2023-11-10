@@ -118,7 +118,7 @@ layout: radial
     
     function doSomething(d){
           
-      var columns = ['SubmissionCountry','SubmissionTitle','IMDb.Rating','Num.Votes']
+      var columns = ['SubmissionCountry','SubmissionTitle','Your.Rating','IMDb.Rating','Num.Votes']
     
       var AwardCeremonies = d3.select('#filmlist').selectAll('div')
         .data(d)
@@ -146,12 +146,14 @@ layout: radial
         .append('th')
           .attr('scope', 'col')
           .classed('Rating', d => d === "IMDb.Rating" ? true : false)
+          .classed('Rating', d => d === "Your.Rating" ? true : false)
           .classed('Votes', d => d === "Num.Votes" ? true : false)
           .text(
             function(d) {
               if (d === "Your.Rating") {return "Me"}
               else if (d === "IMDb.Rating") {return "IMDb"}
               else if (d === "Num.Votes") {return "Votes"}
+              else if (d === "Your.Rating") {return "Jacob"}
               else {return d}
             })
          
@@ -177,7 +179,7 @@ layout: radial
               })
           .enter()
           .append('td')
-          .classed('table-success', d => d.rated != "NA" ? true : false)
+          .classed('table-warning', d => d.rated != "NA" ? true : false)
           .html(function(d){
             if (d.column === 'SubmissionTitle') {
               return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
