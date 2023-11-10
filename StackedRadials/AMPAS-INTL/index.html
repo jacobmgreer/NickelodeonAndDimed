@@ -145,8 +145,8 @@ layout: radial
           .enter()
         .append('th')
           .attr('scope', 'col')
-          .classed('IMDb.Rating', d => d === "Rating" ? true : false)
-          .classed('Num.Votes', d => d === "Votes" ? true : false)
+          .classed('Rating', d => d === "IMDb.Rating" ? true : false)
+          .classed('Votes', d => d === "Num.Votes" ? true : false)
           .text(
             function(d) {
               if (d === "Your.Rating") {return "Me"}
