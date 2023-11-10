@@ -34,10 +34,10 @@ div.tooltip {
   border: none; 
   padding: 5px;}
 
-th.SubmissionCountry {
-  width:90px;}
-th.SubmissionTitle {
-  width:140px;}
+th.Rating {
+  width:75px;}
+th.Votes {
+  width:100px;}
 
 /* International List */
 #ilist .medium {
