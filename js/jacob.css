@@ -34,9 +34,9 @@ div.tooltip {
   border: none; 
   padding: 5px;}
 
-td.SubmissionCountry {
+th.SubmissionCountry {
   width:90px;}
-td.SubmissionTitle {
+th.SubmissionTitle {
   width:140px;}
 
 /* International List */
