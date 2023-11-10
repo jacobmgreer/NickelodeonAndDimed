@@ -170,12 +170,14 @@ layout: radial
                   return { 
                     column: column, 
                     value: row[column],
+                    rated: row["Your.Rating"],
                     FilmID: row["Const"]
                   }
                 })
               })
           .enter()
           .append('td')
+          .classed('table-success', d => d.rated != "NA" ? true : false)
           .html(function(d){
             if (d.column === 'SubmissionTitle') {
               return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
