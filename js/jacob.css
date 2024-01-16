@@ -6,9 +6,9 @@ nav h1.display-5 {
   margin-top:50px;}
 #subtitle {
   padding-top:25px;}
-nav.navbar a, nav.navbar a:active, nav.navbar a:visited {
+nav.navbar a, nav.navbar a:active, nav.navbar a:visited, table a {
   color: #102601;}
-nav.navbar a:hover {
+nav.navbar a:hover, table a:hover {
   color: #778C79;}
 
 button, button.btn, button.btn-light {
