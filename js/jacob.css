@@ -141,3 +141,25 @@ section#awards .award4 {/* 61-100% */
   filter: invert(90%) sepia(45%) saturate(809%) hue-rotate(348deg) brightness(97%) contrast(96%);}
 section#awards .award5 {/* 100% */
   filter: invert(79%) sepia(12%) saturate(1239%) hue-rotate(77deg) brightness(86%) contrast(85%);}
+
+/* styles specifically for great procreations */
+body#procreations div.reset {
+  background-color: #698EBF;
+  color:#ffffff;
+  font-weight: bold;
+  height:50px;
+  margin-top:25px;}
+body#procreations div.reset h5 {
+  line-height:30px;
+  vertical-align:middle;}
+body#procreations .center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;}
+body#procreations section#procreations p.iHide {
+  visibility: hidden;
+  display:none;}
+body#procreations a {
+  color: #698EBF;}
+body#procreations section#infobox {
+  margin-top:25px;}
