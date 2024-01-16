@@ -6,7 +6,7 @@ let width = 900,
 let outline = ({type: "Sphere"});
 let graticule = d3.geoGraticule10();
 let projection, path, countries;
-let importPath = 'https://jacobmgreer.github.io/Film-Tracker/Geographies/submission.stats.geojson';
+let importPath = 'https://jacobmgreer.github.io/NickelodeonAndDimed/Geographies/submission.stats.geojson';
 
 function mapInit(data) {
     projection = d3.geoPolyhedralCollignon()
@@ -70,19 +70,19 @@ function mapInit(data) {
         .attr("stroke-width", "0.2")
         .style('stroke', '#403E3F')
         .style("fill", function(d) {
-            if(parseInt(d.properties['Total']) >= 60) { 
-                return "#D95323"; } 
-            else if (parseInt(d.properties['Total']) >= 45) { 
-                return "#F2CC0C"; } 
-            else if (parseInt(d.properties['Total']) >= 30) { 
-                return "#8BBF1B"; } 
-            else if (parseInt(d.properties['Total']) >= 15) { 
-                return "#3DADF2"; } 
-            else if (parseInt(d.properties['Total']) >= 1) { 
-                return "#417CF2"; } 
+            if(parseInt(d.properties['Total']) >= 60) {
+                return "#D95323"; }
+            else if (parseInt(d.properties['Total']) >= 45) {
+                return "#F2CC0C"; }
+            else if (parseInt(d.properties['Total']) >= 30) {
+                return "#8BBF1B"; }
+            else if (parseInt(d.properties['Total']) >= 15) {
+                return "#3DADF2"; }
+            else if (parseInt(d.properties['Total']) >= 1) {
+                return "#417CF2"; }
             else { return "#F2F2F2"; }
         })
-    
+
     //tooltip mouseOver handling
         .on('mouseover', mouseover)
         .on('mousemove', mousemove)
