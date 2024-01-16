@@ -13,7 +13,8 @@ nav.navbar a:hover {
 
 button, button.btn, button.btn-light {
   background-color: #D7D7D9;
-  border:0;}
+  border:0;
+  color:#102601;}
 
 
 table {

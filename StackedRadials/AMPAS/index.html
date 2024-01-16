@@ -20,22 +20,22 @@ layout: radial
 </section>
 
 <section class="py-5 text-center container">
-  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+  <button type="button" disabled>
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#94F2D0" class="bi bi-circle-fill" viewBox="0 0 30 30">
       <circle cx="15" cy="15" r="15"></circle>
     </svg> Winners Seen
   </button>
-  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+  <button type="button" disabled>
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#69BFA0" class="bi bi-circle-fill" viewBox="0 0 30 30">
       <circle cx="15" cy="15" r="15"></circle>
     </svg> Winners Not Seen
   </button>
-  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+  <button type="button" disabled>
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#C1D9D2" class="bi bi-circle-fill" viewBox="0 0 30 30">
       <circle cx="15" cy="15" r="15"></circle>
     </svg> Nominees Seen
   </button>
-  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+  <button type="button" disabled>
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#9AA692" class="bi bi-circle-fill" viewBox="0 0 30 30">
       <circle cx="15" cy="15" r="15"></circle>
     </svg> Nominees Not Seen
@@ -78,11 +78,11 @@ layout: radial
       .text('Academy Awards');
 
   d3.csv("https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/Oscars-Chart-Data.csv", function(d, i, columns) {
-      for (i = 1, t = 0; i < columns.length; ++i) 
+      for (i = 1, t = 0; i < columns.length; ++i)
         t += d[columns[i]] = +d[columns[i]];
         d.total = t;
         return d;
-    }, 
+    },
     function(error, data) {
       if (error) throw error;
 
@@ -120,11 +120,11 @@ layout: radial
 
 <script type="text/javascript">
   function awardTable(ceremony) {
-    
+
     $("#filmlist").empty();
 
     var data = [];
-    
+
     d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/OscarsTracking.csv', function(data){
     		var data = data.filter(element => element.AwardCeremony === ceremony)
         var nested_data = d3.nest()
@@ -133,19 +133,19 @@ layout: radial
                             .entries(data);
         doSomething(nested_data);
     })
-    
+
     function doSomething(d){
-          
+
     	var columns = ['FilmName','PersonName','Your.Rating','IMDb.Rating','Num.Votes']
-    
+
       var AwardCeremonies = d3.select('#filmlist').selectAll('div')
         .data(d)
         .enter()
         .append('div')
         .html(d => "<h1 class=\"display-5 text-center\" id=\"type-details\">" + d.key + "</h1>")
-        
+
       var data1 = d => d.values
-        
+
       var AwardCategories = AwardCeremonies.selectAll('div')
        	.data(data1)
         .enter()
@@ -155,7 +155,7 @@ layout: radial
         .classed('table', true)
         .classed('table-striped', true)
         .style('table-layout',"fixed")
-        
+
       AwardCategories.append('thead')
        	.append('tr')
         .selectAll('th')
@@ -163,7 +163,7 @@ layout: radial
           .enter()
         .append('th')
           .attr('scope', 'col')
-          .style('width', d => 
+          .style('width', d =>
             d === 'PersonName' || d === 'FilmName' ? "auto" : "110px")
           .text(
             function(d) {
@@ -172,21 +172,21 @@ layout: radial
               else if (d === "Num.Votes") {return "Votes"}
               else {return d}
             })
-         
+
       var tbody = AwardCategories.append('tbody')
-      
+
       var data2 = d => d.values
-      
+
       var rows = tbody.selectAll('tr')
           .data(data2)
           .enter()
           .append('tr')
-          
+
       var nominee = rows.selectAll('td')
           .data(function (row) {
                 return columns.map(function (column) {
-                  return { 
-                    column: column, 
+                  return {
+                    column: column,
                     value: row[column],
                     winner: row['AwardWinner'],
                     FilmID: row["FilmID"],
@@ -209,20 +209,20 @@ layout: radial
             }
             else {
             	if(d.value != "NA") {return d.value}}})
-            	
+
       document.getElementById("filmlist").scrollIntoView();
      }
   }
-    
+
   d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/Oscars-Summary-Films.csv',function (data) {
-    d3.select('.movies-total').html('Total: seen ' + 
-        data.filter(element => element["Your.Rating"] != "NA").length + ' out of ' + 
-        data.length + ' (' + 
-        Number(((data.filter(element => element["Your.Rating"] != "NA").length * 100) / data.length).toFixed(2)) 
+    d3.select('.movies-total').html('Total: seen ' +
+        data.filter(element => element["Your.Rating"] != "NA").length + ' out of ' +
+        data.length + ' (' +
+        Number(((data.filter(element => element["Your.Rating"] != "NA").length * 100) / data.length).toFixed(2))
         + '%)'); // Total count
-    d3.select('.movies-winner').html('Winners: seen ' + 
-        data.filter(element => element["Your.Rating"] != "NA" && element.Wins > 0).length + ' out of ' + 
-        data.filter(element => element.Wins > 0).length + ' (' + 
+    d3.select('.movies-winner').html('Winners: seen ' +
+        data.filter(element => element["Your.Rating"] != "NA" && element.Wins > 0).length + ' out of ' +
+        data.filter(element => element.Wins > 0).length + ' (' +
         Number(((data.filter(element => element["Your.Rating"] != "NA" && element.Wins > 0).length * 100) / data.filter(element => element.Wins > 0).length).toFixed(2))
         + '%)'); // Total count
   })
