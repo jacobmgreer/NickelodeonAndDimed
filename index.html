@@ -1,5 +1,5 @@
 ---
-title: Jacob's Film Tracker
+title: Nickelodeon and Dimed
 layout: default
 ---
 
@@ -21,7 +21,7 @@ layout: default
         <b>Cannes Film Festival</b>
         <h3>Palme d'Or Winners</h3>
         <p>"The Festival de Cannes has remained faithful to its founding purpose: to draw attention to and raise the profile of films, with the aim of contributing towards the development of cinema, boosting the film industry worldwide and celebrating cinema at an international level." The first festival was held in 1946, though it was originally scheduled for 1939 (but was postponed by France entering WWII).</p>
-        
+
         <b>Private Distribution Company</b>
         <h3>The Criterion Collection</h3>
         <p>"We aim to reflect the breadth of filmed expression. We try not to be restrictive or snobby about what kinds of films are appropriate. An auteur classic, a Hollywood blockbuster, and an independent B horror film all have to be taken on their own terms. All we ask is that each film in the collection be an exemplary film of its kind."</p>
@@ -33,12 +33,12 @@ layout: default
         .data(data)
         .enter()
         .append('tr')
-          
+
       var nominee = recents.selectAll('td')
           .data(function (row) {
                 return columns.map(function (column) {
-                  return { 
-                    column: column, 
+                  return {
+                    column: column,
                     value: row[column],
                     link: row["Const"]
                   }
@@ -68,7 +68,7 @@ d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/ratings/formatted.csv',fun
   tabulate(data,columns)
 })
 </script>
-  
+
   <div class="container-fluid">
     <br/><br/><br/>
     <h1 class="display-5 text-center">Recently Rated Films</h1>
