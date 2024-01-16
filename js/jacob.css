@@ -160,7 +160,7 @@ body#procreations .center {
 body#procreations section#procreations p.iHide {
   visibility: hidden;
   display:none;}
-body#procreations section#infobox {
+body#procreations section#infobox a {
   color: #698EBF;}
 body#procreations section#infobox {
   margin-top:25px;}
