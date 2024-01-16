@@ -164,3 +164,8 @@ body#procreations section#infobox a {
   color: #698EBF;}
 body#procreations section#infobox {
   margin-top:25px;}
+body#procreations section#wikitable {
+  margin-left:50px;
+  margin-right:50px;}
+body#procreations section#wikitable table th:nth-of-type(1) {
+  width:50%;}
