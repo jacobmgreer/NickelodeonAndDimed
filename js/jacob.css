@@ -147,10 +147,11 @@ body#procreations div.reset {
   background-color: #698EBF;
   color:#ffffff;
   font-weight: bold;
-  height:50px;
   margin-top:25px;}
 body#procreations div.reset h5 {
+  padding:25px;
   line-height:30px;
+  height:70px;
   vertical-align:middle;}
 body#procreations .center {
   margin-left: auto;
@@ -159,7 +160,7 @@ body#procreations .center {
 body#procreations section#procreations p.iHide {
   visibility: hidden;
   display:none;}
-body#procreations a {
+body#procreations section#infobox {
   color: #698EBF;}
 body#procreations section#infobox {
   margin-top:25px;}
