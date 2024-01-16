@@ -5,11 +5,11 @@ layout: radial
 
 <!--
 /* Color Theme Swatches in Hex */
-.ORE-1-hex { color: #3973BF; }
-.ORE-2-hex { color: #023059; }
-.ORE-3-hex { color: #77D9BD; }
-.ORE-4-hex { color: #8C7E72; }
-.ORE-5-hex { color: #0D0D0D; }
+.Charmed-by-Couture-1-hex { color: #2C5273; }
+.Charmed-by-Couture-2-hex { color: #548DBF; }
+.Charmed-by-Couture-3-hex { color: #012E40; }
+.Charmed-by-Couture-4-hex { color: #023440; }
+.Charmed-by-Couture-5-hex { color: #BF967E; }
 -->
 
 <section class="py-5 text-center container">
@@ -20,8 +20,8 @@ layout: radial
         <p class="lead text-muted">
           "In this book are one thousand complete film reviews from The New York Times, beginning in 1927 with The Jazz Singer, generally considered the first talkie, and running to the end of 2002."
         </p>
-        <div class="progress">
-          <div class="progress-bar progress-bar-striped" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress" style="background-color:#012E40">
+          <div class="progress-bar progress-bar-striped" style="background-color:#548DBF" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@ layout: radial
       .range([innerRadius, outerRadius]);
 
   var z = d3.scaleOrdinal()
-      .range(["#3973BF", "#023059", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+      .range(["#548DBF", "#2C5273", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
   var tooltip = svg.append("text")
       .style('display', 'block')
@@ -73,7 +73,7 @@ layout: radial
     x.domain(data.map(function(d) { return d.Year; }));
     y.domain([0, d3.max(data, function(d) { return d.total; })]);
     z.domain(data.columns.slice(1));
-    
+
     g.append("g")
       .selectAll("g")
       .data(d3.stack().keys(data.columns.slice(1))(data))
@@ -107,7 +107,7 @@ layout: radial
 
       $("#filmlist").empty()
       $("h3.replaceText").text(subt)
-      
+
       var columns = ['Title','Year','Runtime','Your.Rating','IMDb.Rating','Num.Votes','Rotten Tomatoes']
       var table = d3.select("#filmlist")
                     .append('table')
@@ -115,7 +115,7 @@ layout: radial
                     .classed('table-striped', true)
       var thead = table.append('thead')
       var tbody = table.append('tbody')
-  
+
       thead.append('tr')
         .selectAll('th')
           .data(columns)
@@ -123,29 +123,29 @@ layout: radial
         .append('th')
           .attr('scope', 'col')
           .text(function (d) { return d })
-  
+
       var rows = tbody.selectAll('tr')
           .data(data)
           .enter()
         .append('tr')
-  
+
       var cells = rows.selectAll('td')
           .data(function(row) {
             return columns.map(function (column) {
-              return { 
-                column: column, 
-                value: row[column], 
-                link: row["Const"], 
+              return {
+                column: column,
+                value: row[column],
+                link: row["Const"],
                 rating: row["Your.Rating"] }
             })
           })
         .enter()
         .append('td')
         .style('background-color', function(d) {
-    				if (d.rating != "NA") {return "#77D9BD"}
+    				if (d.rating != "NA") {return "#548DBF"}
             else {}
 					})
-        .html(function (d) { 
+        .html(function (d) {
         	if (d.column === "Title") {
           	return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
           }
@@ -153,9 +153,9 @@ layout: radial
             return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
           }
           else {if(d.value != "NA") {return d.value}}})
-        
+
       if (year != null) {document.getElementById("switch").scrollIntoView()}
-      
+
       return table
   })}
 
