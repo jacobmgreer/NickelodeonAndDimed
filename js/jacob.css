@@ -13,7 +13,7 @@ nav.navbar a:hover {
 
 button, button.btn, button.btn-light {
   background-color: #D7D7D9;
-  border-size:0;}
+  border:0;}
 
 
 table {
@@ -122,7 +122,8 @@ section#awards .award {
   background-size: cover;
   display:inline-block;}
 section#awards button {
-  text-align: center;}
+  text-align: center;
+  background-color:#D7D7D9;}
 section#awards button .award {
   margin-bottom:5px;}
 section#awards.oscar .award {
