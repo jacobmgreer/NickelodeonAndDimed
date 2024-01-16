@@ -5,11 +5,12 @@ layout: radial
 
 
  <!---
-.秋の背景、紅葉したカエデの葉のテクスチャー-1-hex { color: #F2CB57; }
-.秋の背景、紅葉したカエデの葉のテクスチャー-2-hex { color: #F29727; }
-.秋の背景、紅葉したカエデの葉のテクスチャー-3-hex { color: #D9751E; }
-.秋の背景、紅葉したカエデの葉のテクスチャー-4-hex { color: #BF4B21; }
-.秋の背景、紅葉したカエデの葉のテクスチャー-5-hex { color: #591202; }
+/* Color Theme Swatches in Hex */
+.Kumamoto-Prefectural-Ancient-Burial-Mound-Museum-1-hex { color: #4D5159; }
+.Kumamoto-Prefectural-Ancient-Burial-Mound-Museum-2-hex { color: #BAC8D9; }
+.Kumamoto-Prefectural-Ancient-Burial-Mound-Museum-3-hex { color: #7B838C; }
+.Kumamoto-Prefectural-Ancient-Burial-Mound-Museum-4-hex { color: #A4B3BF; }
+.Kumamoto-Prefectural-Ancient-Burial-Mound-Museum-5-hex { color: #F2F2F2; }
 --->
 
 <section class="py-5 text-center container">
@@ -52,7 +53,7 @@ layout: radial
       .range([innerRadius, outerRadius]);
 
   var z = d3.scaleOrdinal()
-      .range(["#F2CB57", "#F29727", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+      .range(["#BAC8D9", "#7B838C", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
   var tooltip = svg.append("text")
       .style('display', 'block')
@@ -73,7 +74,7 @@ layout: radial
     x.domain(data.map(function(d) { return d.Ceremony; }));
     y.domain([0, d3.max(data, function(d) { return d.total; })]);
     z.domain(data.columns.slice(1));
-    
+
     g.append("g")
       .selectAll("g")
       .data(d3.stack().keys(data.columns.slice(1))(data))
@@ -102,11 +103,11 @@ layout: radial
   });
 
   function awardTable(ceremony) {
-    
+
     $("#filmlist").empty();
 
     var data = [];
-    
+
     d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/AMPAS-International/Data.csv', function(data){
         var data = data.filter(element => element.Ceremony === ceremony)
         var nested_data = d3.nest()
@@ -115,19 +116,19 @@ layout: radial
                             .entries(data);
         doSomething(nested_data);
     })
-    
+
     function doSomething(d){
-          
+
       var columns = ['SubmissionCountry','SubmissionTitle','Your.Rating','IMDb.Rating','Num.Votes']
-    
+
       var AwardCeremonies = d3.select('#filmlist').selectAll('div')
         .data(d)
         .enter()
         .append('div')
         .html(d => "<h1 class=\"display-5 text-center\" id=\"type-details\">" + d.key + "</h1>")
-        
+
       var data1 = d => d.values
-        
+
       var AwardCategories = AwardCeremonies.selectAll('div')
         .data(data1)
         .enter()
@@ -137,7 +138,7 @@ layout: radial
         .classed('table', true)
         .classed('table-striped', true)
         .style('table-layout',"fixed")
-        
+
       AwardCategories.append('thead')
         .append('tr')
         .selectAll('th')
@@ -156,21 +157,21 @@ layout: radial
               else if (d === "Your.Rating") {return "Jacob"}
               else {return d}
             })
-         
+
       var tbody = AwardCategories.append('tbody')
-      
+
       var data2 = d => d.values
-      
+
       var rows = tbody.selectAll('tr')
           .data(data2)
           .enter()
           .append('tr')
-          
+
       var nominee = rows.selectAll('td')
           .data(function (row) {
                 return columns.map(function (column) {
-                  return { 
-                    column: column, 
+                  return {
+                    column: column,
                     value: row[column],
                     rated: row["Your.Rating"],
                     FilmID: row["Const"]
@@ -191,7 +192,7 @@ layout: radial
             }
             else {
               if(d.value != "NA") {return d.value}}})
-              
+
       document.getElementById("filmlist").scrollIntoView();
      }
   }
