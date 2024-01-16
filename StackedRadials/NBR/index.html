@@ -20,8 +20,8 @@ layout: radial
         <p class="lead text-muted">
           "Since first citing year-end cinematic achievements in 1929, NBR has recognized a vast selection of outstanding studio, independent, foreign-language, animated and documentary films."
         </p>
-        <div class="progress">
-          <div class="progress-bar progress-bar-striped bg-warning" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress" style="background-color:#BF4E78">
+          <div class="progress-bar progress-bar-striped" style="background-color:#F2AEC7" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
     </div>
@@ -51,7 +51,7 @@ layout: radial
       .range([innerRadius, outerRadius]);
 
   var z = d3.scaleOrdinal()
-      .range(["#F2BB16", "#F25050", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+      .range(["#F2AEC7", "#BF4E78", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
   var tooltip = svg.append("text")
       .style('display', 'block')
@@ -62,18 +62,18 @@ layout: radial
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
       .text('National Board of Review');
 
-  d3.csv("https://jacobmgreer.github.io/Nitrate-Actions/datasets/NBR/NBRSummary.csv", 
+  d3.csv("https://jacobmgreer.github.io/Nitrate-Actions/datasets/NBR/NBRSummary.csv",
     function(d, i, columns) {
-      for (i = 1, t = 0; i < columns.length; ++i) 
+      for (i = 1, t = 0; i < columns.length; ++i)
           t += d[columns[i]] = +d[columns[i]]; d.total = t;
-        return d;}, 
+        return d;},
     function(error, data) {
       if (error) throw error;
 
     x.domain(data.map(d => d.Year));
     y.domain([0, d3.max(data, d => d.total)]);
     z.domain(data.columns.slice(1));
-    
+
     g.append("g")
       .selectAll("g")
       .data(d3.stack().keys(data.columns.slice(1))(data))
@@ -99,12 +99,12 @@ layout: radial
           .attr("font-size", "20px")
           .text('National Board of Review'));
   });
-  
+
   function awardTable(ceremony) {
     $("#filmlist").empty();
 
     var data = [];
-    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/NBR/NBRData.csv', 
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/NBR/NBRData.csv',
       function(data){
         var data = data.filter(element => element.AwardCeremony === ceremony)
         var nested_data = d3.nest()
@@ -113,19 +113,19 @@ layout: radial
                             .entries(data);
         doSomething(nested_data);
       })
-    
+
     function doSomething(d){
-          
+
       var columns = ['Title','PersonName','Your.Rating','IMDb.Rating','Num.Votes']
-    
+
       var AwardCeremonies = d3.select('#filmlist').selectAll('div')
         .data(d)
         .enter()
         .append('div')
         .html(d => "<h1 class=\"display-5 text-center\" id=\"type-details\">" + d.key + "</h1>")
-        
+
       var data1 = d => d.values
-        
+
       var AwardCategories = AwardCeremonies.selectAll('div')
         .data(data1)
         .enter()
@@ -135,7 +135,7 @@ layout: radial
         .classed('table', true)
         .classed('table-striped', true)
         .style('table-layout',"fixed")
-        
+
       AwardCategories.append('thead')
         .append('tr')
         .selectAll('th')
@@ -144,23 +144,23 @@ layout: radial
         .append('th')
           .attr('scope', 'col')
           .text(d => d)
-         
+
       var tbody = AwardCategories.append('tbody')
-      
+
       var data2 = d => d.values
-      
+
       var rows = tbody.selectAll('tr')
           .data(data2)
           .enter()
           .append('tr')
-          
+
       var nominee = rows.selectAll('td')
           .data(function (row) {
                 return columns.map(function (column) {
-                  return { 
-                      column: column, 
-                      value: row[column], 
-                      winner: row['AwardWinner'], 
+                  return {
+                      column: column,
+                      value: row[column],
+                      winner: row['AwardWinner'],
                       FilmID: row["FilmID"],
                       PersonID: row["PersonID"],
                       Rating: row["Your.Rating"]
@@ -169,8 +169,7 @@ layout: radial
               })
           .enter()
           .append('td')
-          .style('background-color', d => d.Rating != "NA" ? "#73BF94" : null) 
-          .classed('table-success', d => d.winner === "Winner" ? true : false)
+          .style('background-color', d => d.Rating != "NA" ? "#F2AEC7" : null)
           .html(function(d){
             if (d.column == 'Title' & d.value != "NA") {
               return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
@@ -183,7 +182,7 @@ layout: radial
             }
             else {
               if(d.value != "NA") {return d.value}}})
-              
+
       document.getElementById("switch").scrollIntoView();
      }
   }
@@ -195,4 +194,3 @@ layout: radial
 </script>
 
 
-  
