@@ -1,2 +1,3 @@
 * linguist-generated
 js/* linguist-vendored
+*.js linguist-vendored=false
