@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% if page.title %}{{ page.title }}{% endif %}</title>
+
+    {% include header.html %}
+
+    <script src="https://jacobmgreer.github.io/NickelodeonAndDimed/js/d3-array.v3.js"></script>
+    <script src="https://jacobmgreer.github.io/NickelodeonAndDimed/js/d3-scale-radial.js"></script>
+    <script src="https://jacobmgreer.github.io/NickelodeonAndDimed/js/underscore.min.js"></script>
+  </head>
+  <body>
+    {% include nav.html %}
+
+    <main>
+      {{ content }}
+    </main>
+
+    {% include footer.html %}
+  </body>
+</html>

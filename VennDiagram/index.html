@@ -1,0 +1,127 @@
+---
+title: "Intersections in Film Awards/Selections"
+layout: venn
+---
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-8 col-md-8 mx-auto">
+        <h1 class="fw-light">Intersections in Film Selections</h1>
+        <p class="lead text-muted">
+          Comparing different film lists/awards to demonstrate intersections & similarities between film selections.
+        </p><br/><br/><br/>
+        <h3 class="fw-light">Film Lists Used</h3>
+        <p class="small text-muted">Academy Award nominations</p>
+        <p class="small text-muted">International Submissions to the Academy Awards</p>
+        <p class="small text-muted">American Film Institute Top 100: 1998 and 2007</p>
+        <p class="small text-muted">Roger Ebert's "Great Movie" selections</p>
+        <p class="small text-muted">New York Times' Essential 1,000 Films to See</p>
+        <p class="small text-muted fst-italic">Awards from the "big four" critic associations:</p>
+        <p class="small text-muted">Los Angeles Film Critic Association</p>
+        <p class="small text-muted">National Board of Review</p>
+        <p class="small text-muted">National Society of Film Critics</p>
+        <p class="small text-muted">New York Film Critic Circle</p>
+      </div>
+    </div>
+</section>
+
+<section class="container center" id="venn">
+
+</section>
+
+<section class="container" id="warnings">
+    <p class="lead" id="warnings-count"></p>
+    <p class="lead text-muted">Intersections of more than 50 films that were not visualized are listed below.</p>
+    <div id="m-intersects"></div>
+</div>
+
+<script type="text/javascript">
+
+var console = window.console;
+var count = 0;
+console.log = function(msg){
+  if(msg.includes('not represented on screen'))
+    myFunc(msg);
+}
+
+function getintersect(msg) {
+  return sets.filter(
+      function(data){return data.Warnings == msg}
+  );
+}
+
+function myFunc(msg){
+    msg = msg.replace('WARNING: area ','').replace(' not represented on screen','');
+    var intersecty = getintersect(msg);
+    count++;
+    d3.select("#warnings-count").text(count + " of " + Object.keys(sets).length + " possible intersections are not visualized");
+
+    if (intersecty[0].size > 50) {
+        d3.select("#warnings #m-intersects")
+            .append("button")
+            .property("disabled", true)
+            .classed("btn", true)
+            .classed("btn-light", true)
+            .attr("data-sort", intersecty[0].size)
+            .text(msg)
+            .append("span")
+            .classed("badge", true)
+            .classed("rounded-pill", true)
+            .classed("bg-primary", true)
+            .text(intersecty[0].size + " films");
+
+        var result = $('#warnings #m-intersects button').sort(function (b, a) {
+          var contentA =parseInt( $(a).data('sort'));
+          var contentB =parseInt( $(b).data('sort'));
+          return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
+       });
+
+       $('#warnings #m-intersects').html(result);
+    }
+}
+
+var chart = venn.VennDiagram()
+                 .width(960)
+                 .height(960);
+
+var div = d3.select("#venn")
+div.datum(sets).call(chart);
+
+d3.selectAll("text")
+    .style("fill", "#444");
+
+var tooltip = d3.select("#venn").append("div")
+    .classed("venntooltip", true)
+
+div.selectAll("path")
+    .style("stroke-opacity", 0)
+    .style("stroke", "#fff")
+    .style("stroke-width", 3)
+
+div.selectAll("g")
+    .on("mouseover", function(d) {
+        venn.sortAreas(div, d);
+
+        tooltip.transition().duration(50).style("opacity", .9);
+        tooltip.text(d.size + " films");
+
+        var selection = d3.select(this).transition("tooltip").duration(50);
+        selection.select("path")
+            .style("fill-opacity", d.sets.length == 1 ? .4 : .1)
+            .style("stroke-opacity", 1);
+    })
+
+    .on("mousemove", function() {
+        tooltip.style("left", (d3.event.pageX) + "px")
+               .style("top", (d3.event.pageY - 28) + "px");
+    })
+
+    .on("mouseout", function(d) {
+        tooltip.transition().duration(500).style("opacity", 0);
+        var selection = d3.select(this).transition("tooltip").duration(500);
+        selection.select("path")
+            .style("fill-opacity", d.sets.length == 1 ? .25 : .0)
+            .style("stroke-opacity", 0);
+    });
+
+</script>

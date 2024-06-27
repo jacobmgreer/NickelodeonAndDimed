@@ -1,0 +1,88 @@
+---
+title: "The Academy Awards - Mapping International Submissions"
+layout: default
+---
+
+<!--
+  /* Color Theme Swatches in Hex */
+.Game-Design-1-hex { color: #417CF2; }
+.Game-Design-2-hex { color: #3DADF2; }
+.Game-Design-3-hex { color: #8BBF1B; }
+.Game-Design-4-hex { color: #F2CC0C; }
+.Game-Design-5-hex { color: #D95323; }
+-->
+
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-8 col-md-8 mx-auto">
+      <h1 class="fw-light">International Submissions</h1>
+      <h3 class="fw-light">to the Academy Awards</h3>
+      <p class="lead text-muted">
+        "An international film is defined as a feature-length motion picture (over 40 minutes) produced outside the United States of America and its territories with a predominantly (more than 50%) non-English dialogue track. Animated and documentary feature films are permitted."
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 text-center container">
+  <button type="button" disabled>
+    <i class="bi bi-square-fill" style="color:#D95323"></i> Over 60 submissions
+  </button>
+  <button type="button" disabled>
+    <i class="bi bi-square-fill" style="color:#F2CC0C"></i> 45-59 submissions
+  </button>
+  <button type="button" disabled>
+    <i class="bi bi-square-fill" style="color:#8BBF1B"></i> 30-44 submissions
+  </button><br clear="all"/><br/>
+  <button type="button" disabled>
+    <i class="bi bi-square-fill" style="color:#3DADF2"></i> 15-29 submissions
+  </button>
+  <button type="button" disabled>
+    <i class="bi bi-square-fill" style="color:#417CF2"></i> 1-14 submissions
+  </button>
+</section>
+
+
+<div id="d3map" style="margin-left:auto;margin-right:auto;width:900px;"></div>
+
+<section class="py-5 container">
+  <p class="lead text-center">Former Countries that Submitted</p>
+  <div id="former"></div>
+</section>
+
+<script type="application/javascript">
+  formattable('https://jacobmgreer.github.io/NickelodeonAndDimed/Geographies/former.csv','former');
+</script>
+
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-8 col-md-8 mx-auto">
+      <p class="lead">Current Sovereign Countries that Haven't Submitted</p>
+      <div id="nosubs"></div>
+    </div>
+  </div>
+</section>
+
+<script type="application/javascript">
+function formatbuttons(file, id) {
+  d3.csv(file, function(data) {
+      var table = d3.select('#' + id)
+
+      var buttons = table.selectAll('button')
+          .data(data)
+          .enter()
+          .append('button')
+          .property("disabled", true)
+          .classed("btn", true)
+          .classed("btn-light", true)
+          .style('background-color', "#D7D7D9")
+          .style('border-size', 0)
+          .text(function (d) {return Object.values(d)})
+  });
+}
+formatbuttons("https://jacobmgreer.github.io/NickelodeonAndDimed/Geographies/nosubmissions.csv","nosubs")
+</script>
+
+<script type="application/javascript" src="https://jacobmgreer.github.io/NickelodeonAndDimed/js/mapping/d3-geo-projection.v3.min.js"></script>
+<script type="application/javascript" src="https://jacobmgreer.github.io/NickelodeonAndDimed/js/mapping/d3.v6.min.js"></script>
+<script type="application/javascript" src="mouseovermap.js"></script>

@@ -1,0 +1,159 @@
+---
+title: "The Academy Awards - International Submissions (by Origin, by Decade)"
+layout: default
+---
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-8 col-md-8 mx-auto">
+        <h1 class="fw-light">International Submissions</h1>
+        <h3 class="fw-light">to the Academy Awards</h3>
+        <p class="lead text-muted">
+          "An international film is defined as a feature-length motion picture (over 40 minutes) produced outside the United States of America and its territories with a predominantly (more than 50%) non-English dialogue track. Animated and documentary feature films are permitted."
+        </p>
+      </div>
+    </div>
+</section>
+
+<section class="py-5 text-center container">
+  <ul class="nav justify-content-center">
+    <li class="nav-item"><a class="nav-link disabled">Jump to:</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1950s');">1950s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1960s');">1960s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1970s');">1970s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1980s');">1980s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('1990s');">1990s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('2000s');">2000s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('2010s');">2010s</a></li>
+    <li class="nav-item"><a class="nav-link" href="#" onclick="javascript:oscars('2020s');">2020s</a></li>
+  </ul>
+  <br/><br/>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#F2B705" class="bi bi-circle-fill" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="15"></circle>
+    </svg> Winner
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#F29F05" class="bi bi-circle-fill" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="15"></circle>
+    </svg> Nomination
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#A3D9CF" class="bi bi-circle-fill" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="15"></circle>
+    </svg> Shortlist
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#97D9A8" class="bi bi-circle-fill" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="15"></circle>
+    </svg> Submission
+  </button>
+  <br/><br/>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#034C8C" class="bi bi-circle-fill" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="15"></circle>
+    </svg> Nominated, Disqualified
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#BFBFBF" class="bi bi-circle-fill" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="15"></circle>
+    </svg> Withdrawn
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#0D0D0D" class="bi bi-circle-fill" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="15"></circle>
+    </svg> Disqualified
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#70735D" class="bi bi-circle-fill" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="15"></circle>
+    </svg> Not on Final List
+  </button>
+</section>
+
+<section class="container" id="ilist">
+  
+</section>
+
+<script type="text/javascript" charset="utf-8">
+ var tabulate = function (tclass,data,columns) {
+    var table = d3.select(tclass)
+                  .append('table')
+                  .classed('table', true)
+                  .classed('table-sm', true)
+    var thead = table.append('thead')
+    var tbody = table.append('tbody')
+
+    thead.append('tr')
+      .selectAll('th')
+        .data(columns)
+        .enter()
+      .append('th')
+        .attr('scope', 'col')
+        .classed("text-center", true)
+        .classed("name", function(d) {if(d === 'SubmissionCountry') return true})
+        .text(function (d) { 
+          if (d.charAt(0) === 'C') return parseInt(d.substring(1)) + 1927;
+          else if (d === 'SubmissionCountry');
+          else return d;
+        })
+    var rows = tbody.selectAll('tr')
+        .data(data)
+        .enter()
+      .append('tr')
+
+    var cells = rows.selectAll('td')
+        .data(function(row) {
+          return columns.map(function (column) {
+            return { column: column, value: row[column]}
+          })
+        })
+      .enter()
+      .append('td')
+      .classed("winner", function(d) {if (d.value == 'W') return true}) // winners
+      .classed("nominee", function(d) {if (d.value == 'N') return true}) // nominees
+      .classed("disqualified", function(d) {if (d.value == 'D') return true}) // disqualified
+      .classed("nom-dis", function(d) {if (d.value == 'ND') return true}) // nominated then disqualified
+      .classed("submission", function(d) {if (d.value == 'X') return true}) // submission
+      .classed("shortlist", function(d) {if (d.value == 'S') return true}) // short listed
+      .classed("unlisted", function(d) {if (d.value == 'NL') return true}) // not on final list
+      .classed("withdrawn", function(d) {if (d.value == 'WD') return true}) // withdrawn
+      //.classed("bg-secondary", function(d) {if (d.value == 0) return true})
+      .classed("bg-opacity-10", true)
+      .classed("text-center", function(d) {if (d.column != 'SubmissionCountry') return true})
+      .html(function (d) { 
+        if (d.column === "SubmissionCountry") {
+          if (d.value === "Total") return d.value;
+          //else return "<a href=\"#" + d.link + "\">" + d.value + "</a>";
+          else return d.value
+        }
+        else if (["W","N","D","ND","X","S","NL","WD"].includes(d.value)) {
+          return "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"30\" height=\"30\" fill=\"#70735D\" class=\"bi bi-circle-fill\" viewBox=\"0 0 30 30\"><circle cx=\"15\" cy=\"15\" r=\"15\"></circle></svg>"
+        }
+        else if (!isNaN(d.value)) return d.value
+      })
+      
+    return table;
+  }
+    
+function oscars(decade) {
+d3.select('table').remove();
+d3.csv('https://jacobmgreer.github.io/Film-Tracker/AwardScorecards/AMPAS-INTL/Country-Submissions-by-Year.csv',function (data) {
+    var data = data.filter(element => element[decade] > 0)
+    if (decade === "1950s") {var columns = ['SubmissionCountry','C29','C30','C31','C32',decade]}
+    if (decade === "1960s") {var columns = ['SubmissionCountry','C33','C34','C35','C36','C37','C38','C39','C40','C41','C42',decade]}
+    if (decade === "1970s") {var columns = ['SubmissionCountry','C43','C44','C45','C46','C47','C48','C49','C50','C51','C52',decade]}
+    if (decade === "1980s") {var columns = ['SubmissionCountry','C53','C54','C55','C56','C57','C58','C59','C60','C61','C62',decade]}
+    if (decade === "1990s") {var columns = ['SubmissionCountry','C62','C64','C65','C66','C67','C68','C69','C70','C71','C72',decade]}
+    if (decade === "2000s") {var columns = ['SubmissionCountry','C73','C74','C75','C76','C77','C78','C79','C80','C81','C82',decade]}
+    if (decade === "2010s") {var columns = ['SubmissionCountry','C83','C84','C85','C86','C87','C88','C89','C90','C91','C92',decade]}
+    if (decade === "2020s") {var columns = ['SubmissionCountry','C93','C94','C95','C96',decade]}
+    tabulate('#ilist',data,columns)
+  })}
+  
+window.onload = function() {
+  oscars('1950s');
+};
+</script>
+
+  

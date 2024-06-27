@@ -1,0 +1,229 @@
+---
+title: "The Academy Awards - Overall Scorecard"
+layout: radial
+---
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-8 col-md-8 mx-auto">
+        <h1 class="fw-light">Academy of Motion Pictures<br/>Arts and Sciences</h1>
+        <h3 class="fw-light">Academy Awards</h3>
+        <p class="lead text-muted">
+          "Given annually by the Academy of Motion Picture Arts and Sciences, the awards are an international recognition of excellence in cinematic achievements, as assessed by the Academy's voting membership."
+        </p>
+      </div>
+    </div>
+</section>
+
+<section class="container">
+  <svg width="960" height="960" class="center radial"></svg>
+</section>
+
+<section class="py-5 text-center container">
+  <button type="button" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#94F2D0" class="bi bi-circle-fill" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="15"></circle>
+    </svg> Winners Seen
+  </button>
+  <button type="button" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#69BFA0" class="bi bi-circle-fill" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="15"></circle>
+    </svg> Winners Not Seen
+  </button>
+  <button type="button" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#C1D9D2" class="bi bi-circle-fill" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="15"></circle>
+    </svg> Nominees Seen
+  </button>
+  <button type="button" disabled>
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#9AA692" class="bi bi-circle-fill" viewBox="0 0 30 30">
+      <circle cx="15" cy="15" r="15"></circle>
+    </svg> Nominees Not Seen
+  </button>
+</section>
+
+<section class="container">
+  <div id="switch">
+    <h3 class="display-6 text-center" id="subt"></h3>
+    <div id="filmlist"></div>
+  </div>
+</section>
+
+
+<script>
+  var svg = d3.select("svg.radial"),
+      width = +svg.attr("width"),
+      height = +svg.attr("height"),
+      innerRadius = 130,
+      outerRadius = Math.min(width, height) / 2,
+      g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+  var x = d3.scaleBand()
+      .range([0, 2 * Math.PI])
+      .align(0);
+
+  var y = d3.scaleRadial()
+      .range([innerRadius, outerRadius]);
+
+  var z = d3.scaleOrdinal()
+      .range(["#94F2D0", "#69BFA0", "#C1D9D2", "#9AA692", "#a05d56", "#d0743c", "#ff8c00"]);
+
+  var tooltip = svg.append("text")
+      .style('display', 'block')
+      .attr("text-anchor", "middle")
+      .attr("font-family", "sans-serif")
+      .attr("dominant-baseline", "central")
+      .attr("font-size", "20px")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+      .text('Academy Awards');
+
+  d3.csv("https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/Oscars-Chart-Data.csv", function(d, i, columns) {
+      for (i = 1, t = 0; i < columns.length; ++i)
+        t += d[columns[i]] = +d[columns[i]];
+        d.total = t;
+        return d;
+    },
+    function(error, data) {
+      if (error) throw error;
+
+    x.domain(data.map(d => d.AwardCeremony));
+    y.domain([0, d3.max(data, d => d.total)]);
+    z.domain(data.columns.slice(1));
+
+    g.append("g")
+      .selectAll("g")
+      .data(d3.stack().keys(data.columns.slice(1))(data))
+      .enter().append("g")
+        .attr("fill", d => z(d.key))
+      .selectAll("path")
+      .data(d => d)
+      .enter().append("path")
+        .attr("d", d3.arc()
+            .innerRadius(d => y(d[0]))
+            .outerRadius(d => y(d[1]))
+            .startAngle(d => x(d.data.AwardCeremony))
+            .endAngle(d => x(d.data.AwardCeremony) + x.bandwidth())
+            .padAngle(0.01)
+            .padRadius(innerRadius))
+      .on('mouseover', d =>
+        tooltip
+          .attr("font-size", "45px")
+          .text(d.data.AwardCeremony))
+      .on('click', d =>
+        awardTable(d.data.AwardCeremony))
+      .on('mouseout', d =>
+        tooltip
+          .attr("font-size", "20px")
+          .text('Academy Awards'));
+  });
+</script>
+
+<script type="text/javascript">
+  function awardTable(ceremony) {
+
+    $("#filmlist").empty();
+
+    var data = [];
+
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/OscarsTracking.csv', function(data){
+    		var data = data.filter(element => element.AwardCeremony === ceremony)
+        var nested_data = d3.nest()
+                            .key(d => d.AwardCeremony)
+                            .key(d => d.AwardCategory)
+                            .entries(data);
+        doSomething(nested_data);
+    })
+
+    function doSomething(d){
+
+    	var columns = ['FilmName','PersonName','Your.Rating','IMDb.Rating','Num.Votes']
+
+      var AwardCeremonies = d3.select('#filmlist').selectAll('div')
+        .data(d)
+        .enter()
+        .append('div')
+        .html(d => "<h1 class=\"display-5 text-center\" id=\"type-details\">" + d.key + "</h1>")
+
+      var data1 = d => d.values
+
+      var AwardCategories = AwardCeremonies.selectAll('div')
+       	.data(data1)
+        .enter()
+        .append('div')
+        .html(d => '<h3>' + d.key + '</h3>')
+        .append('table')
+        .classed('table', true)
+        .classed('table-striped', true)
+        .style('table-layout',"fixed")
+
+      AwardCategories.append('thead')
+       	.append('tr')
+        .selectAll('th')
+          .data(columns)
+          .enter()
+        .append('th')
+          .attr('scope', 'col')
+          .style('width', d =>
+            d === 'PersonName' || d === 'FilmName' ? "auto" : "110px")
+          .text(
+            function(d) {
+              if (d === "Your.Rating") {return "Me"}
+              else if (d === "IMDb.Rating") {return "IMDb"}
+              else if (d === "Num.Votes") {return "Votes"}
+              else {return d}
+            })
+
+      var tbody = AwardCategories.append('tbody')
+
+      var data2 = d => d.values
+
+      var rows = tbody.selectAll('tr')
+          .data(data2)
+          .enter()
+          .append('tr')
+
+      var nominee = rows.selectAll('td')
+          .data(function (row) {
+                return columns.map(function (column) {
+                  return {
+                    column: column,
+                    value: row[column],
+                    winner: row['AwardWinner'],
+                    FilmID: row["FilmID"],
+                    PersonID: row["PersonID"]
+                  }
+                })
+              })
+          .enter()
+          .append('td')
+          .classed('table-success', d => d.winner === "Winner" ? true : false)
+          .html(function(d){
+            if (d.column === 'FilmName') {
+            	return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
+            }
+            else if (d.column === 'PersonName') {
+            	return "<a href=\"https://www.imdb.com/name/" + d.PersonID + "\">" + d.value + "</a>"
+            }
+            else if (d.column === "Num.Votes") {
+              return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            else {
+            	if(d.value != "NA") {return d.value}}})
+
+      document.getElementById("filmlist").scrollIntoView();
+     }
+  }
+
+  d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/Oscars-Summary-Films.csv',function (data) {
+    d3.select('.movies-total').html('Total: seen ' +
+        data.filter(element => element["Your.Rating"] != "NA").length + ' out of ' +
+        data.length + ' (' +
+        Number(((data.filter(element => element["Your.Rating"] != "NA").length * 100) / data.length).toFixed(2))
+        + '%)'); // Total count
+    d3.select('.movies-winner').html('Winners: seen ' +
+        data.filter(element => element["Your.Rating"] != "NA" && element.Wins > 0).length + ' out of ' +
+        data.filter(element => element.Wins > 0).length + ' (' +
+        Number(((data.filter(element => element["Your.Rating"] != "NA" && element.Wins > 0).length * 100) / data.filter(element => element.Wins > 0).length).toFixed(2))
+        + '%)'); // Total count
+  })
+</script>

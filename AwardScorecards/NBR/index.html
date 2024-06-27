@@ -1,0 +1,224 @@
+---
+title: "National Board of Review - Scorecard by Award Type"
+layout: default
+---
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-8 col-md-8 mx-auto">
+        <h1 class="fw-light">National Board of Review</h1>
+        <h3 class="fw-light">Annual Awards</h3>
+        <p class="lead text-muted">
+          "Since first citing year-end cinematic achievements in 1929, NBR has recognized a vast selection of outstanding studio, independent, foreign-language, animated and documentary films."
+        </p>
+      </div>
+    </div>
+</section>
+
+<section class="py-5 text-center container nbr" id="awards">
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <span class="award award1"></span> <br/>seen no nominees
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <span class="award award2"></span> <br/>seen 1-29%
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <span class="award award3"></span> <br/>seen 30-59%
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <span class="award award4"></span> <br/>seen 60-99%
+  </button>
+  <button type="button" class="btn btn-light" style="background-color:#fff" disabled>
+    <span class="award award5"></span> <br/>seen all nominees
+  </button>
+
+  <table class="table table-striped awards">
+      <thead class="throtate">
+        <tr>
+          <th scope="col" style="width:130px;">
+            <span>Ceremony</span>
+          </th>
+          <th scope="col">
+            <span>Top Films</span>
+          </th>
+          <th scope="col">
+            <span>International</span>
+          </th>
+          <th scope="col">
+            <span>Documentary</span>
+          </th>
+          <th scope="col">
+            <span>Secondary List<br/>Independent / Exceptional</span>
+          </th>
+          <th scope="col">
+            <span>Performance</span>
+          </th>
+          <th scope="col">
+            <span>Writing</span>
+          </th>
+          <th scope="col">
+            <span>Director</span>
+          </th>
+          <th scope="col">
+            <span>Other</span>
+          </th>
+          <th scope="col">
+            <span>Not Seen</span>
+          </th>
+          <th scope="col">
+            <span>Total</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <div id="filmlist"></div>
+</section>
+
+<script type="text/javascript">
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/NBR/NBR-Summary-Ceremonies.csv', function(data){
+        var nested_data = d3.nest().entries(data.sort(function (a,b) {return d3.descending(a.AwardCeremony, b.AwardCeremony);}));
+        doSomething2(nested_data);
+    })
+
+    function doSomething2(d){
+
+    	var columns = [
+    	  'AwardCeremony',
+    	  'Top Films',
+        'International',
+        'Documentary',
+        'Independent',
+        'Performance',
+        'Writing',
+        'Director',
+        'Other',
+        'Films.N',
+        'Percentage']
+
+      var rows = d3.select('table.awards tbody').selectAll('tr')
+          .data(d)
+          .enter()
+          .append('tr')
+
+      var nominee = rows.selectAll('td')
+          .data(function (row) {
+                return columns.map(function (column) {
+                  return {
+                    column: column,
+                    value: row[column],
+                    ceremony: row['AwardCeremony']
+                  }
+                })
+              })
+          .enter()
+          .append('td')
+          .classed('text-center', true)
+          .classed('align-middle', true)
+          .html(function(d){
+            if (d.column == 'AwardCeremony') {return d.value}
+            else if (d.column == 'Films.N' & d.value != 'NA') {return d.value}
+            else if (d.ceremony == "Not Seen" & d.value != 'NA') {return d.value}
+            else if (d.ceremony == "Seen" & d.value != 'NA') {return d.value}
+            else {
+              if(d.value != "NA") {
+              	if(d.value == 0) {return "<span onclick=\"awardTable('" + d.ceremony + "','" + d.column + "')\" class=\"award award1\"></span>"}
+              	else if(0 < d.value && d.value <= .3) {return "<span onclick=\"awardTable('" + d.ceremony + "','" + d.column + "')\" class=\"award award2\"></span>"}
+              	else if(.3 < d.value && d.value <= .6) {return "<span onclick=\"awardTable('" + d.ceremony + "','" + d.column + "');\" class=\"award award3\"></span>"}
+              	else if(.6 < d.value && d.value < 1) {return "<span onclick=\"awardTable('" + d.ceremony + "','" + d.column + "')\" class=\"award award4\"></span>"}
+                else if(d.value == 1) {return "<span onclick=\"awardTable('" + d.ceremony + "','" + d.column + "')\" class=\"award award5\"></span>"}
+                else {return d.value}
+              }
+              else {}
+            }
+          })
+
+     }
+  function awardTable(ceremony, awardtype) {
+    $("#filmlist").empty();
+    var data = [];
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/NBR/NBRData.csv', function(data){
+    		var data = data.filter(element => element.AwardCeremony === ceremony).filter(element => element.GeneralizedCategory === awardtype)
+        var nested_data = d3.nest()
+                            .key(function(d) { return d.AwardCeremony; })
+                            .key(function(d) { return d.AwardCategory; })
+                            .entries(data);
+        doSomething(nested_data);
+    })
+
+    function doSomething(d){
+
+    	var columns = ['Title','PersonName','Your.Rating','IMDb.Rating','Num.Votes']
+
+      var AwardCeremonies = d3.select('#filmlist').selectAll('div')
+        .data(d)
+        .enter()
+        .append('div')
+        .html(function(d){return "<h1 class=\"display-5 text-center\" id=\"type-details\">" + d.key + "</h1>"})
+
+      var data1 = function(d) {return d.values}
+
+      var AwardCategories = AwardCeremonies.selectAll('div')
+       	.data(data1)
+        .enter()
+        .append('div')
+        .html(function(d){return '<h3>' + d.key + '</h3>'})
+        .append('table')
+        .classed('table', true)
+        .classed('table-striped', true)
+        .style('table-layout',"fixed")
+
+      AwardCategories.append('thead')
+       	.append('tr')
+        .selectAll('th')
+          .data(columns)
+          .enter()
+        .append('th')
+          .attr('scope', 'col')
+          .text(function (d) { return d })
+
+      var tbody = AwardCategories.append('tbody')
+
+      var data2 = function(d) {return d.values}
+
+      var rows = tbody.selectAll('tr')
+          .data(data2)
+          .enter()
+          .append('tr')
+
+      var nominee = rows.selectAll('td')
+          .data(function (row) {
+                return columns.map(function (column) {
+                  return {
+                    column: column,
+                    value: row[column],
+                    FilmID: row["FilmID"],
+                    PersonID: row["PersonID"],
+                    rating: row["Your.Rating"]
+                  }
+                })
+              })
+          .enter()
+          .append('td')
+          .attr('class', function(d) {
+            if (d.rating != "NA") {return "watched"}
+            else {return "not-watched"}
+          })
+          .html(function(d){
+            if (d.column == 'Title' & d.value != "NA") {
+            	return "<a href=\"https://www.imdb.com/title/" + d.FilmID + "\">" + d.value + "</a>"
+            }
+            else if (d.column == 'PersonName' & d.value != "NA") {
+            	return "<a href=\"https://www.imdb.com/name/" + d.PersonID + "\">" + d.value + "</a>"
+            }
+            else if (d.column === "Num.Votes") {
+              return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+            else {
+            	if(d.value != "NA") {return d.value}}})
+
+        document.getElementById("filmlist").scrollIntoView();
+     }
+  }
+</script>

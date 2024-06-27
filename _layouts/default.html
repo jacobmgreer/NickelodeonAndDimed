@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% if page.title %}{{ page.title }}{% endif %}</title>
+
+    {% include header.html %}
+    
+  </head>
+  <body>
+    {% include nav.html %}
+
+    <main>
+      {{ content }}
+    </main>
+
+    {% include footer.html %}
+  </body>
+</html>

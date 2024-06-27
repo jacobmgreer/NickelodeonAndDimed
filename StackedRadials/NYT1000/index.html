@@ -1,0 +1,168 @@
+---
+title: "NYT's Essential 1,000 Films to See"
+layout: radial
+---
+
+<!--
+/* Color Theme Swatches in Hex */
+.Charmed-by-Couture-1-hex { color: #2C5273; }
+.Charmed-by-Couture-2-hex { color: #548DBF; }
+.Charmed-by-Couture-3-hex { color: #012E40; }
+.Charmed-by-Couture-4-hex { color: #023440; }
+.Charmed-by-Couture-5-hex { color: #BF967E; }
+-->
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-8 col-md-8 mx-auto">
+        <h1 class="fw-light">The New York Times</h1>
+        <h3 class="fw-light">Essential 1,000 Films to See</h3>
+        <p class="lead text-muted">
+          "In this book are one thousand complete film reviews from The New York Times, beginning in 1927 with The Jazz Singer, generally considered the first talkie, and running to the end of 2002."
+        </p>
+        <div class="progress" style="background-color:#012E40">
+          <div class="progress-bar progress-bar-striped" style="background-color:#548DBF" id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="container">
+  <svg width="960" height="960" class="center radial"></svg>
+</section>
+
+<section class="container" id="switch">
+  <h3 class="replaceText"></h3>
+  <div id="filmlist"></div>
+</section>
+
+<script>
+  var svg = d3.select("svg"),
+      width = +svg.attr("width"),
+      height = +svg.attr("height"),
+      innerRadius = 130,
+      outerRadius = Math.min(width, height) / 2,
+      g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+  var x = d3.scaleBand()
+      .range([0, 2 * Math.PI])
+      .align(0);
+
+  var y = d3.scaleRadial()
+      .range([innerRadius, outerRadius]);
+
+  var z = d3.scaleOrdinal()
+      .range(["#548DBF", "#2C5273", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+  var tooltip = svg.append("text")
+      .style('display', 'block')
+      .attr("text-anchor", "middle")
+      .attr("font-family", "sans-serif")
+      .attr("dominant-baseline", "central")
+      .attr("font-size", "20px")
+      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+      .text("NYT's 1000 Essential Films");
+
+  d3.csv("https://jacobmgreer.github.io/Nitrate-Actions/datasets/NYT1000/NYT1000Summary.csv", function(d, i, columns) {
+    for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
+    d.total = t;
+    return d;
+  }, function(error, data) {
+    if (error) throw error;
+
+    x.domain(data.map(function(d) { return d.Year; }));
+    y.domain([0, d3.max(data, function(d) { return d.total; })]);
+    z.domain(data.columns.slice(1));
+
+    g.append("g")
+      .selectAll("g")
+      .data(d3.stack().keys(data.columns.slice(1))(data))
+      .enter().append("g")
+        .attr("fill", function(d) { return z(d.key); })
+      .selectAll("path")
+      .data(function(d) { return d; })
+      .enter().append("path")
+        .attr("d", d3.arc()
+            .innerRadius(function(d) { return y(d[0]); })
+            .outerRadius(function(d) { return y(d[1]); })
+            .startAngle(function(d) { return x(d.data.Year); })
+            .endAngle(function(d) { return x(d.data.Year) + x.bandwidth(); })
+            .padAngle(0.01)
+            .padRadius(innerRadius))
+      .on('mouseover', function(d) {
+        tooltip
+          .attr("font-size", "45px")
+          .text(d.data.Year)})
+      .on('click', function(d) {
+        tabulate(d.data.Year,'Films from ' + d.data.Year)})
+      .on('mouseout', function(d) {
+        tooltip
+          .attr("font-size", "20px")
+          .text("NYT's 1000 Essential Films");});
+  });
+
+  function tabulate(year,subt) {
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/NYT1000/NYT1000Data.csv',function (data) {
+      var data = data.filter(element => element.Year === year);
+
+      $("#filmlist").empty()
+      $("h3.replaceText").text(subt)
+
+      var columns = ['Title','Year','Runtime','Your.Rating','IMDb.Rating','Num.Votes','Rotten Tomatoes']
+      var table = d3.select("#filmlist")
+                    .append('table')
+                    .classed('table', true)
+                    .classed('table-striped', true)
+      var thead = table.append('thead')
+      var tbody = table.append('tbody')
+
+      thead.append('tr')
+        .selectAll('th')
+          .data(columns)
+          .enter()
+        .append('th')
+          .attr('scope', 'col')
+          .text(function (d) { return d })
+
+      var rows = tbody.selectAll('tr')
+          .data(data)
+          .enter()
+        .append('tr')
+
+      var cells = rows.selectAll('td')
+          .data(function(row) {
+            return columns.map(function (column) {
+              return {
+                column: column,
+                value: row[column],
+                link: row["Const"],
+                rating: row["Your.Rating"] }
+            })
+          })
+        .enter()
+        .append('td')
+        .style('background-color', function(d) {
+    				if (d.rating != "NA") {return "#548DBF"}
+            else {}
+					})
+        .html(function (d) {
+        	if (d.column === "Title") {
+          	return "<a href=\"https://www.imdb.com/title/" + d.link + "\">" + d.value + "</a>"
+          }
+          else if (d.column === "Num.Votes") {
+            return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+          }
+          else {if(d.value != "NA") {return d.value}}})
+
+      if (year != null) {document.getElementById("switch").scrollIntoView()}
+
+      return table
+  })}
+
+  d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/NYT1000/NYT1000Data.csv',function (data) {
+    d3.select('#progress')
+      .style("width", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)) + "%")
+      .attr("aria-valuenow", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)));
+  })
+</script>
+

@@ -1,0 +1,3210 @@
+var sets =
+    [
+    {
+        "sets": ['NYT'],
+        "label": "NYT 1000 Essential Films",
+        "size": 1000,
+        "Warnings": "NYT"
+    },
+    {
+        "sets": ['INTL'],
+        "label": "International Submissions to the Academy Awards",
+        "size": 2828,
+        "Warnings": "INTL"
+    },
+    {
+        "sets": ['NYFCC'],
+        "label": "New York Film Critic Circle",
+        "size": 1185,
+        "Warnings": "NYFCC"
+    },
+    {
+        "sets": ['NSFC'],
+        "label": "National Society of Film Critics",
+        "size": 970,
+        "Warnings": "NSFC"
+    },
+    {
+        "sets": ['LAFCA'],
+        "label": "Los Angeles Film Critic Association",
+        "size": 723,
+        "Warnings": "LAFCA"
+    },
+    {
+        "sets": ['EBERT'],
+        "label": "Roger Ebert's 'Great Films'",
+        "size": 381,
+        "Warnings": "EBERT"
+    },
+    {
+        "sets": ['NBR'],
+        "label": "National Board of Review",
+        "size": 2114,
+        "Warnings": "NBR"
+    },
+    {
+        "sets": ['AMPAS'],
+        "label": "Academy Awards",
+        "size": 5074,
+        "Warnings": "AMPAS"
+    },
+    {
+        "sets": ['AFI2'],
+        "label": "AFI Top 100 2007",
+        "size": 100,
+        "Warnings": "AFI2"
+    },
+    {
+        "sets": ['AFI1'],
+        "label": "AFI Top 100 1998",
+        "size": 100,
+        "Warnings": "AFI1"
+    },
+    {
+        "sets": ['INTL','NYT'],
+        "size": 65,
+        "Warnings": "INTL,NYT"
+    },
+    {
+        "sets": ['NYFCC','NYT'],
+        "size": 440,
+        "Warnings": "NYFCC,NYT"
+    },
+    {
+        "sets": ['NYFCC','INTL'],
+        "size": 106,
+        "Warnings": "NYFCC,INTL"
+    },
+    {
+        "sets": ['NSFC','NYT'],
+        "size": 262,
+        "Warnings": "NSFC,NYT"
+    },
+    {
+        "sets": ['NSFC','INTL'],
+        "size": 100,
+        "Warnings": "NSFC,INTL"
+    },
+    {
+        "sets": ['NSFC','NYFCC'],
+        "size": 583,
+        "Warnings": "NSFC,NYFCC"
+    },
+    {
+        "sets": ['LAFCA','NYT'],
+        "size": 167,
+        "Warnings": "LAFCA,NYT"
+    },
+    {
+        "sets": ['LAFCA','INTL'],
+        "size": 67,
+        "Warnings": "LAFCA,INTL"
+    },
+    {
+        "sets": ['LAFCA','NYFCC'],
+        "size": 439,
+        "Warnings": "LAFCA,NYFCC"
+    },
+    {
+        "sets": ['LAFCA','NSFC'],
+        "size": 471,
+        "Warnings": "LAFCA,NSFC"
+    },
+    {
+        "sets": ['EBERT','NYT'],
+        "size": 212,
+        "Warnings": "EBERT,NYT"
+    },
+    {
+        "sets": ['EBERT','INTL'],
+        "size": 36,
+        "Warnings": "EBERT,INTL"
+    },
+    {
+        "sets": ['EBERT','NYFCC'],
+        "size": 122,
+        "Warnings": "EBERT,NYFCC"
+    },
+    {
+        "sets": ['EBERT','NSFC'],
+        "size": 82,
+        "Warnings": "EBERT,NSFC"
+    },
+    {
+        "sets": ['EBERT','LAFCA'],
+        "size": 56,
+        "Warnings": "EBERT,LAFCA"
+    },
+    {
+        "sets": ['NBR','NYT'],
+        "size": 494,
+        "Warnings": "NBR,NYT"
+    },
+    {
+        "sets": ['NBR','INTL'],
+        "size": 182,
+        "Warnings": "NBR,INTL"
+    },
+    {
+        "sets": ['NBR','NYFCC'],
+        "size": 688,
+        "Warnings": "NBR,NYFCC"
+    },
+    {
+        "sets": ['NBR','NSFC'],
+        "size": 478,
+        "Warnings": "NBR,NSFC"
+    },
+    {
+        "sets": ['NBR','LAFCA'],
+        "size": 429,
+        "Warnings": "NBR,LAFCA"
+    },
+    {
+        "sets": ['NBR','EBERT'],
+        "size": 146,
+        "Warnings": "NBR,EBERT"
+    },
+    {
+        "sets": ['AMPAS','NYT'],
+        "size": 610,
+        "Warnings": "AMPAS,NYT"
+    },
+    {
+        "sets": ['AMPAS','INTL'],
+        "size": 356,
+        "Warnings": "AMPAS,INTL"
+    },
+    {
+        "sets": ['AMPAS','NYFCC'],
+        "size": 831,
+        "Warnings": "AMPAS,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','NSFC'],
+        "size": 584,
+        "Warnings": "AMPAS,NSFC"
+    },
+    {
+        "sets": ['AMPAS','LAFCA'],
+        "size": 520,
+        "Warnings": "AMPAS,LAFCA"
+    },
+    {
+        "sets": ['AMPAS','EBERT'],
+        "size": 172,
+        "Warnings": "AMPAS,EBERT"
+    },
+    {
+        "sets": ['AMPAS','NBR'],
+        "size": 1147,
+        "Warnings": "AMPAS,NBR"
+    },
+    {
+        "sets": ['AFI2','NYT'],
+        "size": 84,
+        "Warnings": "AFI2,NYT"
+    },
+    {
+        "sets": ['AFI2','NYFCC'],
+        "size": 63,
+        "Warnings": "AFI2,NYFCC"
+    },
+    {
+        "sets": ['AFI2','NSFC'],
+        "size": 39,
+        "Warnings": "AFI2,NSFC"
+    },
+    {
+        "sets": ['AFI2','LAFCA'],
+        "size": 23,
+        "Warnings": "AFI2,LAFCA"
+    },
+    {
+        "sets": ['AFI2','EBERT'],
+        "size": 61,
+        "Warnings": "AFI2,EBERT"
+    },
+    {
+        "sets": ['AFI2','NBR'],
+        "size": 64,
+        "Warnings": "AFI2,NBR"
+    },
+    {
+        "sets": ['AFI2','AMPAS'],
+        "size": 90,
+        "Warnings": "AFI2,AMPAS"
+    },
+    {
+        "sets": ['AFI1','NYT'],
+        "size": 91,
+        "Warnings": "AFI1,NYT"
+    },
+    {
+        "sets": ['AFI1','NYFCC'],
+        "size": 64,
+        "Warnings": "AFI1,NYFCC"
+    },
+    {
+        "sets": ['AFI1','NSFC'],
+        "size": 30,
+        "Warnings": "AFI1,NSFC"
+    },
+    {
+        "sets": ['AFI1','LAFCA'],
+        "size": 18,
+        "Warnings": "AFI1,LAFCA"
+    },
+    {
+        "sets": ['AFI1','EBERT'],
+        "size": 61,
+        "Warnings": "AFI1,EBERT"
+    },
+    {
+        "sets": ['AFI1','NBR'],
+        "size": 68,
+        "Warnings": "AFI1,NBR"
+    },
+    {
+        "sets": ['AFI1','AMPAS'],
+        "size": 91,
+        "Warnings": "AFI1,AMPAS"
+    },
+    {
+        "sets": ['AFI1','AFI2'],
+        "size": 77,
+        "Warnings": "AFI1,AFI2"
+    },
+    {
+        "sets": ['NYFCC','INTL','NYT'],
+        "size": 35,
+        "Warnings": "NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['NSFC','INTL','NYT'],
+        "size": 29,
+        "Warnings": "NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['NSFC','NYFCC','NYT'],
+        "size": 207,
+        "Warnings": "NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['NSFC','NYFCC','INTL'],
+        "size": 68,
+        "Warnings": "NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['LAFCA','INTL','NYT'],
+        "size": 15,
+        "Warnings": "LAFCA,INTL,NYT"
+    },
+    {
+        "sets": ['LAFCA','NYFCC','NYT'],
+        "size": 136,
+        "Warnings": "LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['LAFCA','NYFCC','INTL'],
+        "size": 49,
+        "Warnings": "LAFCA,NYFCC,INTL"
+    },
+    {
+        "sets": ['LAFCA','NSFC','NYT'],
+        "size": 133,
+        "Warnings": "LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['LAFCA','NSFC','INTL'],
+        "size": 49,
+        "Warnings": "LAFCA,NSFC,INTL"
+    },
+    {
+        "sets": ['LAFCA','NSFC','NYFCC'],
+        "size": 356,
+        "Warnings": "LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['EBERT','INTL','NYT'],
+        "size": 19,
+        "Warnings": "EBERT,INTL,NYT"
+    },
+    {
+        "sets": ['EBERT','NYFCC','NYT'],
+        "size": 103,
+        "Warnings": "EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['EBERT','NYFCC','INTL'],
+        "size": 16,
+        "Warnings": "EBERT,NYFCC,INTL"
+    },
+    {
+        "sets": ['EBERT','NSFC','NYT'],
+        "size": 64,
+        "Warnings": "EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['EBERT','NSFC','INTL'],
+        "size": 13,
+        "Warnings": "EBERT,NSFC,INTL"
+    },
+    {
+        "sets": ['EBERT','NSFC','NYFCC'],
+        "size": 64,
+        "Warnings": "EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NYT'],
+        "size": 42,
+        "Warnings": "EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['EBERT','LAFCA','INTL'],
+        "size": 9,
+        "Warnings": "EBERT,LAFCA,INTL"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NYFCC'],
+        "size": 46,
+        "Warnings": "EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NSFC'],
+        "size": 44,
+        "Warnings": "EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['NBR','INTL','NYT'],
+        "size": 34,
+        "Warnings": "NBR,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','NYFCC','NYT'],
+        "size": 313,
+        "Warnings": "NBR,NYFCC,NYT"
+    },
+    {
+        "sets": ['NBR','NYFCC','INTL'],
+        "size": 65,
+        "Warnings": "NBR,NYFCC,INTL"
+    },
+    {
+        "sets": ['NBR','NSFC','NYT'],
+        "size": 163,
+        "Warnings": "NBR,NSFC,NYT"
+    },
+    {
+        "sets": ['NBR','NSFC','INTL'],
+        "size": 58,
+        "Warnings": "NBR,NSFC,INTL"
+    },
+    {
+        "sets": ['NBR','NSFC','NYFCC'],
+        "size": 348,
+        "Warnings": "NBR,NSFC,NYFCC"
+    },
+    {
+        "sets": ['NBR','LAFCA','NYT'],
+        "size": 127,
+        "Warnings": "NBR,LAFCA,NYT"
+    },
+    {
+        "sets": ['NBR','LAFCA','INTL'],
+        "size": 45,
+        "Warnings": "NBR,LAFCA,INTL"
+    },
+    {
+        "sets": ['NBR','LAFCA','NYFCC'],
+        "size": 304,
+        "Warnings": "NBR,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['NBR','LAFCA','NSFC'],
+        "size": 303,
+        "Warnings": "NBR,LAFCA,NSFC"
+    },
+    {
+        "sets": ['NBR','EBERT','NYT'],
+        "size": 113,
+        "Warnings": "NBR,EBERT,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','INTL'],
+        "size": 15,
+        "Warnings": "NBR,EBERT,INTL"
+    },
+    {
+        "sets": ['NBR','EBERT','NYFCC'],
+        "size": 92,
+        "Warnings": "NBR,EBERT,NYFCC"
+    },
+    {
+        "sets": ['NBR','EBERT','NSFC'],
+        "size": 53,
+        "Warnings": "NBR,EBERT,NSFC"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA'],
+        "size": 45,
+        "Warnings": "NBR,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AMPAS','INTL','NYT'],
+        "size": 44,
+        "Warnings": "AMPAS,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NYFCC','NYT'],
+        "size": 357,
+        "Warnings": "AMPAS,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NYFCC','INTL'],
+        "size": 77,
+        "Warnings": "AMPAS,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NSFC','NYT'],
+        "size": 189,
+        "Warnings": "AMPAS,NSFC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NSFC','INTL'],
+        "size": 58,
+        "Warnings": "AMPAS,NSFC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NSFC','NYFCC'],
+        "size": 436,
+        "Warnings": "AMPAS,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NYT'],
+        "size": 137,
+        "Warnings": "AMPAS,LAFCA,NYT"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','INTL'],
+        "size": 45,
+        "Warnings": "AMPAS,LAFCA,INTL"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NYFCC'],
+        "size": 361,
+        "Warnings": "AMPAS,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NSFC'],
+        "size": 359,
+        "Warnings": "AMPAS,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NYT'],
+        "size": 141,
+        "Warnings": "AMPAS,EBERT,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','INTL'],
+        "size": 18,
+        "Warnings": "AMPAS,EBERT,INTL"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NYFCC'],
+        "size": 99,
+        "Warnings": "AMPAS,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NSFC'],
+        "size": 59,
+        "Warnings": "AMPAS,EBERT,NSFC"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA'],
+        "size": 46,
+        "Warnings": "AMPAS,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AMPAS','NBR','NYT'],
+        "size": 394,
+        "Warnings": "AMPAS,NBR,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','INTL'],
+        "size": 118,
+        "Warnings": "AMPAS,NBR,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','NYFCC'],
+        "size": 571,
+        "Warnings": "AMPAS,NBR,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','NBR','NSFC'],
+        "size": 380,
+        "Warnings": "AMPAS,NBR,NSFC"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA'],
+        "size": 371,
+        "Warnings": "AMPAS,NBR,LAFCA"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT'],
+        "size": 114,
+        "Warnings": "AMPAS,NBR,EBERT"
+    },
+    {
+        "sets": ['AFI2','NYFCC','NYT'],
+        "size": 58,
+        "Warnings": "AFI2,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','NSFC','NYT'],
+        "size": 34,
+        "Warnings": "AFI2,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','NSFC','NYFCC'],
+        "size": 32,
+        "Warnings": "AFI2,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','LAFCA','NYT'],
+        "size": 18,
+        "Warnings": "AFI2,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI2','LAFCA','NYFCC'],
+        "size": 20,
+        "Warnings": "AFI2,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI2','LAFCA','NSFC'],
+        "size": 19,
+        "Warnings": "AFI2,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI2','EBERT','NYT'],
+        "size": 55,
+        "Warnings": "AFI2,EBERT,NYT"
+    },
+    {
+        "sets": ['AFI2','EBERT','NYFCC'],
+        "size": 39,
+        "Warnings": "AFI2,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AFI2','EBERT','NSFC'],
+        "size": 22,
+        "Warnings": "AFI2,EBERT,NSFC"
+    },
+    {
+        "sets": ['AFI2','EBERT','LAFCA'],
+        "size": 15,
+        "Warnings": "AFI2,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AFI2','NBR','NYT'],
+        "size": 56,
+        "Warnings": "AFI2,NBR,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','NYFCC'],
+        "size": 46,
+        "Warnings": "AFI2,NBR,NYFCC"
+    },
+    {
+        "sets": ['AFI2','NBR','NSFC'],
+        "size": 26,
+        "Warnings": "AFI2,NBR,NSFC"
+    },
+    {
+        "sets": ['AFI2','NBR','LAFCA'],
+        "size": 18,
+        "Warnings": "AFI2,NBR,LAFCA"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT'],
+        "size": 42,
+        "Warnings": "AFI2,NBR,EBERT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NYT'],
+        "size": 79,
+        "Warnings": "AFI2,AMPAS,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NYFCC'],
+        "size": 63,
+        "Warnings": "AFI2,AMPAS,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NSFC'],
+        "size": 39,
+        "Warnings": "AFI2,AMPAS,NSFC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','LAFCA'],
+        "size": 23,
+        "Warnings": "AFI2,AMPAS,LAFCA"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT'],
+        "size": 56,
+        "Warnings": "AFI2,AMPAS,EBERT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR'],
+        "size": 61,
+        "Warnings": "AFI2,AMPAS,NBR"
+    },
+    {
+        "sets": ['AFI1','NYFCC','NYT'],
+        "size": 61,
+        "Warnings": "AFI1,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','NSFC','NYT'],
+        "size": 28,
+        "Warnings": "AFI1,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','NSFC','NYFCC'],
+        "size": 26,
+        "Warnings": "AFI1,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','LAFCA','NYT'],
+        "size": 16,
+        "Warnings": "AFI1,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','LAFCA','NYFCC'],
+        "size": 15,
+        "Warnings": "AFI1,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','LAFCA','NSFC'],
+        "size": 15,
+        "Warnings": "AFI1,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','EBERT','NYT'],
+        "size": 58,
+        "Warnings": "AFI1,EBERT,NYT"
+    },
+    {
+        "sets": ['AFI1','EBERT','NYFCC'],
+        "size": 38,
+        "Warnings": "AFI1,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AFI1','EBERT','NSFC'],
+        "size": 20,
+        "Warnings": "AFI1,EBERT,NSFC"
+    },
+    {
+        "sets": ['AFI1','EBERT','LAFCA'],
+        "size": 14,
+        "Warnings": "AFI1,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AFI1','NBR','NYT'],
+        "size": 63,
+        "Warnings": "AFI1,NBR,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','NYFCC'],
+        "size": 48,
+        "Warnings": "AFI1,NBR,NYFCC"
+    },
+    {
+        "sets": ['AFI1','NBR','NSFC'],
+        "size": 20,
+        "Warnings": "AFI1,NBR,NSFC"
+    },
+    {
+        "sets": ['AFI1','NBR','LAFCA'],
+        "size": 15,
+        "Warnings": "AFI1,NBR,LAFCA"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT'],
+        "size": 44,
+        "Warnings": "AFI1,NBR,EBERT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NYT'],
+        "size": 85,
+        "Warnings": "AFI1,AMPAS,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NYFCC'],
+        "size": 64,
+        "Warnings": "AFI1,AMPAS,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NSFC'],
+        "size": 30,
+        "Warnings": "AFI1,AMPAS,NSFC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','LAFCA'],
+        "size": 18,
+        "Warnings": "AFI1,AMPAS,LAFCA"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT'],
+        "size": 56,
+        "Warnings": "AFI1,AMPAS,EBERT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR'],
+        "size": 65,
+        "Warnings": "AFI1,AMPAS,NBR"
+    },
+    {
+        "sets": ['AFI1','AFI2','NYT'],
+        "size": 71,
+        "Warnings": "AFI1,AFI2,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NYFCC'],
+        "size": 52,
+        "Warnings": "AFI1,AFI2,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NSFC'],
+        "size": 28,
+        "Warnings": "AFI1,AFI2,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','LAFCA'],
+        "size": 15,
+        "Warnings": "AFI1,AFI2,LAFCA"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT'],
+        "size": 52,
+        "Warnings": "AFI1,AFI2,EBERT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR'],
+        "size": 52,
+        "Warnings": "AFI1,AFI2,NBR"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS'],
+        "size": 71,
+        "Warnings": "AFI1,AFI2,AMPAS"
+    },
+    {
+        "sets": ['NSFC','NYFCC','INTL','NYT'],
+        "size": 22,
+        "Warnings": "NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['LAFCA','NYFCC','INTL','NYT'],
+        "size": 12,
+        "Warnings": "LAFCA,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['LAFCA','NSFC','INTL','NYT'],
+        "size": 12,
+        "Warnings": "LAFCA,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['LAFCA','NSFC','NYFCC','NYT'],
+        "size": 124,
+        "Warnings": "LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['LAFCA','NSFC','NYFCC','INTL'],
+        "size": 41,
+        "Warnings": "LAFCA,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['EBERT','NYFCC','INTL','NYT'],
+        "size": 14,
+        "Warnings": "EBERT,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['EBERT','NSFC','INTL','NYT'],
+        "size": 10,
+        "Warnings": "EBERT,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['EBERT','NSFC','NYFCC','NYT'],
+        "size": 54,
+        "Warnings": "EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['EBERT','NSFC','NYFCC','INTL'],
+        "size": 11,
+        "Warnings": "EBERT,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['EBERT','LAFCA','INTL','NYT'],
+        "size": 6,
+        "Warnings": "EBERT,LAFCA,INTL,NYT"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NYFCC','NYT'],
+        "size": 36,
+        "Warnings": "EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NYFCC','INTL'],
+        "size": 8,
+        "Warnings": "EBERT,LAFCA,NYFCC,INTL"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NSFC','NYT'],
+        "size": 35,
+        "Warnings": "EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NSFC','INTL'],
+        "size": 8,
+        "Warnings": "EBERT,LAFCA,NSFC,INTL"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 40,
+        "Warnings": "EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['NBR','NYFCC','INTL','NYT'],
+        "size": 23,
+        "Warnings": "NBR,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','NSFC','INTL','NYT'],
+        "size": 18,
+        "Warnings": "NBR,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','NSFC','NYFCC','NYT'],
+        "size": 143,
+        "Warnings": "NBR,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['NBR','NSFC','NYFCC','INTL'],
+        "size": 44,
+        "Warnings": "NBR,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['NBR','LAFCA','INTL','NYT'],
+        "size": 11,
+        "Warnings": "NBR,LAFCA,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','LAFCA','NYFCC','NYT'],
+        "size": 111,
+        "Warnings": "NBR,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['NBR','LAFCA','NYFCC','INTL'],
+        "size": 33,
+        "Warnings": "NBR,LAFCA,NYFCC,INTL"
+    },
+    {
+        "sets": ['NBR','LAFCA','NSFC','NYT'],
+        "size": 104,
+        "Warnings": "NBR,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['NBR','LAFCA','NSFC','INTL'],
+        "size": 33,
+        "Warnings": "NBR,LAFCA,NSFC,INTL"
+    },
+    {
+        "sets": ['NBR','LAFCA','NSFC','NYFCC'],
+        "size": 251,
+        "Warnings": "NBR,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['NBR','EBERT','INTL','NYT'],
+        "size": 12,
+        "Warnings": "NBR,EBERT,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','NYFCC','NYT'],
+        "size": 79,
+        "Warnings": "NBR,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','NYFCC','INTL'],
+        "size": 12,
+        "Warnings": "NBR,EBERT,NYFCC,INTL"
+    },
+    {
+        "sets": ['NBR','EBERT','NSFC','NYT'],
+        "size": 44,
+        "Warnings": "NBR,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','NSFC','INTL'],
+        "size": 8,
+        "Warnings": "NBR,EBERT,NSFC,INTL"
+    },
+    {
+        "sets": ['NBR','EBERT','NSFC','NYFCC'],
+        "size": 46,
+        "Warnings": "NBR,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NYT'],
+        "size": 37,
+        "Warnings": "NBR,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','INTL'],
+        "size": 6,
+        "Warnings": "NBR,EBERT,LAFCA,INTL"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NYFCC'],
+        "size": 40,
+        "Warnings": "NBR,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NSFC'],
+        "size": 37,
+        "Warnings": "NBR,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AMPAS','NYFCC','INTL','NYT'],
+        "size": 26,
+        "Warnings": "AMPAS,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NSFC','INTL','NYT'],
+        "size": 17,
+        "Warnings": "AMPAS,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NSFC','NYFCC','NYT'],
+        "size": 165,
+        "Warnings": "AMPAS,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NSFC','NYFCC','INTL'],
+        "size": 49,
+        "Warnings": "AMPAS,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','INTL','NYT'],
+        "size": 9,
+        "Warnings": "AMPAS,LAFCA,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NYFCC','NYT'],
+        "size": 117,
+        "Warnings": "AMPAS,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NYFCC','INTL'],
+        "size": 36,
+        "Warnings": "AMPAS,LAFCA,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NSFC','NYT'],
+        "size": 111,
+        "Warnings": "AMPAS,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NSFC','INTL'],
+        "size": 32,
+        "Warnings": "AMPAS,LAFCA,NSFC,INTL"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NSFC','NYFCC'],
+        "size": 295,
+        "Warnings": "AMPAS,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','EBERT','INTL','NYT'],
+        "size": 11,
+        "Warnings": "AMPAS,EBERT,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NYFCC','NYT'],
+        "size": 88,
+        "Warnings": "AMPAS,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NYFCC','INTL'],
+        "size": 11,
+        "Warnings": "AMPAS,EBERT,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NSFC','NYT'],
+        "size": 52,
+        "Warnings": "AMPAS,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NSFC','INTL'],
+        "size": 7,
+        "Warnings": "AMPAS,EBERT,NSFC,INTL"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NSFC','NYFCC'],
+        "size": 52,
+        "Warnings": "AMPAS,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NYT'],
+        "size": 37,
+        "Warnings": "AMPAS,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','INTL'],
+        "size": 5,
+        "Warnings": "AMPAS,EBERT,LAFCA,INTL"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NYFCC'],
+        "size": 41,
+        "Warnings": "AMPAS,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NSFC'],
+        "size": 36,
+        "Warnings": "AMPAS,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AMPAS','NBR','INTL','NYT'],
+        "size": 27,
+        "Warnings": "AMPAS,NBR,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','NYFCC','NYT'],
+        "size": 278,
+        "Warnings": "AMPAS,NBR,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','NYFCC','INTL'],
+        "size": 55,
+        "Warnings": "AMPAS,NBR,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','NSFC','NYT'],
+        "size": 139,
+        "Warnings": "AMPAS,NBR,NSFC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','NSFC','INTL'],
+        "size": 44,
+        "Warnings": "AMPAS,NBR,NSFC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','NSFC','NYFCC'],
+        "size": 306,
+        "Warnings": "AMPAS,NBR,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NYT'],
+        "size": 115,
+        "Warnings": "AMPAS,NBR,LAFCA,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','INTL'],
+        "size": 38,
+        "Warnings": "AMPAS,NBR,LAFCA,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NYFCC'],
+        "size": 277,
+        "Warnings": "AMPAS,NBR,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NSFC'],
+        "size": 270,
+        "Warnings": "AMPAS,NBR,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NYT'],
+        "size": 97,
+        "Warnings": "AMPAS,NBR,EBERT,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','INTL'],
+        "size": 12,
+        "Warnings": "AMPAS,NBR,EBERT,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NYFCC'],
+        "size": 83,
+        "Warnings": "AMPAS,NBR,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NSFC'],
+        "size": 46,
+        "Warnings": "AMPAS,NBR,EBERT,NSFC"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA'],
+        "size": 42,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AFI2','NSFC','NYFCC','NYT'],
+        "size": 29,
+        "Warnings": "AFI2,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','LAFCA','NYFCC','NYT'],
+        "size": 16,
+        "Warnings": "AFI2,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','LAFCA','NSFC','NYT'],
+        "size": 16,
+        "Warnings": "AFI2,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','LAFCA','NSFC','NYFCC'],
+        "size": 18,
+        "Warnings": "AFI2,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','EBERT','NYFCC','NYT'],
+        "size": 37,
+        "Warnings": "AFI2,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','EBERT','NSFC','NYT'],
+        "size": 21,
+        "Warnings": "AFI2,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','EBERT','NSFC','NYFCC'],
+        "size": 19,
+        "Warnings": "AFI2,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','EBERT','LAFCA','NYT'],
+        "size": 14,
+        "Warnings": "AFI2,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI2','EBERT','LAFCA','NYFCC'],
+        "size": 14,
+        "Warnings": "AFI2,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI2','EBERT','LAFCA','NSFC'],
+        "size": 13,
+        "Warnings": "AFI2,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI2','NBR','NYFCC','NYT'],
+        "size": 43,
+        "Warnings": "AFI2,NBR,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','NSFC','NYT'],
+        "size": 23,
+        "Warnings": "AFI2,NBR,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','NSFC','NYFCC'],
+        "size": 22,
+        "Warnings": "AFI2,NBR,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','NBR','LAFCA','NYT'],
+        "size": 14,
+        "Warnings": "AFI2,NBR,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','LAFCA','NYFCC'],
+        "size": 16,
+        "Warnings": "AFI2,NBR,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI2','NBR','LAFCA','NSFC'],
+        "size": 16,
+        "Warnings": "AFI2,NBR,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','NYT'],
+        "size": 40,
+        "Warnings": "AFI2,NBR,EBERT,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','NYFCC'],
+        "size": 31,
+        "Warnings": "AFI2,NBR,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','NSFC'],
+        "size": 16,
+        "Warnings": "AFI2,NBR,EBERT,NSFC"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','LAFCA'],
+        "size": 12,
+        "Warnings": "AFI2,NBR,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NYFCC','NYT'],
+        "size": 58,
+        "Warnings": "AFI2,AMPAS,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NSFC','NYT'],
+        "size": 34,
+        "Warnings": "AFI2,AMPAS,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NSFC','NYFCC'],
+        "size": 32,
+        "Warnings": "AFI2,AMPAS,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','LAFCA','NYT'],
+        "size": 18,
+        "Warnings": "AFI2,AMPAS,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','LAFCA','NYFCC'],
+        "size": 20,
+        "Warnings": "AFI2,AMPAS,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','LAFCA','NSFC'],
+        "size": 19,
+        "Warnings": "AFI2,AMPAS,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','NYT'],
+        "size": 52,
+        "Warnings": "AFI2,AMPAS,EBERT,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','NYFCC'],
+        "size": 39,
+        "Warnings": "AFI2,AMPAS,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','NSFC'],
+        "size": 22,
+        "Warnings": "AFI2,AMPAS,EBERT,NSFC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','LAFCA'],
+        "size": 15,
+        "Warnings": "AFI2,AMPAS,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','NYT'],
+        "size": 55,
+        "Warnings": "AFI2,AMPAS,NBR,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','NYFCC'],
+        "size": 46,
+        "Warnings": "AFI2,AMPAS,NBR,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','NSFC'],
+        "size": 26,
+        "Warnings": "AFI2,AMPAS,NBR,NSFC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','LAFCA'],
+        "size": 18,
+        "Warnings": "AFI2,AMPAS,NBR,LAFCA"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT'],
+        "size": 41,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT"
+    },
+    {
+        "sets": ['AFI1','NSFC','NYFCC','NYT'],
+        "size": 24,
+        "Warnings": "AFI1,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','LAFCA','NYFCC','NYT'],
+        "size": 14,
+        "Warnings": "AFI1,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','LAFCA','NSFC','NYT'],
+        "size": 14,
+        "Warnings": "AFI1,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','LAFCA','NSFC','NYFCC'],
+        "size": 15,
+        "Warnings": "AFI1,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','EBERT','NYFCC','NYT'],
+        "size": 37,
+        "Warnings": "AFI1,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','EBERT','NSFC','NYT'],
+        "size": 19,
+        "Warnings": "AFI1,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','EBERT','NSFC','NYFCC'],
+        "size": 17,
+        "Warnings": "AFI1,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','EBERT','LAFCA','NYT'],
+        "size": 14,
+        "Warnings": "AFI1,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','EBERT','LAFCA','NYFCC'],
+        "size": 12,
+        "Warnings": "AFI1,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','EBERT','LAFCA','NSFC'],
+        "size": 12,
+        "Warnings": "AFI1,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','NBR','NYFCC','NYT'],
+        "size": 47,
+        "Warnings": "AFI1,NBR,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','NSFC','NYT'],
+        "size": 19,
+        "Warnings": "AFI1,NBR,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','NSFC','NYFCC'],
+        "size": 18,
+        "Warnings": "AFI1,NBR,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','NBR','LAFCA','NYT'],
+        "size": 13,
+        "Warnings": "AFI1,NBR,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','LAFCA','NYFCC'],
+        "size": 13,
+        "Warnings": "AFI1,NBR,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','NBR','LAFCA','NSFC'],
+        "size": 13,
+        "Warnings": "AFI1,NBR,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','NYT'],
+        "size": 43,
+        "Warnings": "AFI1,NBR,EBERT,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','NYFCC'],
+        "size": 32,
+        "Warnings": "AFI1,NBR,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','NSFC'],
+        "size": 15,
+        "Warnings": "AFI1,NBR,EBERT,NSFC"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','LAFCA'],
+        "size": 12,
+        "Warnings": "AFI1,NBR,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NYFCC','NYT'],
+        "size": 61,
+        "Warnings": "AFI1,AMPAS,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NSFC','NYT'],
+        "size": 28,
+        "Warnings": "AFI1,AMPAS,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NSFC','NYFCC'],
+        "size": 26,
+        "Warnings": "AFI1,AMPAS,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','LAFCA','NYT'],
+        "size": 16,
+        "Warnings": "AFI1,AMPAS,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','LAFCA','NYFCC'],
+        "size": 15,
+        "Warnings": "AFI1,AMPAS,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','LAFCA','NSFC'],
+        "size": 15,
+        "Warnings": "AFI1,AMPAS,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','NYT'],
+        "size": 55,
+        "Warnings": "AFI1,AMPAS,EBERT,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','NYFCC'],
+        "size": 38,
+        "Warnings": "AFI1,AMPAS,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','NSFC'],
+        "size": 20,
+        "Warnings": "AFI1,AMPAS,EBERT,NSFC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','LAFCA'],
+        "size": 14,
+        "Warnings": "AFI1,AMPAS,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','NYT'],
+        "size": 62,
+        "Warnings": "AFI1,AMPAS,NBR,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','NYFCC'],
+        "size": 48,
+        "Warnings": "AFI1,AMPAS,NBR,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','NSFC'],
+        "size": 20,
+        "Warnings": "AFI1,AMPAS,NBR,NSFC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','LAFCA'],
+        "size": 15,
+        "Warnings": "AFI1,AMPAS,NBR,LAFCA"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT'],
+        "size": 43,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NYFCC','NYT'],
+        "size": 50,
+        "Warnings": "AFI1,AFI2,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NSFC','NYT'],
+        "size": 26,
+        "Warnings": "AFI1,AFI2,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NSFC','NYFCC'],
+        "size": 24,
+        "Warnings": "AFI1,AFI2,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','LAFCA','NYT'],
+        "size": 14,
+        "Warnings": "AFI1,AFI2,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','LAFCA','NYFCC'],
+        "size": 14,
+        "Warnings": "AFI1,AFI2,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','LAFCA','NSFC'],
+        "size": 14,
+        "Warnings": "AFI1,AFI2,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','NYT'],
+        "size": 50,
+        "Warnings": "AFI1,AFI2,EBERT,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','NYFCC'],
+        "size": 34,
+        "Warnings": "AFI1,AFI2,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','NSFC'],
+        "size": 19,
+        "Warnings": "AFI1,AFI2,EBERT,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','LAFCA'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','NYT'],
+        "size": 48,
+        "Warnings": "AFI1,AFI2,NBR,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','NYFCC'],
+        "size": 38,
+        "Warnings": "AFI1,AFI2,NBR,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','NSFC'],
+        "size": 18,
+        "Warnings": "AFI1,AFI2,NBR,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','LAFCA'],
+        "size": 13,
+        "Warnings": "AFI1,AFI2,NBR,LAFCA"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT'],
+        "size": 38,
+        "Warnings": "AFI1,AFI2,NBR,EBERT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NYT'],
+        "size": 67,
+        "Warnings": "AFI1,AFI2,AMPAS,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NYFCC'],
+        "size": 52,
+        "Warnings": "AFI1,AFI2,AMPAS,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NSFC'],
+        "size": 28,
+        "Warnings": "AFI1,AFI2,AMPAS,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','LAFCA'],
+        "size": 15,
+        "Warnings": "AFI1,AFI2,AMPAS,LAFCA"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT'],
+        "size": 48,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR'],
+        "size": 50,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR"
+    },
+    {
+        "sets": ['LAFCA','NSFC','NYFCC','INTL','NYT'],
+        "size": 11,
+        "Warnings": "LAFCA,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['EBERT','NSFC','NYFCC','INTL','NYT'],
+        "size": 9,
+        "Warnings": "EBERT,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NYFCC','INTL','NYT'],
+        "size": 6,
+        "Warnings": "EBERT,LAFCA,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NSFC','INTL','NYT'],
+        "size": 5,
+        "Warnings": "EBERT,LAFCA,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 33,
+        "Warnings": "EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NSFC','NYFCC','INTL'],
+        "size": 7,
+        "Warnings": "EBERT,LAFCA,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['NBR','NSFC','NYFCC','INTL','NYT'],
+        "size": 15,
+        "Warnings": "NBR,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','LAFCA','NYFCC','INTL','NYT'],
+        "size": 9,
+        "Warnings": "NBR,LAFCA,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','LAFCA','NSFC','INTL','NYT'],
+        "size": 8,
+        "Warnings": "NBR,LAFCA,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 100,
+        "Warnings": "NBR,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['NBR','LAFCA','NSFC','NYFCC','INTL'],
+        "size": 28,
+        "Warnings": "NBR,LAFCA,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['NBR','EBERT','NYFCC','INTL','NYT'],
+        "size": 11,
+        "Warnings": "NBR,EBERT,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','NSFC','INTL','NYT'],
+        "size": 7,
+        "Warnings": "NBR,EBERT,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','NSFC','NYFCC','NYT'],
+        "size": 39,
+        "Warnings": "NBR,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','NSFC','NYFCC','INTL'],
+        "size": 7,
+        "Warnings": "NBR,EBERT,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','INTL','NYT'],
+        "size": 5,
+        "Warnings": "NBR,EBERT,LAFCA,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 33,
+        "Warnings": "NBR,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NYFCC','INTL'],
+        "size": 6,
+        "Warnings": "NBR,EBERT,LAFCA,NYFCC,INTL"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NSFC','NYT'],
+        "size": 32,
+        "Warnings": "NBR,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NSFC','INTL'],
+        "size": 5,
+        "Warnings": "NBR,EBERT,LAFCA,NSFC,INTL"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 35,
+        "Warnings": "NBR,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','NSFC','NYFCC','INTL','NYT'],
+        "size": 15,
+        "Warnings": "AMPAS,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NYFCC','INTL','NYT'],
+        "size": 7,
+        "Warnings": "AMPAS,LAFCA,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NSFC','INTL','NYT'],
+        "size": 6,
+        "Warnings": "AMPAS,LAFCA,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 107,
+        "Warnings": "AMPAS,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NSFC','NYFCC','INTL'],
+        "size": 29,
+        "Warnings": "AMPAS,LAFCA,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NYFCC','INTL','NYT'],
+        "size": 10,
+        "Warnings": "AMPAS,EBERT,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NSFC','INTL','NYT'],
+        "size": 6,
+        "Warnings": "AMPAS,EBERT,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NSFC','NYFCC','NYT'],
+        "size": 46,
+        "Warnings": "AMPAS,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NSFC','NYFCC','INTL'],
+        "size": 7,
+        "Warnings": "AMPAS,EBERT,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','INTL','NYT'],
+        "size": 4,
+        "Warnings": "AMPAS,EBERT,LAFCA,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 33,
+        "Warnings": "AMPAS,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NYFCC','INTL'],
+        "size": 5,
+        "Warnings": "AMPAS,EBERT,LAFCA,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NSFC','NYT'],
+        "size": 31,
+        "Warnings": "AMPAS,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NSFC','INTL'],
+        "size": 4,
+        "Warnings": "AMPAS,EBERT,LAFCA,NSFC,INTL"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 35,
+        "Warnings": "AMPAS,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','NBR','NYFCC','INTL','NYT'],
+        "size": 19,
+        "Warnings": "AMPAS,NBR,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','NSFC','INTL','NYT'],
+        "size": 13,
+        "Warnings": "AMPAS,NBR,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','NSFC','NYFCC','NYT'],
+        "size": 127,
+        "Warnings": "AMPAS,NBR,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','NSFC','NYFCC','INTL'],
+        "size": 38,
+        "Warnings": "AMPAS,NBR,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','INTL','NYT'],
+        "size": 9,
+        "Warnings": "AMPAS,NBR,LAFCA,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NYFCC','NYT'],
+        "size": 102,
+        "Warnings": "AMPAS,NBR,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NYFCC','INTL'],
+        "size": 30,
+        "Warnings": "AMPAS,NBR,LAFCA,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NSFC','NYT'],
+        "size": 95,
+        "Warnings": "AMPAS,NBR,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NSFC','INTL'],
+        "size": 28,
+        "Warnings": "AMPAS,NBR,LAFCA,NSFC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NSFC','NYFCC'],
+        "size": 233,
+        "Warnings": "AMPAS,NBR,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','INTL','NYT'],
+        "size": 9,
+        "Warnings": "AMPAS,NBR,EBERT,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NYFCC','NYT'],
+        "size": 74,
+        "Warnings": "AMPAS,NBR,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NYFCC','INTL'],
+        "size": 10,
+        "Warnings": "AMPAS,NBR,EBERT,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NSFC','NYT'],
+        "size": 40,
+        "Warnings": "AMPAS,NBR,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NSFC','INTL'],
+        "size": 6,
+        "Warnings": "AMPAS,NBR,EBERT,NSFC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NSFC','NYFCC'],
+        "size": 42,
+        "Warnings": "AMPAS,NBR,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NYT'],
+        "size": 34,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','INTL'],
+        "size": 5,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NYFCC'],
+        "size": 38,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NSFC'],
+        "size": 34,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI2','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 16,
+        "Warnings": "AFI2,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','EBERT','NSFC','NYFCC','NYT'],
+        "size": 18,
+        "Warnings": "AFI2,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI2,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','EBERT','LAFCA','NSFC','NYT'],
+        "size": 13,
+        "Warnings": "AFI2,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 13,
+        "Warnings": "AFI2,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','NBR','NSFC','NYFCC','NYT'],
+        "size": 20,
+        "Warnings": "AFI2,NBR,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','LAFCA','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI2,NBR,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','LAFCA','NSFC','NYT'],
+        "size": 13,
+        "Warnings": "AFI2,NBR,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','LAFCA','NSFC','NYFCC'],
+        "size": 15,
+        "Warnings": "AFI2,NBR,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','NYFCC','NYT'],
+        "size": 31,
+        "Warnings": "AFI2,NBR,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','NSFC','NYT'],
+        "size": 16,
+        "Warnings": "AFI2,NBR,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','NSFC','NYFCC'],
+        "size": 14,
+        "Warnings": "AFI2,NBR,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','LAFCA','NYT'],
+        "size": 12,
+        "Warnings": "AFI2,NBR,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','LAFCA','NYFCC'],
+        "size": 11,
+        "Warnings": "AFI2,NBR,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','LAFCA','NSFC'],
+        "size": 11,
+        "Warnings": "AFI2,NBR,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NSFC','NYFCC','NYT'],
+        "size": 29,
+        "Warnings": "AFI2,AMPAS,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','LAFCA','NYFCC','NYT'],
+        "size": 16,
+        "Warnings": "AFI2,AMPAS,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','LAFCA','NSFC','NYT'],
+        "size": 16,
+        "Warnings": "AFI2,AMPAS,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','LAFCA','NSFC','NYFCC'],
+        "size": 18,
+        "Warnings": "AFI2,AMPAS,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','NYFCC','NYT'],
+        "size": 37,
+        "Warnings": "AFI2,AMPAS,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','NSFC','NYT'],
+        "size": 21,
+        "Warnings": "AFI2,AMPAS,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','NSFC','NYFCC'],
+        "size": 19,
+        "Warnings": "AFI2,AMPAS,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','LAFCA','NYT'],
+        "size": 14,
+        "Warnings": "AFI2,AMPAS,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','LAFCA','NYFCC'],
+        "size": 14,
+        "Warnings": "AFI2,AMPAS,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','LAFCA','NSFC'],
+        "size": 13,
+        "Warnings": "AFI2,AMPAS,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','NYFCC','NYT'],
+        "size": 43,
+        "Warnings": "AFI2,AMPAS,NBR,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','NSFC','NYT'],
+        "size": 23,
+        "Warnings": "AFI2,AMPAS,NBR,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','NSFC','NYFCC'],
+        "size": 22,
+        "Warnings": "AFI2,AMPAS,NBR,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','LAFCA','NYT'],
+        "size": 14,
+        "Warnings": "AFI2,AMPAS,NBR,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','LAFCA','NYFCC'],
+        "size": 16,
+        "Warnings": "AFI2,AMPAS,NBR,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','LAFCA','NSFC'],
+        "size": 16,
+        "Warnings": "AFI2,AMPAS,NBR,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','NYT'],
+        "size": 40,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','NYFCC'],
+        "size": 31,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','NSFC'],
+        "size": 16,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,NSFC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','LAFCA'],
+        "size": 12,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AFI1','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 14,
+        "Warnings": "AFI1,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','EBERT','NSFC','NYFCC','NYT'],
+        "size": 16,
+        "Warnings": "AFI1,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','EBERT','LAFCA','NSFC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 12,
+        "Warnings": "AFI1,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','NBR','NSFC','NYFCC','NYT'],
+        "size": 17,
+        "Warnings": "AFI1,NBR,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','LAFCA','NYFCC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,NBR,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','LAFCA','NSFC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,NBR,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','LAFCA','NSFC','NYFCC'],
+        "size": 13,
+        "Warnings": "AFI1,NBR,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','NYFCC','NYT'],
+        "size": 32,
+        "Warnings": "AFI1,NBR,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','NSFC','NYT'],
+        "size": 15,
+        "Warnings": "AFI1,NBR,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','NSFC','NYFCC'],
+        "size": 13,
+        "Warnings": "AFI1,NBR,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','LAFCA','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,NBR,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','LAFCA','NYFCC'],
+        "size": 11,
+        "Warnings": "AFI1,NBR,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','LAFCA','NSFC'],
+        "size": 11,
+        "Warnings": "AFI1,NBR,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NSFC','NYFCC','NYT'],
+        "size": 24,
+        "Warnings": "AFI1,AMPAS,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','LAFCA','NYFCC','NYT'],
+        "size": 14,
+        "Warnings": "AFI1,AMPAS,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','LAFCA','NSFC','NYT'],
+        "size": 14,
+        "Warnings": "AFI1,AMPAS,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','LAFCA','NSFC','NYFCC'],
+        "size": 15,
+        "Warnings": "AFI1,AMPAS,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','NYFCC','NYT'],
+        "size": 37,
+        "Warnings": "AFI1,AMPAS,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','NSFC','NYT'],
+        "size": 19,
+        "Warnings": "AFI1,AMPAS,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','NSFC','NYFCC'],
+        "size": 17,
+        "Warnings": "AFI1,AMPAS,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','LAFCA','NYT'],
+        "size": 14,
+        "Warnings": "AFI1,AMPAS,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','LAFCA','NYFCC'],
+        "size": 12,
+        "Warnings": "AFI1,AMPAS,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','LAFCA','NSFC'],
+        "size": 12,
+        "Warnings": "AFI1,AMPAS,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','NYFCC','NYT'],
+        "size": 47,
+        "Warnings": "AFI1,AMPAS,NBR,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','NSFC','NYT'],
+        "size": 19,
+        "Warnings": "AFI1,AMPAS,NBR,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','NSFC','NYFCC'],
+        "size": 18,
+        "Warnings": "AFI1,AMPAS,NBR,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','LAFCA','NYT'],
+        "size": 13,
+        "Warnings": "AFI1,AMPAS,NBR,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','LAFCA','NYFCC'],
+        "size": 13,
+        "Warnings": "AFI1,AMPAS,NBR,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','LAFCA','NSFC'],
+        "size": 13,
+        "Warnings": "AFI1,AMPAS,NBR,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','NYT'],
+        "size": 43,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','NYFCC'],
+        "size": 32,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','NSFC'],
+        "size": 15,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,NSFC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','LAFCA'],
+        "size": 12,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AFI1','AFI2','NSFC','NYFCC','NYT'],
+        "size": 22,
+        "Warnings": "AFI1,AFI2,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','LAFCA','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI1,AFI2,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','LAFCA','NSFC','NYT'],
+        "size": 13,
+        "Warnings": "AFI1,AFI2,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','LAFCA','NSFC','NYFCC'],
+        "size": 14,
+        "Warnings": "AFI1,AFI2,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','NYFCC','NYT'],
+        "size": 33,
+        "Warnings": "AFI1,AFI2,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','NSFC','NYT'],
+        "size": 18,
+        "Warnings": "AFI1,AFI2,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','NSFC','NYFCC'],
+        "size": 16,
+        "Warnings": "AFI1,AFI2,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','LAFCA','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','LAFCA','NYFCC'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','LAFCA','NSFC'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','NYFCC','NYT'],
+        "size": 37,
+        "Warnings": "AFI1,AFI2,NBR,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','NSFC','NYT'],
+        "size": 17,
+        "Warnings": "AFI1,AFI2,NBR,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','NSFC','NYFCC'],
+        "size": 16,
+        "Warnings": "AFI1,AFI2,NBR,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','LAFCA','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,NBR,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','LAFCA','NYFCC'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,NBR,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','LAFCA','NSFC'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,NBR,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','NYT'],
+        "size": 37,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','NYFCC'],
+        "size": 28,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','NSFC'],
+        "size": 14,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','LAFCA'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NYFCC','NYT'],
+        "size": 50,
+        "Warnings": "AFI1,AFI2,AMPAS,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NSFC','NYT'],
+        "size": 26,
+        "Warnings": "AFI1,AFI2,AMPAS,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NSFC','NYFCC'],
+        "size": 24,
+        "Warnings": "AFI1,AFI2,AMPAS,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','LAFCA','NYT'],
+        "size": 14,
+        "Warnings": "AFI1,AFI2,AMPAS,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','LAFCA','NYFCC'],
+        "size": 14,
+        "Warnings": "AFI1,AFI2,AMPAS,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','LAFCA','NSFC'],
+        "size": 14,
+        "Warnings": "AFI1,AFI2,AMPAS,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','NYT'],
+        "size": 47,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','NYFCC'],
+        "size": 34,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','NSFC'],
+        "size": 19,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','LAFCA'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,LAFCA"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','NYT'],
+        "size": 48,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','NYFCC'],
+        "size": 38,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','NSFC'],
+        "size": 18,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','LAFCA'],
+        "size": 13,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,LAFCA"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT'],
+        "size": 37,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT"
+    },
+    {
+        "sets": ['EBERT','LAFCA','NSFC','NYFCC','INTL','NYT'],
+        "size": 5,
+        "Warnings": "EBERT,LAFCA,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','LAFCA','NSFC','NYFCC','INTL','NYT'],
+        "size": 8,
+        "Warnings": "NBR,LAFCA,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','NSFC','NYFCC','INTL','NYT'],
+        "size": 6,
+        "Warnings": "NBR,EBERT,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NYFCC','INTL','NYT'],
+        "size": 5,
+        "Warnings": "NBR,EBERT,LAFCA,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NSFC','INTL','NYT'],
+        "size": 4,
+        "Warnings": "NBR,EBERT,LAFCA,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 30,
+        "Warnings": "NBR,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NSFC','NYFCC','INTL'],
+        "size": 5,
+        "Warnings": "NBR,EBERT,LAFCA,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','LAFCA','NSFC','NYFCC','INTL','NYT'],
+        "size": 6,
+        "Warnings": "AMPAS,LAFCA,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','NSFC','NYFCC','INTL','NYT'],
+        "size": 6,
+        "Warnings": "AMPAS,EBERT,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NYFCC','INTL','NYT'],
+        "size": 4,
+        "Warnings": "AMPAS,EBERT,LAFCA,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NSFC','INTL','NYT'],
+        "size": 3,
+        "Warnings": "AMPAS,EBERT,LAFCA,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 30,
+        "Warnings": "AMPAS,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NSFC','NYFCC','INTL'],
+        "size": 4,
+        "Warnings": "AMPAS,EBERT,LAFCA,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','NSFC','NYFCC','INTL','NYT'],
+        "size": 12,
+        "Warnings": "AMPAS,NBR,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NYFCC','INTL','NYT'],
+        "size": 7,
+        "Warnings": "AMPAS,NBR,LAFCA,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NSFC','INTL','NYT'],
+        "size": 6,
+        "Warnings": "AMPAS,NBR,LAFCA,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 93,
+        "Warnings": "AMPAS,NBR,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NSFC','NYFCC','INTL'],
+        "size": 25,
+        "Warnings": "AMPAS,NBR,LAFCA,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NYFCC','INTL','NYT'],
+        "size": 9,
+        "Warnings": "AMPAS,NBR,EBERT,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NSFC','INTL','NYT'],
+        "size": 5,
+        "Warnings": "AMPAS,NBR,EBERT,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NSFC','NYFCC','NYT'],
+        "size": 37,
+        "Warnings": "AMPAS,NBR,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NSFC','NYFCC','INTL'],
+        "size": 6,
+        "Warnings": "AMPAS,NBR,EBERT,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','INTL','NYT'],
+        "size": 4,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 31,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NYFCC','INTL'],
+        "size": 5,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NYFCC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NSFC','NYT'],
+        "size": 29,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NSFC','INTL'],
+        "size": 4,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NSFC,INTL"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 33,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI2,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI2,NBR,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','NSFC','NYFCC','NYT'],
+        "size": 14,
+        "Warnings": "AFI2,NBR,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI2,NBR,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','LAFCA','NSFC','NYT'],
+        "size": 11,
+        "Warnings": "AFI2,NBR,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 11,
+        "Warnings": "AFI2,NBR,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 16,
+        "Warnings": "AFI2,AMPAS,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','NSFC','NYFCC','NYT'],
+        "size": 18,
+        "Warnings": "AFI2,AMPAS,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI2,AMPAS,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','LAFCA','NSFC','NYT'],
+        "size": 13,
+        "Warnings": "AFI2,AMPAS,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 13,
+        "Warnings": "AFI2,AMPAS,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','NSFC','NYFCC','NYT'],
+        "size": 20,
+        "Warnings": "AFI2,AMPAS,NBR,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','LAFCA','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI2,AMPAS,NBR,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','LAFCA','NSFC','NYT'],
+        "size": 13,
+        "Warnings": "AFI2,AMPAS,NBR,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','LAFCA','NSFC','NYFCC'],
+        "size": 15,
+        "Warnings": "AFI2,AMPAS,NBR,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','NYFCC','NYT'],
+        "size": 31,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','NSFC','NYT'],
+        "size": 16,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','NSFC','NYFCC'],
+        "size": 14,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','LAFCA','NYT'],
+        "size": 12,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','LAFCA','NYFCC'],
+        "size": 11,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','LAFCA','NSFC'],
+        "size": 11,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,NBR,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','NSFC','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI1,NBR,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,NBR,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','LAFCA','NSFC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,NBR,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 11,
+        "Warnings": "AFI1,NBR,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 14,
+        "Warnings": "AFI1,AMPAS,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','NSFC','NYFCC','NYT'],
+        "size": 16,
+        "Warnings": "AFI1,AMPAS,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AMPAS,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','LAFCA','NSFC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AMPAS,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 12,
+        "Warnings": "AFI1,AMPAS,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','NSFC','NYFCC','NYT'],
+        "size": 17,
+        "Warnings": "AFI1,AMPAS,NBR,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','LAFCA','NYFCC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AMPAS,NBR,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','LAFCA','NSFC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AMPAS,NBR,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','LAFCA','NSFC','NYFCC'],
+        "size": 13,
+        "Warnings": "AFI1,AMPAS,NBR,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','NYFCC','NYT'],
+        "size": 32,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','NSFC','NYT'],
+        "size": 15,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','NSFC','NYFCC'],
+        "size": 13,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','LAFCA','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','LAFCA','NYFCC'],
+        "size": 11,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','LAFCA','NSFC'],
+        "size": 11,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI1,AFI2,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','NSFC','NYFCC','NYT'],
+        "size": 15,
+        "Warnings": "AFI1,AFI2,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','LAFCA','NSFC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','NSFC','NYFCC','NYT'],
+        "size": 15,
+        "Warnings": "AFI1,AFI2,NBR,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','LAFCA','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,NBR,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','LAFCA','NSFC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,NBR,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','LAFCA','NSFC','NYFCC'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,NBR,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','NYFCC','NYT'],
+        "size": 28,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','NSFC','NYT'],
+        "size": 14,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','NSFC','NYFCC'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','LAFCA','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','LAFCA','NYFCC'],
+        "size": 10,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','LAFCA','NSFC'],
+        "size": 10,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NSFC','NYFCC','NYT'],
+        "size": 22,
+        "Warnings": "AFI1,AFI2,AMPAS,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','LAFCA','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI1,AFI2,AMPAS,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','LAFCA','NSFC','NYT'],
+        "size": 13,
+        "Warnings": "AFI1,AFI2,AMPAS,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','LAFCA','NSFC','NYFCC'],
+        "size": 14,
+        "Warnings": "AFI1,AFI2,AMPAS,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','NYFCC','NYT'],
+        "size": 33,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','NSFC','NYT'],
+        "size": 18,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','NSFC','NYFCC'],
+        "size": 16,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','LAFCA','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','LAFCA','NYFCC'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','LAFCA','NSFC'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','NYFCC','NYT'],
+        "size": 37,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','NSFC','NYT'],
+        "size": 17,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','NSFC','NYFCC'],
+        "size": 16,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','LAFCA','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','LAFCA','NYFCC'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','LAFCA','NSFC'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','NYT'],
+        "size": 37,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','NYFCC'],
+        "size": 28,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','NSFC'],
+        "size": 14,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,NSFC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','LAFCA'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,LAFCA"
+    },
+    {
+        "sets": ['NBR','EBERT','LAFCA','NSFC','NYFCC','INTL','NYT'],
+        "size": 4,
+        "Warnings": "NBR,EBERT,LAFCA,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','EBERT','LAFCA','NSFC','NYFCC','INTL','NYT'],
+        "size": 3,
+        "Warnings": "AMPAS,EBERT,LAFCA,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','LAFCA','NSFC','NYFCC','INTL','NYT'],
+        "size": 6,
+        "Warnings": "AMPAS,NBR,LAFCA,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','NSFC','NYFCC','INTL','NYT'],
+        "size": 5,
+        "Warnings": "AMPAS,NBR,EBERT,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NYFCC','INTL','NYT'],
+        "size": 4,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NSFC','INTL','NYT'],
+        "size": 3,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NSFC,INTL,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 28,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NSFC','NYFCC','INTL'],
+        "size": 4,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NSFC,NYFCC,INTL"
+    },
+    {
+        "sets": ['AFI2','NBR','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI2,NBR,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI2,AMPAS,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI2,AMPAS,NBR,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','NSFC','NYFCC','NYT'],
+        "size": 14,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','LAFCA','NSFC','NYT'],
+        "size": 11,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 11,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','NBR','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,NBR,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AMPAS,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AMPAS,NBR,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','NSFC','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','LAFCA','NSFC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 11,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,NBR,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','NSFC','NYFCC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 10,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','LAFCA','NSFC','NYT'],
+        "size": 10,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 10,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 13,
+        "Warnings": "AFI1,AFI2,AMPAS,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','NSFC','NYFCC','NYT'],
+        "size": 15,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','LAFCA','NSFC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','NSFC','NYFCC','NYT'],
+        "size": 15,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','LAFCA','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','LAFCA','NSFC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','LAFCA','NSFC','NYFCC'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','NYFCC','NYT'],
+        "size": 28,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','NSFC','NYT'],
+        "size": 14,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','NSFC','NYFCC'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','LAFCA','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,LAFCA,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','LAFCA','NYFCC'],
+        "size": 10,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,LAFCA,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','LAFCA','NSFC'],
+        "size": 10,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,LAFCA,NSFC"
+    },
+    {
+        "sets": ['AMPAS','NBR','EBERT','LAFCA','NSFC','NYFCC','INTL','NYT'],
+        "size": 3,
+        "Warnings": "AMPAS,NBR,EBERT,LAFCA,NSFC,NYFCC,INTL,NYT"
+    },
+    {
+        "sets": ['AFI2','AMPAS','NBR','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI2,AMPAS,NBR,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AMPAS','NBR','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AMPAS,NBR,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','NBR','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 10,
+        "Warnings": "AFI1,AFI2,NBR,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,AMPAS,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 11,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,LAFCA,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','NSFC','NYFCC','NYT'],
+        "size": 12,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,NSFC,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','LAFCA','NYFCC','NYT'],
+        "size": 10,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,LAFCA,NYFCC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','LAFCA','NSFC','NYT'],
+        "size": 10,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,LAFCA,NSFC,NYT"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','LAFCA','NSFC','NYFCC'],
+        "size": 10,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,LAFCA,NSFC,NYFCC"
+    },
+    {
+        "sets": ['AFI1','AFI2','AMPAS','NBR','EBERT','LAFCA','NSFC','NYFCC','NYT'],
+        "size": 10,
+        "Warnings": "AFI1,AFI2,AMPAS,NBR,EBERT,LAFCA,NSFC,NYFCC,NYT"
+    }
+]
+
+
