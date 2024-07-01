@@ -38,7 +38,7 @@ layout: default
 d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/ratings/formatted.csv',function (data) {
   var data = data
               .filter(element => element.Title != "NA")
-              .filter(element => element["Title.Type"] === "movie")
+              .filter(element => element["Title.Type"] === "Movie")
               .slice(0,26)
   var columns = ['Title', 'Year', 'Your.Rating', 'IMDb.Rating', 'Num.Votes']
   tabulate(data,columns)
