@@ -64,7 +64,7 @@ layout: radial
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
       .text("International Submissions");
 
-  d3.csv("https://jacobmgreer.github.io/Nitrate-Actions/datasets/AMPAS-International/Summary.csv", function(d, i, columns) {
+  d3.csv("https://jacobmgreer.github.io/Nitrate-Actions/AMPAS-International/Summary.csv", function(d, i, columns) {
     for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
     d.total = t;
     return d;
@@ -108,7 +108,7 @@ layout: radial
 
     var data = [];
 
-    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/AMPAS-International/Data.csv', function(data){
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/AMPAS-International/Data.csv', function(data){
         var data = data.filter(element => element.Ceremony === ceremony)
         var nested_data = d3.nest()
                             .key(d => d.Ceremony)
@@ -197,7 +197,7 @@ layout: radial
      }
   }
 
-  d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/AMPAS-International/Data.csv',function (data) {
+  d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/AMPAS-International/Data.csv',function (data) {
     d3.select('#progress')
       .style("width", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)) + "%")
       .attr("aria-valuenow", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)));
