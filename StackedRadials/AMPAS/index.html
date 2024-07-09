@@ -77,7 +77,7 @@ layout: radial
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
       .text('Academy Awards');
 
-  d3.csv("https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/Oscars-Chart-Data.csv", function(d, i, columns) {
+  d3.csv("https://jacobmgreer.github.io/Nitrate-Actions/Oscars/Oscars-Chart-Data.csv", function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i)
         t += d[columns[i]] = +d[columns[i]];
         d.total = t;
@@ -125,7 +125,7 @@ layout: radial
 
     var data = [];
 
-    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/OscarsTracking.csv', function(data){
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/Oscars/OscarsTracking.csv', function(data){
     		var data = data.filter(element => element.AwardCeremony === ceremony)
         var nested_data = d3.nest()
                             .key(d => d.AwardCeremony)
@@ -214,7 +214,7 @@ layout: radial
      }
   }
 
-  d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/Oscars/Oscars-Summary-Films.csv',function (data) {
+  d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/Oscars/Oscars-Summary-Films.csv',function (data) {
     d3.select('.movies-total').html('Total: seen ' +
         data.filter(element => element["Your.Rating"] != "NA").length + ' out of ' +
         data.length + ' (' +
