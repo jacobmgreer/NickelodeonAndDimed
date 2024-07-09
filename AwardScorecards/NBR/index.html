@@ -77,7 +77,7 @@ layout: default
 </section>
 
 <script type="text/javascript">
-    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/NBR/NBR-Summary-Ceremonies.csv', function(data){
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/NBR/NBR-Summary-Ceremonies.csv', function(data){
         var nested_data = d3.nest().entries(data.sort(function (a,b) {return d3.descending(a.AwardCeremony, b.AwardCeremony);}));
         doSomething2(nested_data);
     })
@@ -138,7 +138,7 @@ layout: default
   function awardTable(ceremony, awardtype) {
     $("#filmlist").empty();
     var data = [];
-    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/NBR/NBRData.csv', function(data){
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/NBR/NBRData.csv', function(data){
     		var data = data.filter(element => element.AwardCeremony === ceremony).filter(element => element.GeneralizedCategory === awardtype)
         var nested_data = d3.nest()
                             .key(function(d) { return d.AwardCeremony; })
