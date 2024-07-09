@@ -35,7 +35,7 @@ layout: default
           })
      }
 
-d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/ratings/formatted.csv',function (data) {
+d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/formatted.csv',function (data) {
   var data = data
               .filter(element => element.Title != "NA")
               .filter(element => element["Title.Type"] === "Movie")
