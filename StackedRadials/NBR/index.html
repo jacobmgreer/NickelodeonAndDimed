@@ -63,7 +63,7 @@ layout: radial
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
       .text('National Board of Review');
 
-  d3.csv("https://jacobmgreer.github.io/Nitrate-Actions/datasets/NBR/NBRSummary.csv",
+  d3.csv("https://jacobmgreer.github.io/Nitrate-Actions/NBR/NBRSummary.csv",
     function(d, i, columns) {
       for (i = 1, t = 0; i < columns.length; ++i)
           t += d[columns[i]] = +d[columns[i]]; d.total = t;
@@ -105,7 +105,7 @@ layout: radial
     $("#filmlist").empty();
 
     var data = [];
-    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/NBR/NBRData.csv',
+    d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/NBR/NBRData.csv',
       function(data){
         var data = data.filter(element => element.AwardCeremony === ceremony)
         var nested_data = d3.nest()
@@ -187,7 +187,7 @@ layout: radial
       document.getElementById("switch").scrollIntoView();
      }
   }
-  d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/datasets/NBR/NBRData.csv',function (data) {
+  d3.csv('https://jacobmgreer.github.io/Nitrate-Actions/NBR/NBRData.csv',function (data) {
     d3.select('#progress')
       .style("width", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)) + "%")
       .attr("aria-valuenow", Number(((data.filter(element => element.Seen === "Yes").length * 100) / data.length).toFixed(0)));
