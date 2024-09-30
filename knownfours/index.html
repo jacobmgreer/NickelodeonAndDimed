@@ -1,1 +1,194 @@
+---
+title: "Known Fours"
+layout: default
+---
 
+
+<style>
+td {min-width:100px;}
+th,
+td:nth-of-type(1),
+td:nth-of-type(2) {
+    text-align: center; 
+    vertical-align: middle;}
+th:first-of-type, td:nth-of-type(1) {
+    text-align: left;
+    width: auto;}
+td div.cholder {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;}
+td span.circle {
+    height: 1px;
+    width: 1px;
+    background-color: #e2b634;
+    border-radius: 50%;}
+td div.dvalue {
+    text-align: center;}
+</style>
+
+<script type="text/javascript" charset="utf-8">
+    var tabulate = function (data,columns) {
+        var recents = d3.select('#rows')
+            .selectAll('tr')
+            .data(data)
+            .enter()
+            .append('tr')
+
+        var nominee = recents.selectAll('td')
+            .data(function (row) {
+                return columns.map(function (column) {
+                    return {
+                    column: column,
+                    value: row[column],
+                    credit: row["credits"]
+                    }
+                })
+            })
+            .enter()
+            .append('td')
+            .html(function(d){
+                if (["people", "credits", "anyAdult"].includes(d.column)) {
+                    return d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
+                else if (d.column.startsWith("decade_")) {
+                    if (d.value === "NA") {}
+                    else {
+                        return "<div class=cholder><span class=circle style=\"zoom: calc(" + d.value + "/" + d.credit + " * 100);\"></span></div><div class=dvalue>" + d.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</div>"
+                    }
+                }
+                else {
+                    return d.value
+                }
+            })
+    }
+
+d3.csv('https://raw.githubusercontent.com/jacobmgreer/db-knownfour/refs/heads/main/knownfours.csv',function (data) {
+  var data = data.filter(element => element.content === "Summary")
+  var columns = [
+        'knownForProfession', 
+        'people', 
+        // 'credits', 
+        // 'minKnownForYear', 
+        // 'maxKnownForYear', 
+        // 'anyAdult',
+        'decade_NA',
+        'decade_2030', 
+        'decade_2020', 
+        'decade_2010', 
+        'decade_2000', 
+        'decade_1990',
+        'decade_1980', 
+        'decade_1970', 
+        'decade_1960', 
+        'decade_1950', 
+        'decade_1940', 
+        'decade_1930', 
+        'decade_1920', 
+        'decade_1910', 
+        'decade_1900', 
+        'decade_1890', 
+        'decade_1880', 
+        'decade_1870'
+    ]
+  tabulate(data,columns)
+})
+</script>
+
+  <div class="container-fluid">
+    <br/><br/><br/>
+    <h1 class="display-1 text-center">Known Fours</h1>
+    <p class="lead text-center"><a href="#description">Description</a> | <a href="#caveats">Caveats</a></p>
+    <div style="margin-top:25px;">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col" colspan="2"></th>
+            <th scope="col" colspan="18" style="text-align:left">Release Years of the "Known Fours"<br/><i class="small text-danger">Warning: "known four" credits do not connect to "known three" professions cleanly, see <a href="#caveats">caveats</a>.</i></th>
+          </tr>
+          <tr>
+            <th scope="col">Profession</th>
+            <th scope="col">People</th>
+            <!-- <th scope="col">Credits</th>
+            <th scope="col">min K4Y</th>
+            <th scope="col">max K4Y</th>
+            <th scope="col">Adult Content</th> -->
+            <th scope="col">Unknown</th>
+            <th scope="col">2030s</th>
+            <th scope="col">2020s</th>
+            <th scope="col">2010s</th>
+            <th scope="col">2000s</th>
+            <th scope="col">1990s</th>
+            <th scope="col">1980s</th>
+            <th scope="col">1970s</th>
+            <th scope="col">1960s</th>
+            <th scope="col">1950s</th>
+            <th scope="col">1940s</th>
+            <th scope="col">1930s</th>
+            <th scope="col">1920s</th>
+            <th scope="col">1910s</th>
+            <th scope="col">1900s</th>
+            <th scope="col">1890s</th>
+            <th scope="col">1880s</th>
+            <th scope="col">1870s</th>
+          </tr>
+        </thead>
+        <tbody id="rows">
+        </tbody>
+      </table>
+      <br/><br/>
+      <hr id="description" class="border border-secondary-bg border-3 opacity-75">
+      <h3 class="display-3 text-center">Description</h3>
+          <p class="lead text-center">
+              Each person added to IMDb can have four 'known for' titles and three 'known for' professions.
+          </p>
+          <p class="lead text-center">
+              For this breakdown, I introduce these as "known four" credits and "known three" professions.
+          </p>
+          <p class="lead text-center">
+              "Known four" credits are not necessarily associated with a person's "known three" professions.<br/>
+              For this breakdown, I'm loosely connecting the two.
+          </p>
+          <p class="lead text-center">
+              This helps demonstrate how many people are involved in each profession throughout the media industry's history.<br/>
+              IMDb tracks professionals involved in making film, television, video, adult, short, and video game content.
+          </p>
+          <p class="lead text-center">
+              More detailed breakdowns can be created for four professions: actors, actresses, directors, and writers. All other professions are limited to the "known four" in the available datasets.
+          </p>
+      
+      <hr id="caveats" class="border border-secondary-bg border-3 opacity-75">
+      <h3 class="display-3 text-center">Caveats</h3>
+      <h6 class="display-6 text-center">1: known for <i>now</i></h6>
+          <p class="lead text-center">
+              "Known for" content tends to pull forward chronologically, <br/>
+              cast and crew from early in film history may not be <i>known for</i> content that they were <i>known for</i> in their time.<br/>Re-releases or post-humous credits may become more popular than prior content.
+          </p>
+          <p class="lead text-center">
+              For instance, on 2024-09-29, <a href="https://www.imdb.com/name/nm0000636/">William Shakespeare</a> was "known four" writing credits on four films: "The Tragedy of Macbeth" (2021) and three unreleased films. In the context of IMDb, William Shakespeare has "known three" professions: (1) writer, (2) additional crew, and (3) actor.
+          </p>
+      <h6 class="display-6 text-center">2: known for <i>may not be what you know them for</i></h6>
+          <p class="lead text-center">
+              "Known four" credits are selected in two ways: either using IMDb's complex weighting system OR are hand selected by the professional in IMDb Pro. It's not known whether a person's "known for" are calculated or manually selected. <a href="https://help.imdb.com/article/imdb/discover-watch/known-for-title-selection/GNL2E4LJVKM9QLMD">More on that here.</a>
+          </p>
+          <p class="lead text-center">
+              What a person might be best 'known for' might not be in their calculated "known four". For example, <a href="https://www.imdb.com/name/nm0000631/">Ridley Scott</a> has "known three" professions: (1) producer, (2) director, and (3) production designer. Ridley Scott's "known four" credits, on 2024-09-29, are all as a producer: The Martian (2015), Blade Runner (1982), Thelma & Louise (1991), and Gladiator (2000). Ridley Scott is also a director on all four films, but a producer credit is often perceived as higher than a director credit. At the time, Ridley Scott's "known four" did not include his director credit on "Alien" (1979).
+          </p>
+      <h6 class="display-6 text-center">3: known for <i>excludes music videos</i></h6>
+          <p class="lead text-center">
+              Music videos are in IMDb, but are not currently included in the IMDb Non-Commercial Datasets. Known for credits listed on the website are recaculated for the datasets, removing music videos and adding another credit. All industry professionals specifically involved with music videos won't be "known four" them.
+          </p>
+          <p class="lead text-center">
+              For example, <a href="https://www.imdb.com/name/nm0001391/">Michael Jackson</a> is best known for his "Thriller" (1983) music video. This music video is listed on the IMDb profile, but is replaced with "Men in Black II" (2002) in the dataset.
+          </p>
+      <h6 class="display-6 text-center">4: known for <i>may not align with industry recognition</i></h6>
+          <p class="lead text-center">
+              Prolific industry professionals may have more than 4 known credits.</p>
+          <p class="lead text-center">
+              For example, <a href="https://www.imdb.com/name/nm0000658/">Meryl Streep</a> holds the record for 21 Academy Award nominations [3 wins: "Kramer vs. Kramer" (1980), "Sophie's Choice" (1983), and "The Iron Lady" (2012)]. On 2024-09-29, Meryl Streep was 'known for' only 1 of her 3 Academy Award Wins, her current "known four" are: "Out of Africa" (1985), "August: Osage County" (2013), "Sophie's Choice" (1982), and "The Devil Wears Prada" (2006).
+          </p>
+      <br/>
+    </div>
+  </div>
